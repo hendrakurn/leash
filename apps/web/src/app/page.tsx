@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Shell, Rule, Meter, Field, IconArrow, ButtonLink } from "@/components/primitives";
+import { SiteNav } from "@/components/site-nav";
+import { LandingNav } from "@/components/landing-nav";
 import { AttemptLedger } from "@/components/attempt-ledger";
 import { ERROR_COPY, formatRupiah, ALL_ERROR_NAMES } from "@/lib/leash";
 import { activeChain, contractAddress } from "@/lib/chain";
@@ -12,53 +14,72 @@ export default function LandingPage() {
 
   return (
     <>
-      {/* --- first viewport: the statement, then the instrument ---------- */}
-      <section className="buzz border-b">
-        <Shell className="pt-16 pb-14 sm:pt-24 sm:pb-20">
-          <h1
-            className="display rise max-w-[18ch] text-[clamp(2.75rem,8vw,6rem)]"
-            style={{ animationDelay: "40ms" }}
-          >
-            Money stays in fiat rails. Spending authority is enforced on-chain.
-          </h1>
+      <LandingNav />
 
-          <p
-            className="rise mt-7 max-w-[45ch] text-lg leading-relaxed"
-            style={{ color: "var(--wt-65)", animationDelay: "140ms" }}
-          >
-            An AI agent with a payment method can be talked into paying the wrong
-            merchant. Leash puts the boundary somewhere the agent cannot reach and
-            the operator cannot quietly edit.
-          </p>
-
-          <div className="rise mt-9" style={{ animationDelay: "220ms" }}>
-            <div className="flex flex-wrap items-center gap-4">
-              <ButtonLink href="/agent">
-                Try to break it
-                <IconArrow className="h-4 w-4" />
-              </ButtonLink>
-              <Link
-                href="/mandate/new"
-                className="text-sm underline decoration-1 underline-offset-4 transition-colors duration-150"
-                style={{ color: "var(--wt-65)" }}
+      {/* --- first viewport: the navigation, then the statement ------------ */}
+      {/* There is no floating header. The nav rules straight onto the volt
+          hero: wordmark, routes, wallet and deployment status all live here. */}
+      <section className="on-green buzz border-b">
+        <SiteNav border={false} hero />
+        <Shell className="pt-12 pb-14 sm:pt-16 sm:pb-20">
+          <div className="grid items-center gap-10 md:grid-cols-[1.05fr_0.95fr] md:gap-16">
+            <div>
+              <h1
+                className="display rise max-w-[20ch] text-[clamp(2.5rem,6vw,4.75rem)]"
+                style={{ animationDelay: "40ms" }}
               >
-                Set your own mandate
-              </Link>
+                Money stays in fiat rails. Spending authority is enforced on-chain.
+              </h1>
+
+              <p
+                className="rise mt-7 max-w-[45ch] text-lg leading-relaxed"
+                style={{ color: "var(--wt-65)", animationDelay: "140ms" }}
+              >
+                An AI agent with a payment method can be talked into paying the wrong
+                merchant. Leash puts the boundary somewhere the agent cannot reach and
+                the operator cannot quietly edit.
+              </p>
+
+              <div className="rise mt-9" style={{ animationDelay: "220ms" }}>
+                <div className="flex flex-wrap items-center gap-4">
+                  <ButtonLink href="/agent">
+                    Try to break it
+                    <IconArrow className="h-4 w-4" />
+                  </ButtonLink>
+                  <Link
+                    href="/mandate/new"
+                    className="text-sm underline decoration-1 underline-offset-4 transition-colors duration-150"
+                    style={{ color: "var(--wt-65)" }}
+                  >
+                    Set your own mandate
+                  </Link>
+                </div>
+
+                {/* The action must not promise a live console the deployment cannot
+                    back. Stated at the control, not discovered after the click. */}
+                {!contractAddress ? (
+                  <p className="mono-label mt-3">
+                    Both need a deployed contract · none on {activeChain.name} yet
+                  </p>
+                ) : null}
+              </div>
             </div>
 
-            {/* The action must not promise a live console the deployment cannot
-                back. Stated at the control, not discovered after the click. */}
-            {!contractAddress ? (
-              <p className="mono-label mt-3">
-                Both need a deployed contract · none on {activeChain.name} yet
-              </p>
-            ) : null}
+            <div className="rise" style={{ animationDelay: "260ms" }}>
+              <img
+                src="/hero.png"
+                alt="Leash hero illustration"
+                className="h-auto w-full select-none"
+                draggable={false}
+              />
+            </div>
           </div>
 
-          {/* the live instrument, directly under the statement */}
+          {/* the live instrument, directly under the statement — no paper card:
+              it rules straight onto the volt ground with dark hairlines */}
           <div
             className="rise mt-14 border p-6 sm:p-8"
-            style={{ background: "var(--paper)", animationDelay: "300ms" }}
+            style={{ animationDelay: "300ms" }}
           >
             <div className="flex flex-wrap items-baseline justify-between gap-4">
               <span className="mono-label">Reference mandate</span>
@@ -96,10 +117,13 @@ export default function LandingPage() {
         </Shell>
       </section>
 
+      {/* the accent field burns out into the paper demonstration */}
+      <div className="sfade sfade--from-green" aria-hidden />
+
       {/* --- the demonstration ------------------------------------------- */}
       <section>
         <Shell className="py-20 sm:py-28">
-          <h2 className="display max-w-[20ch] text-[clamp(2rem,5vw,3.5rem)]">
+          <h2 className="display max-w-[20ch] text-[clamp(1.75rem,4.5vw,3rem)]">
             Four payment attempts. One got through.
           </h2>
           <p className="mt-6 max-w-[48ch] text-lg leading-relaxed" style={{ color: "var(--wt-65)" }}>
@@ -125,7 +149,7 @@ export default function LandingPage() {
       {/* --- the vocabulary ---------------------------------------------- */}
       <section className="border-t border-b" style={{ background: "var(--refuse-wash)" }}>
         <Shell className="py-20 sm:py-28">
-          <h2 className="display max-w-[22ch] text-[clamp(2rem,5vw,3.5rem)]">
+          <h2 className="display max-w-[24ch] text-[clamp(1.75rem,4.5vw,3rem)]">
             The contract can refuse in eight ways. It cannot be talked out of any of
             them.
           </h2>
@@ -150,8 +174,11 @@ export default function LandingPage() {
         </Shell>
       </section>
 
+      {/* the paper field gives way back to the accent */}
+      <div className="sfade sfade--to-green" aria-hidden />
+
       {/* --- the boundary -------------------------------------------------- */}
-      <section>
+      <section className="on-green">
         <Shell className="py-20 sm:py-28">
           <div className="grid gap-12 md:grid-cols-[1fr_1fr] md:gap-20">
             <div>
@@ -170,7 +197,7 @@ export default function LandingPage() {
               </p>
             </div>
 
-            <div className="border p-6 font-mono text-sm sm:p-8">
+            <div className="border p-6 font-mono text-sm sm:p-8" style={{ background: "var(--paper)" }}>
               {/* Labelled in place. The mocked list is 3,000px away in the
                   footer, and "Settlement status: SUCCESS" printed under a
                   heading that says settlement is separate must not read as a
@@ -199,7 +226,7 @@ Settlement status: SUCCESS`}
       </section>
 
       {/* --- close --------------------------------------------------------- */}
-      <section className="border-t buzz">
+      <section className="on-green border-t">
         <Shell className="py-20 text-center sm:py-28">
           <h2 className="display mx-auto max-w-[16ch] text-[clamp(2rem,6vw,4rem)]">
             Try to make it pay the wrong merchant.
@@ -221,6 +248,9 @@ Settlement status: SUCCESS`}
           </div>
         </Shell>
       </section>
+
+      {/* the accent field burns out into the paper footer */}
+      <div className="sfade sfade--from-green" aria-hidden />
     </>
   );
 }
