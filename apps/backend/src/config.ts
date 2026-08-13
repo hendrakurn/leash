@@ -9,6 +9,7 @@ export interface AppConfig {
   readonly contractAddress: Address;
   readonly startBlock: bigint;
   readonly confirmations: number;
+  readonly maxLogRangeBlocks: number;
   readonly pollIntervalMs: number;
   readonly listenerMode: ListenerMode;
   readonly expectedSettlements?: number;
@@ -56,6 +57,7 @@ export function loadConfig(): AppConfig {
     contractAddress: getAddress(required("CONTRACT_ADDRESS")),
     startBlock: nonnegativeBigInt("START_BLOCK", "0"),
     confirmations: positiveInteger("CONFIRMATIONS", "1"),
+    maxLogRangeBlocks: positiveInteger("MAX_LOG_RANGE_BLOCKS", "9000"),
     pollIntervalMs: positiveInteger("POLL_INTERVAL_MS", "1000"),
     listenerMode,
     expectedSettlements: optionalNonnegativeInteger("EXPECTED_SETTLEMENTS"),

@@ -31,7 +31,8 @@ contract LeashMandate {
         address indexed owner,
         address indexed sessionKey,
         uint256 maxAmount,
-        uint256 validUntil
+        uint256 validUntil,
+        address[] targets
     );
 
     event AuthorizationGranted(
@@ -74,7 +75,7 @@ contract LeashMandate {
             allowedTargets[mandateId][targets[i]] = true;
         }
 
-        emit MandateRegistered(mandateId, msg.sender, sessionKey, maxAmount, validUntil);
+        emit MandateRegistered(mandateId, msg.sender, sessionKey, maxAmount, validUntil, targets);
     }
 
     function authorizePayment(bytes32 mandateId, address target, uint256 amount, bytes32 paymentRef) external {

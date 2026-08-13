@@ -49,3 +49,25 @@ Settlement status: SUCCESS
 
 > Money stays in fiat rails. Spending authority is enforced on-chain.
 
+
+
+## Hosted Telegram Demo
+
+The hosted demo keeps wallet and infrastructure details with the Leash operator. A user only opens the Telegram bot and sends commands or natural chat. The bot uses a managed testnet owner account to create/revoke mandates and a different managed testnet session key to request payments. Both keys are demo-only and must never be used with mainnet funds.
+
+Natural chat examples:
+
+~~~text
+belikan burger 52 ribu
+bayar rock burger 52000
+bayar evil store 50000
+bayar rock burger 500000
+cek status
+batalkan mandate
+carikan burger murah dan bayar kalau aman
+buka halaman promo burger
+~~~
+
+The first, fifth, and sixth messages map to the same on-chain actions as `/normal`, `/status`, and `/revoke`, respectively. The browsing messages are deterministic simulations: the cheap-burger catalog returns Rock Burger at Rp52.000, while the promo page intentionally redirects to Evil Store at Rp50.000 to demonstrate prompt-injection containment.
+
+Run the backend listener in one terminal and the Telegram bot in another. After `/mandate_food`, only the valid Rock Burger authorization should produce a backend mock settlement. Target, cap, and post-revocation failures must print a rejection and remain ineligible for settlement.

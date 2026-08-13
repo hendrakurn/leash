@@ -27,6 +27,14 @@ contract LeashMandateTest is Test {
         bytes32 paymentRef
     );
     event MandateRevoked(bytes32 indexed mandateId);
+    event MandateRegistered(
+        bytes32 indexed mandateId,
+        address indexed owner,
+        address indexed sessionKey,
+        uint256 maxAmount,
+        uint256 validUntil,
+        address[] targets
+    );
 
     function setUp() public {
         vm.warp(1_700_000_000);
@@ -38,6 +46,18 @@ contract LeashMandateTest is Test {
         evilStore = makeAddr("evilStore");
         attacker = makeAddr("attacker");
         validUntil = block.timestamp + 1 days;
+    }
+
+    function testRegisterMandateEmitsTargets() public {
+        address[] memory targets = new address[](2);
+        targets[0] = rockBurger;
+        targets[1] = evilStore;
+
+        vm.expectEmit(true, true, true, true, address(leash));
+        emit MandateRegistered(MANDATE_ID, owner, sessionKey, MAX_AMOUNT, validUntil, targets);
+
+        vm.prank(owner);
+        leash.registerMandate(MANDATE_ID, sessionKey, MAX_AMOUNT, validUntil, targets);
     }
 
     function testRegisterMandateStoresFields() public {
