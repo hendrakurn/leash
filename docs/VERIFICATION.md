@@ -26,11 +26,11 @@ forge test -vvv
 Result:
 
 - build successful;
-- 25 tests passed;
+- 26 tests passed;
 - 0 failed;
 - 0 skipped.
 
-Coverage includes all required registration, valid flow, rejection, cumulative cap, expiry, revocation, wrong-key, zero-amount, event, state-preservation, and attack-no-event cases.
+Coverage includes all required registration, MandateRegistered target logs, valid flow, rejection, cumulative cap, expiry, revocation, wrong-key, zero-amount, event, state-preservation, and attack-no-event cases.
 
 ## TypeScript
 
@@ -88,5 +88,16 @@ Local transaction hashes are reproducible Anvil evidence, not Base Sepolia evide
 
 ## Public Deployment
 
-Base Sepolia deployment was not attempted because credentials and the testnet-only wallet confirmation were absent. No address or explorer proof is claimed.
+Base Sepolia deployment is recorded.
 
+- network: Base Sepolia;
+- chain ID: 84532;
+- contract: 0x4D74d9469de72B9aACBe0a696e769EEA817D4988;
+- deployment transaction: 0x0804141b25c2eb758c2bd2c6a9236ef6e346a0cef33bb9f7e69d2ca662c58b9c;
+- deployment block: 45423055;
+- receipt status: success;
+- explorer address: https://sepolia.basescan.org/address/0x4D74d9469de72B9aACBe0a696e769EEA817D4988;
+- explorer transaction: https://sepolia.basescan.org/tx/0x0804141b25c2eb758c2bd2c6a9236ef6e346a0cef33bb9f7e69d2ca662c58b9c;
+- source verification: not recorded in this repo.
+
+Receipt and code checks were run with cast against BASE_SEPOLIA_RPC_URL. The contract code exists at the recorded address, and the deployment receipt status is success.

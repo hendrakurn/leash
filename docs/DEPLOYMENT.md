@@ -16,27 +16,48 @@ These values are ephemeral local-chain evidence and are not public deployment cl
 
 ## Base Sepolia
 
-Status: SKIPPED_CREDENTIALS.
+Status: deployed.
 
-At verification time, BASE_SEPOLIA_RPC_URL, PRIVATE_KEY, BASESCAN_API_KEY, and CONFIRM_TESTNET_ONLY_WALLET were absent. No public broadcast was attempted, so there is no Base contract address, transaction hash, block, or explorer URL.
+Latest confirmed deployment:
 
-Before deployment:
+- network: Base Sepolia;
+- chain ID: 84532;
+- contract: 0x4D74d9469de72B9aACBe0a696e769EEA817D4988;
+- deployment transaction: 0x0804141b25c2eb758c2bd2c6a9236ef6e346a0cef33bb9f7e69d2ca662c58b9c;
+- deployment block: 45423055;
+- receipt status: success;
+- gas used: 527920;
+- explorer address: https://sepolia.basescan.org/address/0x4D74d9469de72B9aACBe0a696e769EEA817D4988;
+- explorer transaction: https://sepolia.basescan.org/tx/0x0804141b25c2eb758c2bd2c6a9236ef6e346a0cef33bb9f7e69d2ca662c58b9c;
+- source verification: not recorded in this repo.
 
-1. use a testnet-only wallet with no mainnet funds;
-2. fund it with Base Sepolia ETH;
-3. set CONFIRM_TESTNET_ONLY_WALLET=true;
-4. verify the RPC chain ID is 84532;
-5. rerun all contract tests.
+Verified checks before recording this deployment:
 
-Command from contracts:
+~~~bash
+cd contracts
+forge fmt --check
+forge build
+forge test -vvv
+cast code 0x4D74d9469de72B9aACBe0a696e769EEA817D4988 --rpc-url "$BASE_SEPOLIA_RPC_URL"
+cast receipt --rpc-url "$BASE_SEPOLIA_RPC_URL" 0x0804141b25c2eb758c2bd2c6a9236ef6e346a0cef33bb9f7e69d2ca662c58b9c status
+cast receipt --rpc-url "$BASE_SEPOLIA_RPC_URL" 0x0804141b25c2eb758c2bd2c6a9236ef6e346a0cef33bb9f7e69d2ca662c58b9c blockNumber
+cast receipt --rpc-url "$BASE_SEPOLIA_RPC_URL" 0x0804141b25c2eb758c2bd2c6a9236ef6e346a0cef33bb9f7e69d2ca662c58b9c contractAddress
+~~~
+
+Deploy command from contracts:
 
 ~~~bash
 forge script script/DeployLeashMandate.s.sol:DeployLeashMandateScript \
   --rpc-url "$BASE_SEPOLIA_RPC_URL" \
-  --broadcast \
-  --verify \
-  --etherscan-api-key "$BASESCAN_API_KEY"
+  --broadcast
 ~~~
 
-Record an address or explorer link here only after checking it on Base Sepolia.
+Optional source verification command:
 
+~~~bash
+forge verify-contract \
+  --chain-id 84532 \
+  --etherscan-api-key "$BASESCAN_API_KEY" \
+  0x4D74d9469de72B9aACBe0a696e769EEA817D4988 \
+  src/LeashMandate.sol:LeashMandate
+~~~

@@ -67,6 +67,10 @@ function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(message);
 }
 
+function sleep(milliseconds: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+}
+
 function customErrorName(error: unknown): string | undefined {
   if (!(error instanceof BaseError)) return undefined;
   const reverted = error.walk(
@@ -144,6 +148,21 @@ async function main(): Promise<void> {
     })) as MandateState;
   }
 
+  async function waitForSpentAmount(expectedSpentAmount: bigint): Promise<MandateState> {
+    let latestState = await mandateState();
+    for (let attempt = 0; attempt < 20; ++attempt) {
+      if (latestState[3] === expectedSpentAmount) return latestState;
+      await sleep(1_000);
+      latestState = await mandateState();
+    }
+    throw new Error(
+      "Expected spentAmount " +
+        expectedSpentAmount.toString() +
+        " but observed " +
+        latestState[3].toString(),
+    );
+  }
+
   async function assertExpectedSimulationRevert(
     target: Address,
     amount: bigint,
@@ -193,7 +212,7 @@ async function main(): Promise<void> {
       authorizationLogCount(receipt, abi) === 0,
       expectedError + " transaction must emit no AuthorizationGranted",
     );
-    assert((await mandateState())[3] === 52_000n, expectedError + " changed spentAmount");
+    await waitForSpentAmount(52_000n);
 
     console.log("Transaction hash: " + hash);
     console.log("Transaction status: " + receipt.status);
@@ -250,7 +269,7 @@ async function main(): Promise<void> {
   assert(validArgs.target === rockBurger, "Event target mismatch");
   assert(validArgs.amount === 52_000n, "Event amount mismatch");
   assert(validArgs.paymentRef === validPaymentRef, "Event paymentRef mismatch");
-  assert((await mandateState())[3] === 52_000n, "Valid payment did not update spentAmount");
+  await waitForSpentAmount(52_000n);
   console.log("SUCCESS AuthorizationGranted");
   console.log("Target: Rock Burger");
   console.log("Amount: 52000");

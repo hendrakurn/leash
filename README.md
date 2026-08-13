@@ -81,7 +81,7 @@ forge build
 forge test -vvv
 ~~~
 
-The current suite contains 25 passing tests covering registration, authorization, cumulative cap, allowlist, expiry boundary, revocation, wrong session key, zero amount, state preservation, and absence of authorization logs for attacks.
+The current suite contains 26 passing tests covering registration, MandateRegistered target logs, authorization, cumulative cap, allowlist, expiry boundary, revocation, wrong session key, zero amount, state preservation, and absence of authorization logs for attacks.
 
 ## One-Shot Local Demo
 
@@ -144,7 +144,7 @@ npm run typecheck
 npm run dev
 ~~~
 
-Commands:
+Commands and natural chat:
 
 ~~~text
 /start
@@ -154,6 +154,15 @@ Commands:
 /attack_amount
 /revoke
 /status
+
+belikan burger 52 ribu
+bayar rock burger 52000
+bayar evil store 50000
+bayar rock burger 500000
+cek status
+batalkan mandate
+carikan burger murah dan bayar kalau aman
+buka halaman promo burger
 ~~~
 
 Runtime requires TELEGRAM_BOT_TOKEN. Without a token, source compilation can still be verified. Reverted attacks are simulated by default; set BROADCAST_REVERTS=true only on a funded test network when actual reverted receipts are desired.
@@ -162,7 +171,17 @@ Runtime requires TELEGRAM_BOT_TOKEN. Without a token, source compilation can sti
 
 The deployment script is contracts/script/DeployLeashMandate.s.sol. Required environment variables are documented in contracts/.env.example.
 
-No Base Sepolia address is listed because deployment credentials were unavailable during verification. See docs/DEPLOYMENT.md for the exact command and status.
+Latest confirmed deployment:
+
+- network: Base Sepolia;
+- chain ID: 84532;
+- contract: 0x4D74d9469de72B9aACBe0a696e769EEA817D4988;
+- deployment transaction: 0x0804141b25c2eb758c2bd2c6a9236ef6e346a0cef33bb9f7e69d2ca662c58b9c;
+- deployment block: 45423055;
+- explorer: https://sepolia.basescan.org/address/0x4D74d9469de72B9aACBe0a696e769EEA817D4988;
+- source verification: not recorded in this repo.
+
+See docs/DEPLOYMENT.md for deployment and verification details.
 
 ## Mocked Components
 
@@ -170,7 +189,7 @@ No Base Sepolia address is listed because deployment credentials were unavailabl
 - BaaS integration;
 - virtual-card issuance;
 - merchant identity verification;
-- natural-language AI interpretation.
+- deterministic natural-language intent parsing and simulated browsing.
 
 ## Limitations
 
@@ -196,4 +215,3 @@ No Base Sepolia address is listed because deployment credentials were unavailabl
 ## Hackathon Alignment
 
 Leash targets Track 1: Payments and Financial Infrastructure. It demonstrates programmable payment authorization, policy enforcement, auditable delegation, and a strict authorization-to-fiat-settlement boundary.
-
