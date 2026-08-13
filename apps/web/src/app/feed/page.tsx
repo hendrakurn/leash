@@ -117,7 +117,7 @@ export default function FeedPage() {
               key={`${entry.txHash}-${entry.logIndex}`}
               className="grid gap-3 border-b py-5 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-8"
             >
-              <div className="flex items-center gap-2" style={{ color: "var(--blue)" }}>
+              <div className="flex items-center gap-2" style={{ color: "var(--green-deep)" }}>
                 <IconCheck className="h-4 w-4" />
                 <span className="font-mono text-xs tracking-[0.12em] uppercase">Settled once</span>
               </div>

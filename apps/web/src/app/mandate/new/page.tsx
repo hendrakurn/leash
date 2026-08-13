@@ -120,7 +120,7 @@ export default function NewMandatePage() {
               onChange={(e) => setSessionKey(e.target.value)}
               placeholder="0x…"
               spellCheck={false}
-              className="mt-2 w-full border bg-transparent px-4 py-3 font-mono text-sm outline-none transition-colors duration-150 focus:border-[var(--blue)]"
+              className="mt-2 w-full border bg-transparent px-4 py-3 font-mono text-sm outline-none transition-colors duration-150 focus:border-[var(--green-deep)]"
             />
             <span className="mt-2 block text-xs" style={{ color: "var(--wt-45)" }}>
               The address the agent signs with. It may spend inside this mandate and
@@ -130,7 +130,7 @@ export default function NewMandatePage() {
 
           <label className="block">
             <span className="mono-label">Cumulative ceiling</span>
-            <div className="mt-2 flex items-center border focus-within:border-[var(--blue)]">
+            <div className="mt-2 flex items-center border focus-within:border-[var(--green-deep)]">
               <span className="pl-4 font-mono text-sm" style={{ color: "var(--wt-45)" }}>
                 Rp
               </span>
@@ -148,7 +148,7 @@ export default function NewMandatePage() {
 
           <label className="block">
             <span className="mono-label">Expires in</span>
-            <div className="mt-2 flex items-center border focus-within:border-[var(--blue)]">
+            <div className="mt-2 flex items-center border focus-within:border-[var(--green-deep)]">
               <input
                 value={hours}
                 onChange={(e) => setHours(e.target.value.replace(/[^\d]/g, ""))}
@@ -175,7 +175,7 @@ export default function NewMandatePage() {
                   }}
                   placeholder="0x…"
                   spellCheck={false}
-                  className="w-full border bg-transparent px-4 py-3 font-mono text-sm outline-none transition-colors duration-150 focus:border-[var(--blue)]"
+                  className="w-full border bg-transparent px-4 py-3 font-mono text-sm outline-none transition-colors duration-150 focus:border-[var(--green-deep)]"
                 />
               ))}
             </div>

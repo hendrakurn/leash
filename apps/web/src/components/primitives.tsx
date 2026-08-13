@@ -157,7 +157,7 @@ export function Meter({
         className="meter-fill absolute inset-y-0 left-0 w-full"
         style={
           {
-            background: exhausted ? "var(--refuse)" : "var(--blue)",
+            background: exhausted ? "var(--refuse)" : "var(--green-deep)",
             "--fill": clamped,
           } as React.CSSProperties
         }
@@ -177,17 +177,16 @@ export function Button({
   variant?: "primary" | "ghost" | "danger";
 }) {
   // Disabled uses a hairline-on-paper treatment rather than a low opacity: a
-  // 45%-opacity paper-on-ultramarine label is unreadable, and the Send control
-  // on /agent is disabled by default.
+  // 45%-opacity label on volt is unreadable, and the Send control on /agent is
+  // disabled by default.
   const base =
     "inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium transition-[background-color,color,border-color,transform] duration-150 disabled:cursor-not-allowed disabled:!bg-transparent disabled:!text-[var(--wt-45)] disabled:border disabled:!border-[var(--hair-strong)]";
   const styles: Record<string, string> = {
-    primary: "text-[var(--paper)] hover:bg-[var(--blue-hi)] active:translate-y-px",
+    primary: "btn-primary active:translate-y-px",
     ghost: "border hover:bg-[var(--hair)] active:translate-y-px",
     danger: "border hover:bg-[var(--refuse-wash)] active:translate-y-px",
   };
   const inline: Record<string, React.CSSProperties> = {
-    primary: { background: "var(--blue)", transitionTimingFunction: "var(--ease-out-strong)" },
     ghost: { color: "var(--ink)", transitionTimingFunction: "var(--ease-out-strong)" },
     danger: {
       color: "var(--refuse)",
@@ -219,8 +218,7 @@ export function ButtonLink({
   return (
     <Link
       href={href}
-      className={`inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium text-[var(--paper)] transition-[background-color,transform] duration-150 hover:bg-[var(--blue-hi)] active:translate-y-px ${className}`}
-      style={{ background: "var(--blue)", transitionTimingFunction: "var(--ease-out-strong)" }}
+      className={`btn-primary inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium active:translate-y-px ${className}`}
     >
       {children}
     </Link>
@@ -234,5 +232,5 @@ export function Rule({ className = "" }: { className?: string }) {
 }
 
 export function Shell({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <div className={`mx-auto w-full max-w-[76rem] px-5 sm:px-8 ${className}`}>{children}</div>;
+  return <div className={`mx-auto w-full max-w-[88rem] px-5 sm:px-8 ${className}`}>{children}</div>;
 }
