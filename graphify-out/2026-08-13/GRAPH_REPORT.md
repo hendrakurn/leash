@@ -1,19 +1,19 @@
 # Graph Report - NTUhackathon  (2026-08-13)
 
 ## Corpus Check
-- 17 files · ~22,964 words
+- 28 files · ~25,728 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 464 nodes · 564 edges · 40 communities (35 shown, 5 thin omitted)
+- 571 nodes · 687 edges · 46 communities (41 shown, 5 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
 - AgentSafe
-- vm.py
-- Contributing to Foundry
 - CheatcodesPrinter
+- Contributing to Foundry
+- listener.ts
 - Kelemahan dan Risiko Model B: On-chain Authorization untuk AI Agent Fiat Spending
 - Leash Implementation Prompt for Codex or Hermes
 - 7. Milestone M1: Mandate Smart Contract
@@ -47,9 +47,15 @@
 - `/`
 - Smart Contracts
 - Release checklist
-- 1. Project Summary
+- backend/package.json
 - AGENTS.md
 - README.md
+- demo-runner/package.json
+- Function
+- compilerOptions
+- compilerOptions
+- demo.ts
+- run-local-demo.sh
 
 ## God Nodes (most connected - your core abstractions)
 1. `AgentSafe` - 97 edges
@@ -59,30 +65,33 @@
 5. `Leash Implementation Plan` - 17 edges
 6. `Leash Implementation Prompt for Codex or Hermes` - 15 edges
 7. `7. Milestone M1: Mandate Smart Contract` - 12 edges
-8. `8. Milestone M2: Smart Contract Security Tests` - 10 edges
-9. `Cheatcodes` - 9 edges
-10. `Must-Have Features` - 9 edges
+8. `compilerOptions` - 10 edges
+9. `compilerOptions` - 10 edges
+10. `8. Milestone M2: Smart Contract Security Tests` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `main()` --calls--> `CheatcodesPrinter`  [EXTRACTED]
-  contracts/lib/forge-std/scripts/vm.py → contracts/lib/forge-std/scripts/vm.py  _Bridges community 1 → community 3_
+- None detected - all connections are within the same source files.
 
 ## Import Cycles
 - None detected.
 
-## Communities (40 total, 5 thin omitted)
+## Communities (46 total, 5 thin omitted)
 
 ### Community 0 - "AgentSafe"
 Cohesion: 0.02
 Nodes (95): 10. Nice-to-Have Features, 11. Features to Skip for Hackathon, 12. Technical Architecture, 13. Recommended Tech Stack, 14. Smart Contract Design, 15. Risk Engine Design, 16. Frontend Pages, 17. Expected Outputs for Hackathon Submission (+87 more)
 
-### Community 1 - "vm.py"
-Cohesion: 0.08
-Nodes (19): Cheatcode, Cheatcodes, Enum, EnumVariant, Error, Event, Function, group() (+11 more)
+### Community 1 - "CheatcodesPrinter"
+Cohesion: 0.10
+Nodes (15): Cheatcode, Cheatcodes, CheatcodesPrinter, Enum, EnumVariant, Error, Event, group() (+7 more)
 
 ### Community 2 - "Contributing to Foundry"
 Cohesion: 0.06
 Nodes (33): Abandoned or stale pull requests, Adding cheatcodes, Asking for help, Be aware of the person behind the code, Code of Conduct, Commits, Contributing to Foundry, Contributions Related to Spelling and Grammar (+25 more)
+
+### Community 3 - "listener.ts"
+Cohesion: 0.14
+Nodes (15): AppConfig, ListenerMode, loadConfig(), nonnegativeBigInt(), optionalNonnegativeInteger(), positiveInteger(), required(), ListenerSummary (+7 more)
 
 ### Community 4 - "Kelemahan dan Risiko Model B: On-chain Authorization untuk AI Agent Fiat Spending"
 Cohesion: 0.08
@@ -137,8 +146,8 @@ Cohesion: 0.29
 Nodes (7): 19. Stage 10 — Final Verification, Backend, Contract, Demo runner, End to end, Final behavior matrix, Telegram
 
 ### Community 17 - "Leash Implementation Plan"
-Cohesion: 0.29
-Nodes (6): 15. Definition of Done, 16. Execution Priority When Time Is Limited, 3. Technical Stack, 4. Repository Structure, 5. Milestone Overview, Leash Implementation Plan
+Cohesion: 0.20
+Nodes (9): 15. Definition of Done, 16. Execution Priority When Time Is Limited, 1. Project Summary, 3. Technical Stack, 4. Repository Structure, 5. Milestone Overview, Hackathon Track, Leash Implementation Plan (+1 more)
 
 ### Community 18 - "10. Milestone M4: Base Sepolia Deployment"
 Cohesion: 0.29
@@ -208,12 +217,32 @@ Nodes (3): `/`, 1. Product Name, AgentSafe — Product Brainstorm & Hackathon Pl
 Cohesion: 0.67
 Nodes (3): Option A: Foundry, Option B: Hardhat, Smart Contracts
 
-### Community 37 - "1. Project Summary"
-Cohesion: 0.67
-Nodes (3): 1. Project Summary, Hackathon Track, Primary Demo Scenario
+### Community 37 - "backend/package.json"
+Cohesion: 0.10
+Nodes (20): dependencies, dotenv, viem, devDependencies, tsx, @types/node, typescript, dotenv (+12 more)
+
+### Community 40 - "demo-runner/package.json"
+Cohesion: 0.10
+Nodes (19): dependencies, dotenv, viem, devDependencies, tsx, @types/node, typescript, dotenv (+11 more)
+
+### Community 41 - "Function"
+Cohesion: 0.16
+Nodes (6): Function, Item, ItemOrder, Mutability, Visibility, PyEnum
+
+### Community 42 - "compilerOptions"
+Cohesion: 0.13
+Nodes (14): compilerOptions, lib, module, moduleResolution, noEmit, resolveJsonModule, skipLibCheck, strict (+6 more)
+
+### Community 43 - "compilerOptions"
+Cohesion: 0.13
+Nodes (14): compilerOptions, lib, module, moduleResolution, noEmit, resolveJsonModule, skipLibCheck, strict (+6 more)
+
+### Community 44 - "demo.ts"
+Cohesion: 0.40
+Nodes (9): addressEnv(), assert(), authorizationLogCount(), customErrorName(), loadAbi(), main(), MandateState, privateKeyEnv() (+1 more)
 
 ## Knowledge Gaps
-- **326 isolated node(s):** `name`, `version`, `description`, `homepage`, `bugs` (+321 more)
+- **375 isolated node(s):** `name`, `version`, `private`, `type`, `dev` (+370 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -221,16 +250,16 @@ Nodes (3): 1. Project Summary, Hackathon Track, Primary Demo Scenario
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `AgentSafe` connect `AgentSafe` to `Smart Contracts`, ``/``, `Must-Have Features`?**
-  _High betweenness centrality (0.055) - this node is a cross-community bridge._
-- **Why does `Leash Implementation Plan` connect `Leash Implementation Plan` to `2. Product Boundary`, `1. Project Summary`, `7. Milestone M1: Mandate Smart Contract`, `8. Milestone M2: Smart Contract Security Tests`, `9. Milestone M3: Local CLI Demo`, `10. Milestone M4: Base Sepolia Deployment`, `11. Milestone M5: Backend Listener and Mock Settlement`, `12. Milestone M6: Telegram Interface`, `13. Milestone M7: Documentation and Submission Assets`, `6. Milestone M0: Repository and Tooling Setup`, `14. Milestone M8: Final Verification`?**
-  _High betweenness centrality (0.029) - this node is a cross-community bridge._
+  _High betweenness centrality (0.036) - this node is a cross-community bridge._
+- **Why does `Leash Implementation Plan` connect `Leash Implementation Plan` to `2. Product Boundary`, `7. Milestone M1: Mandate Smart Contract`, `8. Milestone M2: Smart Contract Security Tests`, `9. Milestone M3: Local CLI Demo`, `10. Milestone M4: Base Sepolia Deployment`, `11. Milestone M5: Backend Listener and Mock Settlement`, `12. Milestone M6: Telegram Interface`, `13. Milestone M7: Documentation and Submission Assets`, `6. Milestone M0: Repository and Tooling Setup`, `14. Milestone M8: Final Verification`?**
+  _High betweenness centrality (0.019) - this node is a cross-community bridge._
 - **Why does `Leash One-Shot Execution Plan` connect `Leash One-Shot Execution Plan` to `17. Stage 8 — Telegram Interface`, `10. Stage 1 — Smart Contract Core`, `14. Stage 5 — Confirmed Event Listener and Mock BaaS`, `18. Stage 9 — Documentation`, `19. Stage 10 — Final Verification`, `13. Stage 4 — TypeScript Demo Runner`, `11. Stage 2 — Foundry Security Proof`, `15. Stage 6 — Deterministic Local End-to-End Gate`, `9. Stage 0 — Safe Setup and Document Baseline`, `12. Stage 3 — Deployment Script Readiness`, `16. Stage 7 — Base Sepolia Deployment`?**
-  _High betweenness centrality (0.026) - this node is a cross-community bridge._
-- **What connects `name`, `version`, `description` to the rest of the system?**
-  _326 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.017) - this node is a cross-community bridge._
+- **What connects `name`, `version`, `private` to the rest of the system?**
+  _375 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `AgentSafe` be split into smaller, more focused modules?**
   _Cohesion score 0.021052631578947368 - nodes in this community are weakly interconnected._
-- **Should `vm.py` be split into smaller, more focused modules?**
-  _Cohesion score 0.07716701902748414 - nodes in this community are weakly interconnected._
+- **Should `CheatcodesPrinter` be split into smaller, more focused modules?**
+  _Cohesion score 0.0987012987012987 - nodes in this community are weakly interconnected._
 - **Should `Contributing to Foundry` be split into smaller, more focused modules?**
   _Cohesion score 0.05714285714285714 - nodes in this community are weakly interconnected._

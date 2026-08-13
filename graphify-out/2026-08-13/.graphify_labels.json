@@ -1,8 +1,8 @@
 {
   "0": "AgentSafe",
-  "1": "vm.py",
+  "1": "CheatcodesPrinter",
   "2": "Contributing to Foundry",
-  "3": "CheatcodesPrinter",
+  "3": "listener.ts",
   "4": "Kelemahan dan Risiko Model B: On-chain Authorization untuk AI Agent Fiat Spending",
   "5": "Leash Implementation Prompt for Codex or Hermes",
   "6": "7. Milestone M1: Mandate Smart Contract",
@@ -36,7 +36,13 @@
   "34": "`/`",
   "35": "Smart Contracts",
   "36": "Release checklist",
-  "37": "1. Project Summary",
+  "37": "backend/package.json",
   "38": "AGENTS.md",
-  "39": "README.md"
+  "39": "README.md",
+  "40": "demo-runner/package.json",
+  "41": "Function",
+  "42": "compilerOptions",
+  "43": "compilerOptions",
+  "44": "demo.ts",
+  "45": "run-local-demo.sh"
 }
