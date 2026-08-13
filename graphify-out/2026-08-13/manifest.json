@@ -1,0 +1,87 @@
+{
+  "contracts/lib/forge-std/package.json": {
+    "mtime": 1786605889.8348489,
+    "ast_hash": "33c2b95f09bc2766d948d270f6ddf0e9",
+    "semantic_hash": ""
+  },
+  "contracts/lib/forge-std/scripts/vm.py": {
+    "mtime": 1786605889.8357172,
+    "ast_hash": "1970965378fdfa21cce5e86c0f5a2491",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1786606174.9957602,
+    "ast_hash": "6a47d64fcc136324ca395065a707ef76",
+    "semantic_hash": ""
+  },
+  "AGENTSAFE_BRAINSTORM.md": {
+    "mtime": 1786438390.1181316,
+    "ast_hash": "c0ac41d8eb52bde3e90efaf5f0bf95dc",
+    "semantic_hash": ""
+  },
+  "CODEX_HERMES_IMPLEMENTATION_PROMPT.md": {
+    "mtime": 1786603636.788785,
+    "ast_hash": "b574e91514a05542bae01c5909bcebeb",
+    "semantic_hash": ""
+  },
+  "KELEMAHAN_MODEL_B_AI_AGENT_FIAT_AUTHORIZATION.md": {
+    "mtime": 1786550873.071305,
+    "ast_hash": "3435ecee789a63058013aef0c3bfde7c",
+    "semantic_hash": ""
+  },
+  "LEASH_EXECUTION_PLAN.md": {
+    "mtime": 1786605688.2375805,
+    "ast_hash": "4c1ddd0c138e667b41e1394ee9656069",
+    "semantic_hash": ""
+  },
+  "LEASH_IMPLEMENTATION_PLAN.md": {
+    "mtime": 1786603786.2389355,
+    "ast_hash": "210f1f2ba6146fafb879727c836de4bb",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1786605867.633666,
+    "ast_hash": "3e401129a4841df2999fceb776ae0708",
+    "semantic_hash": ""
+  },
+  "contracts/lib/forge-std/.github/dependabot.yml": {
+    "mtime": 1786605889.8345351,
+    "ast_hash": "809da6ce4e628c2cba6d9143aa5c881e",
+    "semantic_hash": ""
+  },
+  "contracts/lib/forge-std/.github/workflows/ci.yml": {
+    "mtime": 1786605889.8346539,
+    "ast_hash": "e92e59b0f525d9425100ed940d8b076d",
+    "semantic_hash": ""
+  },
+  "contracts/lib/forge-std/.github/workflows/sync.yml": {
+    "mtime": 1786605889.8348489,
+    "ast_hash": "ced7895f1a68bfab4f5f06af4839bba6",
+    "semantic_hash": ""
+  },
+  "contracts/lib/forge-std/CONTRIBUTING.md": {
+    "mtime": 1786605889.8348489,
+    "ast_hash": "951ef456e1de1f32f2ea61d862748e4a",
+    "semantic_hash": ""
+  },
+  "contracts/lib/forge-std/README.md": {
+    "mtime": 1786605889.8348489,
+    "ast_hash": "e34aa62d5543b6261f0a451ed43ab0f9",
+    "semantic_hash": ""
+  },
+  "contracts/lib/forge-std/RELEASE_CHECKLIST.md": {
+    "mtime": 1786605889.8348489,
+    "ast_hash": "bc75ab52742de5ef6eadb909b117f719",
+    "semantic_hash": ""
+  },
+  "docs/PRD_Leash_ID.md": {
+    "mtime": 1786605867.634666,
+    "ast_hash": "510cab687865ae507212eeaf57f1daa7",
+    "semantic_hash": ""
+  },
+  "docs/RISK_AND_LIMITATIONS.md": {
+    "mtime": 1786605867.634666,
+    "ast_hash": "ee5f49e8a9cf0f81cee444b99e19c2d1",
+    "semantic_hash": ""
+  }
+}

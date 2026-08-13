@@ -1,0 +1,142 @@
+{
+  "contracts/lib/forge-std/package.json": {
+    "mtime": 1786605889.8348489,
+    "ast_hash": "33c2b95f09bc2766d948d270f6ddf0e9",
+    "semantic_hash": ""
+  },
+  "contracts/lib/forge-std/scripts/vm.py": {
+    "mtime": 1786605889.8357172,
+    "ast_hash": "1970965378fdfa21cce5e86c0f5a2491",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1786606174.9957602,
+    "ast_hash": "6a47d64fcc136324ca395065a707ef76",
+    "semantic_hash": ""
+  },
+  "AGENTSAFE_BRAINSTORM.md": {
+    "mtime": 1786438390.1181316,
+    "ast_hash": "c0ac41d8eb52bde3e90efaf5f0bf95dc",
+    "semantic_hash": ""
+  },
+  "CODEX_HERMES_IMPLEMENTATION_PROMPT.md": {
+    "mtime": 1786603636.788785,
+    "ast_hash": "b574e91514a05542bae01c5909bcebeb",
+    "semantic_hash": ""
+  },
+  "KELEMAHAN_MODEL_B_AI_AGENT_FIAT_AUTHORIZATION.md": {
+    "mtime": 1786550873.071305,
+    "ast_hash": "3435ecee789a63058013aef0c3bfde7c",
+    "semantic_hash": ""
+  },
+  "LEASH_EXECUTION_PLAN.md": {
+    "mtime": 1786605688.2375805,
+    "ast_hash": "4c1ddd0c138e667b41e1394ee9656069",
+    "semantic_hash": ""
+  },
+  "LEASH_IMPLEMENTATION_PLAN.md": {
+    "mtime": 1786603786.2389355,
+    "ast_hash": "210f1f2ba6146fafb879727c836de4bb",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1786605867.633666,
+    "ast_hash": "3e401129a4841df2999fceb776ae0708",
+    "semantic_hash": ""
+  },
+  "contracts/lib/forge-std/.github/dependabot.yml": {
+    "mtime": 1786605889.8345351,
+    "ast_hash": "809da6ce4e628c2cba6d9143aa5c881e",
+    "semantic_hash": ""
+  },
+  "contracts/lib/forge-std/.github/workflows/ci.yml": {
+    "mtime": 1786605889.8346539,
+    "ast_hash": "e92e59b0f525d9425100ed940d8b076d",
+    "semantic_hash": ""
+  },
+  "contracts/lib/forge-std/.github/workflows/sync.yml": {
+    "mtime": 1786605889.8348489,
+    "ast_hash": "ced7895f1a68bfab4f5f06af4839bba6",
+    "semantic_hash": ""
+  },
+  "contracts/lib/forge-std/CONTRIBUTING.md": {
+    "mtime": 1786605889.8348489,
+    "ast_hash": "951ef456e1de1f32f2ea61d862748e4a",
+    "semantic_hash": ""
+  },
+  "contracts/lib/forge-std/README.md": {
+    "mtime": 1786605889.8348489,
+    "ast_hash": "e34aa62d5543b6261f0a451ed43ab0f9",
+    "semantic_hash": ""
+  },
+  "contracts/lib/forge-std/RELEASE_CHECKLIST.md": {
+    "mtime": 1786605889.8348489,
+    "ast_hash": "bc75ab52742de5ef6eadb909b117f719",
+    "semantic_hash": ""
+  },
+  "docs/PRD_Leash_ID.md": {
+    "mtime": 1786605867.634666,
+    "ast_hash": "510cab687865ae507212eeaf57f1daa7",
+    "semantic_hash": ""
+  },
+  "docs/RISK_AND_LIMITATIONS.md": {
+    "mtime": 1786605867.634666,
+    "ast_hash": "ee5f49e8a9cf0f81cee444b99e19c2d1",
+    "semantic_hash": ""
+  },
+  "apps/backend/package.json": {
+    "mtime": 1786606281.8886175,
+    "ast_hash": "c5feb34453ef48d146738a8ec7ffbdfc",
+    "semantic_hash": ""
+  },
+  "apps/backend/src/config.ts": {
+    "mtime": 1786606219.7450347,
+    "ast_hash": "67d15547b7e274f2c177c6d1e1c48982",
+    "semantic_hash": ""
+  },
+  "apps/backend/src/index.ts": {
+    "mtime": 1786606219.7450347,
+    "ast_hash": "8dfc8047d265a3d3a5c22f2a99cc47f9",
+    "semantic_hash": ""
+  },
+  "apps/backend/src/listener.ts": {
+    "mtime": 1786606219.7450347,
+    "ast_hash": "2580590f232a2f40311d7e606bca4259",
+    "semantic_hash": ""
+  },
+  "apps/backend/src/mockBaas.test.ts": {
+    "mtime": 1786606219.7450347,
+    "ast_hash": "7278f5897e46db460c4bf6555d2dee44",
+    "semantic_hash": ""
+  },
+  "apps/backend/src/mockBaas.ts": {
+    "mtime": 1786606219.7450347,
+    "ast_hash": "228b7b2213d50db4e620bb408f9469a8",
+    "semantic_hash": ""
+  },
+  "apps/backend/tsconfig.json": {
+    "mtime": 1786606219.7450347,
+    "ast_hash": "ece82691c84cf481bc53abe94b85c437",
+    "semantic_hash": ""
+  },
+  "apps/demo-runner/package.json": {
+    "mtime": 1786606295.5075593,
+    "ast_hash": "72d3e84c9e8938b4d7cf4b4d0365db33",
+    "semantic_hash": ""
+  },
+  "apps/demo-runner/src/demo.ts": {
+    "mtime": 1786606324.3544722,
+    "ast_hash": "61710878b3ab631911b1ecc54116ed2b",
+    "semantic_hash": ""
+  },
+  "apps/demo-runner/tsconfig.json": {
+    "mtime": 1786606219.7440348,
+    "ast_hash": "ece82691c84cf481bc53abe94b85c437",
+    "semantic_hash": ""
+  },
+  "scripts/run-local-demo.sh": {
+    "mtime": 1786606445.042594,
+    "ast_hash": "c372526432eba690704864548707f3f8",
+    "semantic_hash": ""
+  }
+}
