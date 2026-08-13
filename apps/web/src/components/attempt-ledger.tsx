@@ -110,7 +110,7 @@ export function AttemptLedger() {
                 ) : (
                   <div
                     className={`flex items-center gap-2 ${visible ? "press" : ""}`}
-                    style={{ color: "var(--blue)", animationDelay: `${index * 140}ms` }}
+                    style={{ color: "var(--green-deep)", animationDelay: `${index * 140}ms` }}
                   >
                     <IconCheck className="h-5 w-5" />
                     <span className="font-mono text-sm tracking-[0.08em] uppercase">

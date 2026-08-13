@@ -4,6 +4,7 @@ import { use } from "react";
 import { useAccount, useReadContract, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import type { Hex } from "viem";
 import { Shell, Rule, Meter, Field, Button, Stamp, IconClock, IconKey } from "@/components/primitives";
+import { SiteNav } from "@/components/site-nav";
 import { Undeployed } from "@/components/undeployed";
 import { contractAddress, explorerAddress, merchants } from "@/lib/chain";
 import {
@@ -36,7 +37,7 @@ export default function MandatePage({ params }: { params: Promise<{ id: string }
     query: { enabled: !!hash },
   });
 
-  if (!contractAddress) return <Undeployed surface="Viewing a mandate" />;
+  if (!contractAddress) return (<><SiteNav /><Undeployed surface="Viewing a mandate" /></>);
 
   if (isLoading || !data) {
     return (
@@ -76,8 +77,10 @@ export default function MandatePage({ params }: { params: Promise<{ id: string }
   const copy = revert ? ERROR_COPY[revert] : undefined;
 
   return (
-    <Shell className="py-16 sm:py-20">
-      <div className="flex flex-wrap items-start justify-between gap-6">
+    <>
+      <SiteNav />
+      <Shell className="py-16 sm:py-20">
+        <div className="flex flex-wrap items-start justify-between gap-6">
         <div className="min-w-0">
           <span className="mono-label">Mandate</span>
           <div className="mt-2 font-mono text-sm break-all" style={{ color: "var(--wt-65)" }}>
@@ -90,7 +93,7 @@ export default function MandatePage({ params }: { params: Promise<{ id: string }
         ) : expired ? (
           <Stamp word="Expired" errorName="Expired" />
         ) : (
-          <div className="press flex items-center gap-2 pt-1" style={{ color: "var(--blue)" }}>
+          <div className="press flex items-center gap-2 pt-1" style={{ color: "var(--green-deep)" }}>
             <IconKey className="h-4 w-4" />
             <span className="font-mono text-xs tracking-[0.12em] uppercase">Active</span>
           </div>
@@ -227,7 +230,8 @@ export default function MandatePage({ params }: { params: Promise<{ id: string }
           </div>
         </aside>
       </div>
-    </Shell>
+      </Shell>
+    </>
   );
 }
 
@@ -251,7 +255,7 @@ function AllowlistRow({
   return (
     <div className="flex items-baseline justify-between gap-6 border-b py-3">
       <span className="text-sm">{name}</span>
-      <span className="font-mono text-xs" style={{ color: data ? "var(--blue)" : "var(--wt-45)" }}>
+      <span className="font-mono text-xs" style={{ color: data ? "var(--green-deep)" : "var(--wt-45)" }}>
         {address ? (data ? "allowed" : "not allowed") : "address not configured"}
       </span>
     </div>

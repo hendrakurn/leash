@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useAccount, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { encodePacked, isAddress, keccak256, type Address } from "viem";
 import { Shell, Rule, Button, Field, IconArrow } from "@/components/primitives";
+import { SiteNav } from "@/components/site-nav";
 import { Undeployed } from "@/components/undeployed";
 import { WalletButton } from "@/components/wallet";
 import { contractAddress, merchants } from "@/lib/chain";
@@ -33,7 +34,7 @@ export default function NewMandatePage() {
     );
   }, [address]);
 
-  if (!contractAddress) return <Undeployed surface="Registering a mandate" />;
+  if (!contractAddress) return (<><SiteNav /><Undeployed surface="Registering a mandate" /></>);
   const contract = contractAddress;
 
   const capValue = /^\d+$/.test(cap) ? BigInt(cap) : 0n;
@@ -81,8 +82,10 @@ export default function NewMandatePage() {
   }
 
   return (
-    <Shell className="py-16 sm:py-24">
-      <h1 className="display max-w-[20ch] text-[clamp(2rem,6vw,3.5rem)]">
+    <>
+      <SiteNav />
+      <Shell className="py-16 sm:py-24">
+        <h1 className="display max-w-[20ch] text-[clamp(2rem,6vw,3.5rem)]">
         Set the boundary before the agent gets a key.
       </h1>
       <p className="mt-6 max-w-[46ch] text-lg leading-relaxed" style={{ color: "var(--wt-65)" }}>
@@ -120,7 +123,7 @@ export default function NewMandatePage() {
               onChange={(e) => setSessionKey(e.target.value)}
               placeholder="0x…"
               spellCheck={false}
-              className="mt-2 w-full border bg-transparent px-4 py-3 font-mono text-sm outline-none transition-colors duration-150 focus:border-[var(--blue)]"
+              className="mt-2 w-full border bg-transparent px-4 py-3 font-mono text-sm outline-none transition-colors duration-150 focus:border-[var(--green-deep)]"
             />
             <span className="mt-2 block text-xs" style={{ color: "var(--wt-45)" }}>
               The address the agent signs with. It may spend inside this mandate and
@@ -130,7 +133,7 @@ export default function NewMandatePage() {
 
           <label className="block">
             <span className="mono-label">Cumulative ceiling</span>
-            <div className="mt-2 flex items-center border focus-within:border-[var(--blue)]">
+            <div className="mt-2 flex items-center border focus-within:border-[var(--green-deep)]">
               <span className="pl-4 font-mono text-sm" style={{ color: "var(--wt-45)" }}>
                 Rp
               </span>
@@ -148,7 +151,7 @@ export default function NewMandatePage() {
 
           <label className="block">
             <span className="mono-label">Expires in</span>
-            <div className="mt-2 flex items-center border focus-within:border-[var(--blue)]">
+            <div className="mt-2 flex items-center border focus-within:border-[var(--green-deep)]">
               <input
                 value={hours}
                 onChange={(e) => setHours(e.target.value.replace(/[^\d]/g, ""))}
@@ -175,7 +178,7 @@ export default function NewMandatePage() {
                   }}
                   placeholder="0x…"
                   spellCheck={false}
-                  className="w-full border bg-transparent px-4 py-3 font-mono text-sm outline-none transition-colors duration-150 focus:border-[var(--blue)]"
+                  className="w-full border bg-transparent px-4 py-3 font-mono text-sm outline-none transition-colors duration-150 focus:border-[var(--green-deep)]"
                 />
               ))}
             </div>
@@ -241,6 +244,7 @@ export default function NewMandatePage() {
           </p>
         </aside>
       </div>
-    </Shell>
+      </Shell>
+    </>
   );
 }

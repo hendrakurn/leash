@@ -3,29 +3,29 @@
 /* ---------------------------------------------------------------------------
    Leash design system.
 
-   Ground, ink, ultramarine, hairline and dot values are the pinned reference's
-   own tokens (PRODUCT.md → Brand Commitments). What is NOT inherited is the
-   refusal: red appears nowhere in the reference and is Leash's signature.
-
-   There is deliberately no green anywhere in this system. Approval is quiet —
-   ultramarine and a mono line. Refusal is loud — a stamp. Encoding the two
-   states as red-versus-green would make colour the only carrier of the most
-   important distinction in the product; a stamp carries word, shape and colour
-   at once, so the meaning survives without hue.
+   Ground, ink, hairline and dot values are the pinned reference's own tokens
+   (PRODUCT.md → Brand Commitments). The accent is volt green (#CCFF00), an
+   explicit client direction that replaces the reference's ultramarine. Because
+   volt is a light hue, the system splits the accent into two roles: volt fills
+   the ground of full-bleed sections and buttons (with ink text sitting on it),
+   and a deep olive-green carries the thin strokes that must stay readable on
+   paper — check marks, focus rings, the meter. The refusal stays Leash's
+   signature: red appears nowhere except the stamp and real contract rejections.
 --------------------------------------------------------------------------- */
 
 @theme {
   --color-paper: #f2f1ec;
   --color-ink: #171818;
-  --color-blue: #1520b8;
-  --color-blue-hi: #2e3ae8;
-  --color-blue-pale: #ccdbff;
+  --color-green: #ccff00;
+  --color-green-hi: #e6ff5e;
+  --color-green-deep: #2f3e00;
+  --color-green-pale: #f2ffcc;
   --color-refuse: #c0201a;
   --color-refuse-deep: #96150f;
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
-  --font-display: var(--font-archivo), var(--font-geist-sans), sans-serif;
+  --font-display: var(--font-geist-pixel-square), var(--font-geist-mono), ui-monospace, monospace;
 
   --ease-out-strong: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
@@ -41,9 +41,10 @@
   --buzz-dot: rgba(23, 24, 24, 0.09);
   --wt-45: rgba(23, 24, 24, 0.62);
   --wt-65: rgba(23, 24, 24, 0.72);
-  --blue: #1520b8;
-  --blue-hi: #2e3ae8;
-  --blue-pale: #ccdbff;
+  --green: #ccff00;
+  --green-hi: #e6ff5e;
+  --green-deep: #2f3e00;
+  --green-pale: #f2ffcc;
   --refuse: #c0201a;
   --refuse-deep: #96150f;
   --refuse-wash: rgba(192, 32, 26, 0.07);
@@ -61,13 +62,14 @@
     --buzz-dot: rgba(255, 255, 255, 0.11);
     --wt-45: rgba(255, 255, 255, 0.6);
     --wt-65: rgba(255, 255, 255, 0.7);
-    /* The pin authorises inverting ground and ink, not swapping the accent.
-       These are lightness tints of the same ultramarine and the same refusal
-       red — enough to clear contrast on dark ground, still the same two hues,
-       so "red exists only as the refusal stamp" survives the scheme change. */
-    --blue: #7d88ff;
-    --blue-hi: #a3abff;
-    --blue-pale: #262d6e;
+    /* Volt is already maximal-light, so it holds on dark ground unchanged.
+       The deep-green stroke role inverts to a lighter lime so check marks,
+       focus rings and the meter clear contrast against the dark ground. The
+       refusal red is a lightness tint of the same hue at the same angle. */
+    --green: #ccff00;
+    --green-hi: #e6ff5e;
+    --green-deep: #c4ec4a;
+    --green-pale: #2a3b00;
     --refuse: #e8493f;
     --refuse-deep: #f2695f;
     --refuse-wash: rgba(232, 73, 63, 0.1);
@@ -82,9 +84,10 @@
   --buzz-dot: rgba(23, 24, 24, 0.09);
   --wt-45: rgba(23, 24, 24, 0.62);
   --wt-65: rgba(23, 24, 24, 0.72);
-  --blue: #1520b8;
-  --blue-hi: #2e3ae8;
-  --blue-pale: #ccdbff;
+  --green: #ccff00;
+  --green-hi: #e6ff5e;
+  --green-deep: #2f3e00;
+  --green-pale: #f2ffcc;
   --refuse: #c0201a;
   --refuse-deep: #96150f;
   --refuse-wash: rgba(192, 32, 26, 0.07);
@@ -98,9 +101,10 @@
   --buzz-dot: rgba(255, 255, 255, 0.11);
   --wt-45: rgba(255, 255, 255, 0.6);
   --wt-65: rgba(255, 255, 255, 0.7);
-  --blue: #7d88ff;
-  --blue-hi: #a3abff;
-  --blue-pale: #262d6e;
+  --green: #ccff00;
+  --green-hi: #e6ff5e;
+  --green-deep: #c4ec4a;
+  --green-pale: #2a3b00;
   --refuse: #e8493f;
   --refuse-deep: #f2695f;
   --refuse-wash: rgba(232, 73, 63, 0.1);
@@ -124,12 +128,20 @@ body {
 }
 
 ::selection {
-  background: var(--blue);
-  color: var(--paper);
+  background: var(--green);
+  color: var(--ink);
+}
+
+/* On volt ground the default selection (volt-on-volt) is invisible, so the
+   accent's dark stroke role takes over there: a deep-green field with volt
+   text. Covers the landing's volt sections, including the nav on the hero. */
+.on-green ::selection {
+  background: var(--green-deep);
+  color: var(--green);
 }
 
 :focus-visible {
-  outline: 2px solid var(--blue);
+  outline: 2px solid var(--green-deep);
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -146,14 +158,15 @@ body {
 }
 
 /* --- display type ------------------------------------------------------ */
-/* Archivo's width axis dialed to a semi-condensed setting. This substitutes
-   for OT Neue Montreal Semi Squeezed, which is commercial and unlicensed. */
+/* Geist Pixel Square is the pinned reference's own display face (its --display
+   stack resolves to it). It replaces Archivo as the whole display register:
+   hero statements, section headlines, the wordmark and the stamp. It has a
+   single weight (500), so display never fakes a heavier cut. */
 
 .display {
   font-family: var(--font-display);
-  font-variation-settings: "wdth" 87;
-  font-weight: 700;
-  letter-spacing: -0.035em;
+  font-weight: 500;
+  letter-spacing: 0;
   line-height: 0.92;
   text-wrap: balance;
 }
@@ -164,6 +177,93 @@ body {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--wt-45);
+}
+
+/* --- full-bleed accent ground ----------------------------------------- */
+/* The pinned reference's signature distribution: whole sections sit on the
+   accent and scope their own neutral tokens so every component inverts. Where
+   the reference's `.on-blue` is dark blue with pale-blue labels, volt is a
+   light hue — so ink text sits on it and labels carry the deep green instead.
+   The section is the same in both schemes; volt is already maximal-light. */
+
+.on-green {
+  --paper: #f2f1ec;
+  --ink: #171818;
+  --hair: rgba(23, 24, 24, 0.16);
+  --hair-strong: rgba(23, 24, 24, 0.32);
+  --buzz-dot: rgba(23, 24, 24, 0.07);
+  --wt-45: rgba(23, 24, 24, 0.62);
+  --wt-65: rgba(23, 24, 24, 0.72);
+  --green-deep: #2f3e00;
+  background: var(--green);
+  color: var(--ink);
+}
+
+.on-green .mono-label {
+  color: var(--green-deep);
+}
+
+.on-green .btn-primary {
+  background: var(--ink);
+  color: var(--green);
+}
+
+.on-green .btn-primary:hover {
+  background: #2b2c2c;
+}
+
+/* --- accent-to-ground fades ------------------------------------------- */
+/* The reference's sfade bands: a stepped blend of the accent into the ink,
+   so a full-bleed accent section burns out before the paper section begins. */
+
+.sfade {
+  height: clamp(32px, 5vh, 56px);
+}
+
+.sfade--from-green {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--green) 78%, var(--ink)) 0 25%,
+    color-mix(in srgb, var(--green) 55%, var(--ink)) 25% 50%,
+    color-mix(in srgb, var(--green) 32%, var(--ink)) 50% 75%,
+    color-mix(in srgb, var(--green) 13%, var(--ink)) 75% 100%
+  );
+}
+
+.sfade--to-green {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--green) 13%, var(--ink)) 0 25%,
+    color-mix(in srgb, var(--green) 32%, var(--ink)) 25% 50%,
+    color-mix(in srgb, var(--green) 55%, var(--ink)) 50% 75%,
+    color-mix(in srgb, var(--green) 78%, var(--ink)) 75% 100%
+  );
+}
+
+/* --- primary action --------------------------------------------------- */
+/* Volt fill with ink text: volt is light, so dark-on-light is the readable
+   pairing (a paper-on-volt label would sit at ~0.8:1). Inside `.on-green`
+   sections the button inverts to a paper fill with deep-green text, exactly
+   as the reference's `.on-blue .bkt` becomes paper-on-blue. */
+
+.btn-primary {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: 0;
+  background: var(--green);
+  color: var(--ink);
+  transition:
+    background-color 0.15s var(--ease-out-strong),
+    color 0.15s var(--ease-out-strong),
+    transform 0.15s var(--ease-out-strong);
+}
+
+.btn-primary:hover {
+  background: var(--green-hi);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
 }
 
 /* --- the authored moment: the stamp ------------------------------------ */
@@ -198,9 +298,8 @@ body {
   color: var(--refuse);
   border: 3px solid var(--refuse);
   font-family: var(--font-display);
-  font-variation-settings: "wdth" 87;
-  font-weight: 800;
-  letter-spacing: 0.02em;
+  font-weight: 500;
+  letter-spacing: 0;
   text-transform: uppercase;
   transform: rotate(-8deg);
   mix-blend-mode: multiply;

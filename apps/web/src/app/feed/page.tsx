@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { createPublicClient, http, type Log } from "viem";
 import { Shell, Rule, IconCheck } from "@/components/primitives";
+import { SiteNav } from "@/components/site-nav";
 import { Undeployed } from "@/components/undeployed";
 import { activeChain, contractAddress, deployBlock, explorerTx, rpcUrl } from "@/lib/chain";
 import { leashAbi, formatRupiah, shortHex } from "@/lib/leash";
@@ -79,11 +80,13 @@ export default function FeedPage() {
     };
   }, []);
 
-  if (!contractAddress) return <Undeployed surface="The authorisation feed" />;
+  if (!contractAddress) return (<><SiteNav /><Undeployed surface="The authorisation feed" /></>);
 
   return (
-    <Shell className="py-16 sm:py-20">
-      <h1 className="display max-w-[24ch] text-[clamp(2rem,6vw,3.5rem)]">
+    <>
+      <SiteNav />
+      <Shell className="py-16 sm:py-20">
+        <h1 className="display max-w-[24ch] text-[clamp(2rem,6vw,3.5rem)]">
         Every authorisation the settlement backend is allowed to act on.
       </h1>
       <p className="mt-6 max-w-[47ch] text-lg leading-relaxed" style={{ color: "var(--wt-65)" }}>
@@ -117,7 +120,7 @@ export default function FeedPage() {
               key={`${entry.txHash}-${entry.logIndex}`}
               className="grid gap-3 border-b py-5 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-8"
             >
-              <div className="flex items-center gap-2" style={{ color: "var(--blue)" }}>
+              <div className="flex items-center gap-2" style={{ color: "var(--green-deep)" }}>
                 <IconCheck className="h-4 w-4" />
                 <span className="font-mono text-xs tracking-[0.12em] uppercase">Settled once</span>
               </div>
@@ -141,6 +144,7 @@ export default function FeedPage() {
           ))}
         </div>
       )}
-    </Shell>
+      </Shell>
+    </>
   );
 }

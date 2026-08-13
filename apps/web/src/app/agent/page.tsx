@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Shell, Rule, Button, Stamp, IconCheck, IconArrow } from "@/components/primitives";
+import { SiteNav } from "@/components/site-nav";
 import { Undeployed } from "@/components/undeployed";
 import { contractAddress, explorerTx } from "@/lib/chain";
 import { shortHex } from "@/lib/leash";
@@ -52,7 +53,7 @@ export default function AgentPage() {
   const [turns, setTurns] = useState<Turn[]>([]);
   const [busy, setBusy] = useState(false);
 
-  if (!contractAddress) return <Undeployed surface="The agent console" />;
+  if (!contractAddress) return (<><SiteNav /><Undeployed surface="The agent console" /></>);
 
   async function send(text: string) {
     if (!text.trim() || busy) return;
@@ -91,8 +92,10 @@ export default function AgentPage() {
   }
 
   return (
-    <Shell className="py-16 sm:py-20">
-      <h1 className="display max-w-[22ch] text-[clamp(2rem,6vw,3.5rem)]">
+    <>
+      <SiteNav />
+      <Shell className="py-16 sm:py-20">
+        <h1 className="display max-w-[22ch] text-[clamp(2rem,6vw,3.5rem)]">
         This agent will do what it is told. Try telling it the wrong thing.
       </h1>
       <p className="mt-6 max-w-[47ch] text-lg leading-relaxed" style={{ color: "var(--wt-65)" }}>
@@ -110,7 +113,7 @@ export default function AgentPage() {
           onChange={(e) => setMandateId(e.target.value)}
           placeholder="0x… — the mandate this agent spends against"
           spellCheck={false}
-          className="mt-2 w-full border bg-transparent px-4 py-3 font-mono text-sm outline-none transition-colors duration-150 focus:border-[var(--blue)]"
+          className="mt-2 w-full border bg-transparent px-4 py-3 font-mono text-sm outline-none transition-colors duration-150 focus:border-[var(--green-deep)]"
         />
       </label>
 
@@ -132,7 +135,7 @@ export default function AgentPage() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           rows={5}
-          className="w-full resize-y border bg-transparent px-4 py-3 font-mono text-sm leading-relaxed outline-none transition-colors duration-150 focus:border-[var(--blue)]"
+          className="w-full resize-y border bg-transparent px-4 py-3 font-mono text-sm leading-relaxed outline-none transition-colors duration-150 focus:border-[var(--green-deep)]"
         />
         <div className="mt-3 flex flex-wrap items-center gap-4">
           <Button onClick={() => send(input)} disabled={busy || !mandateId.trim()}>
@@ -152,7 +155,8 @@ export default function AgentPage() {
           ))}
         </div>
       ) : null}
-    </Shell>
+      </Shell>
+    </>
   );
 }
 
@@ -227,7 +231,7 @@ function StepView({ step }: { step: Step }) {
   if (step.outcome === "authorized") {
     return (
       <div className="flex flex-wrap items-center gap-4 py-2">
-        <div className="flex items-center gap-2" style={{ color: "var(--blue)" }}>
+        <div className="flex items-center gap-2" style={{ color: "var(--green-deep)" }}>
           <IconCheck className="h-5 w-5" />
           <span className="font-mono text-xs tracking-[0.12em] uppercase">Authorized</span>
         </div>
