@@ -20,3 +20,6 @@ dist/
 .codex/
 .codegraph/
 
+
+# Impeccable decision-page transient state (root only; apps/*/.impeccable is real output)
+/.impeccable/
