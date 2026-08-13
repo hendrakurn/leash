@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-13T00:00:00.000Z",
+  "title": "Design System: Leash Web",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "oklch(95.5% 0.006 95)",
+        "dark": "#171818",
+        "note": "Page ground in light mode; becomes the ink in dark mode. Also fills the instrument panel that sits on the dot ground.",
+        "tonalRamp": [
+          "oklch(15% 0.006 95)",
+          "oklch(26% 0.006 95)",
+          "oklch(37% 0.006 95)",
+          "oklch(48% 0.006 95)",
+          "oklch(59% 0.006 95)",
+          "oklch(70% 0.006 95)",
+          "oklch(83% 0.006 95)",
+          "oklch(95.5% 0.006 95)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Near-Black Ink",
+        "canonical": "oklch(21% 0.002 200)",
+        "dark": "#f4f3ee",
+        "note": "All primary text. Never pure black. Becomes the ground in dark mode.",
+        "tonalRamp": [
+          "oklch(15% 0.002 200)",
+          "oklch(21% 0.002 200)",
+          "oklch(32% 0.002 200)",
+          "oklch(43% 0.002 200)",
+          "oklch(55% 0.002 200)",
+          "oklch(67% 0.002 200)",
+          "oklch(81% 0.002 200)",
+          "oklch(95% 0.002 200)"
+        ]
+      },
+      "ink-secondary": {
+        "role": "neutral",
+        "displayName": "Supporting Ink",
+        "canonical": "rgba(23, 24, 24, 0.72)",
+        "dark": "rgba(255, 255, 255, 0.7)",
+        "note": "Source name is --wt-65. The stronger of the two muted inks; carries the paragraph under every heading."
+      },
+      "ink-tertiary": {
+        "role": "neutral",
+        "displayName": "Annotation Ink",
+        "canonical": "rgba(23, 24, 24, 0.62)",
+        "dark": "rgba(255, 255, 255, 0.6)",
+        "note": "Source name is --wt-45. The lighter of the two muted inks despite the lower number; footnotes, recovery copy, disabled labels."
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgba(23, 24, 24, 0.16)",
+        "dark": "rgba(255, 255, 255, 0.14)",
+        "note": "Global default border color for every element. Also the meter track and the ghost-button hover fill."
+      },
+      "hairline-strong": {
+        "role": "neutral",
+        "displayName": "Strong Hairline",
+        "canonical": "rgba(23, 24, 24, 0.32)",
+        "dark": "rgba(255, 255, 255, 0.3)",
+        "note": "Disabled control borders only."
+      },
+      "dot-ground": {
+        "role": "neutral",
+        "displayName": "Dot Ground",
+        "canonical": "rgba(23, 24, 24, 0.09)",
+        "dark": "rgba(255, 255, 255, 0.11)",
+        "note": "1px radial dot on a 4px grid. A ground texture, never a component fill."
+      },
+      "ultramarine": {
+        "role": "primary",
+        "displayName": "Ultramarine",
+        "canonical": "oklch(36% 0.22 267)",
+        "dark": "#7d88ff",
+        "note": "The only structural accent: primary fill, meter fill, affirmative mark, focus ring, selection, input focus border. Means 'operating normally', not 'success'.",
+        "tonalRamp": [
+          "oklch(15% 0.22 267)",
+          "oklch(26% 0.22 267)",
+          "oklch(36% 0.22 267)",
+          "oklch(47% 0.22 267)",
+          "oklch(58% 0.22 267)",
+          "oklch(69% 0.22 267)",
+          "oklch(82% 0.14 267)",
+          "oklch(93% 0.06 267)"
+        ]
+      },
+      "ultramarine-hi": {
+        "role": "primary",
+        "displayName": "Bright Ultramarine",
+        "canonical": "oklch(45% 0.23 267)",
+        "dark": "#a3abff",
+        "note": "Hover state for filled ultramarine surfaces only. Not a second accent."
+      },
+      "ultramarine-pale": {
+        "role": "primary",
+        "displayName": "Pale Ultramarine",
+        "canonical": "oklch(88% 0.06 267)",
+        "dark": "#262d6e",
+        "note": "Declared in the token layer, currently unapplied in components. Reserved for a low-emphasis ultramarine fill."
+      },
+      "refuse": {
+        "role": "secondary",
+        "displayName": "Refusal Red",
+        "canonical": "oklch(49% 0.19 28)",
+        "dark": "#e8493f",
+        "note": "The most reserved color in the system. Appears only where the chain declined something.",
+        "tonalRamp": [
+          "oklch(15% 0.19 28)",
+          "oklch(26% 0.19 28)",
+          "oklch(37% 0.19 28)",
+          "oklch(49% 0.19 28)",
+          "oklch(60% 0.19 28)",
+          "oklch(71% 0.15 28)",
+          "oklch(83% 0.09 28)",
+          "oklch(94% 0.04 28)"
+        ]
+      },
+      "refuse-deep": {
+        "role": "secondary",
+        "displayName": "Deep Refusal",
+        "canonical": "oklch(40% 0.18 28)",
+        "dark": "#f2695f",
+        "note": "Declared in the token layer, currently unapplied. Reserved as the pressed step of the refusal; not a second red."
+      },
+      "refuse-wash": {
+        "role": "secondary",
+        "displayName": "Refusal Wash",
+        "canonical": "rgba(192, 32, 26, 0.07)",
+        "dark": "rgba(232, 73, 63, 0.1)",
+        "note": "Marks a row or region as containing a refusal without shouting. The stamp does the shouting."
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The single full-bleed statement in the first viewport, and the closing call. One per page maximum. Always text-wrap: balance, always capped 16-24ch."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section openers and interior page h1s."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Sub-section headings, terse state pages, and the header wordmark (1.25rem, -0.04em)."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "The paragraph following every heading, in supporting ink. Capped at 45-48ch."
+      },
+      "body-small": {
+        "displayName": "Body Small",
+        "purpose": "Footnotes, field annotations, footer lists, error explanations."
+      },
+      "value": {
+        "displayName": "Value",
+        "purpose": "The remaining-balance figure. The only place mono runs large, and always an on-chain number."
+      },
+      "mono-body": {
+        "displayName": "Mono Body",
+        "purpose": "Field values, hashes, addresses, prompt echoes, backend output blocks, every text input."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "The .mono-label voice: field names, eyebrows, nav items, metadata lines. Connective tissue of the whole site."
+      },
+      "stamp": {
+        "displayName": "Stamp",
+        "purpose": "Refusal only. Display face at its heaviest, with the contract's error name in semibold mono beneath at 0.78rem / 0.06em."
+      }
+    },
+    "fontSubstitutions": [
+      {
+        "substitute": "Archivo, variable, font-variation-settings: 'wdth' 87",
+        "replaces": "OT Neue Montreal Semi Squeezed (Pangram Pangram, commercial)",
+        "reason": "Commercial and unlicensed in this repository. Geist Sans and Geist Mono are free from Vercel and need no substitution.",
+        "replacementNote": "If Montreal is licensed, swap the --font-display stack and re-tune letter-spacing and the wdth setting. The 87 width and -0.035em tracking exist only to approximate Montreal's proportions."
+      }
+    ],
+    "shadows": [],
+    "shadowPolicy": "There is not a single box-shadow in the codebase and none may be added. Depth is 1px hairlines, the 4px dot ground, a 7% refusal wash, and one backdrop-filter: blur(12px) on the sticky header over a color-mix(in srgb, paper 88%, transparent) fill.",
+    "motion": [
+      {
+        "name": "ease-out-strong",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "The system's only easing in practice. Every state transition and every entrance uses it."
+      },
+      {
+        "name": "ease-in-out-strong",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "Declared in the token layer, currently unapplied in components."
+      },
+      {
+        "name": "transition-state",
+        "value": "150ms",
+        "purpose": "All hover, focus, and active transitions. Only the properties that change are transitioned."
+      },
+      {
+        "name": "stampIn",
+        "value": "0.42s — from rotate(-8deg) scale(2.4) blur(6px), opaque at 60%, undershoot to 0.94 at 75%, settle at 1",
+        "purpose": "The refusal stamp's press. Applied via the separate .stamp-in class only; .stamp itself is always rendered unanimated."
+      },
+      {
+        "name": "riseIn",
+        "value": "0.48s — translateY(14px) to none, backwards fill",
+        "purpose": "First-viewport staged entrance, staggered 40 / 140 / 220 / 300ms."
+      },
+      {
+        "name": "pressIn",
+        "value": "0.34s — translateY(6px) scale(0.98) to none, backwards fill",
+        "purpose": "The affirmative mark's entrance. Deliberately smaller than the stamp's."
+      },
+      {
+        "name": "drawLine",
+        "value": "0.42s — scaleX(0) to scaleX(1), left origin",
+        "purpose": "Declared as .draw, currently unapplied in components."
+      },
+      {
+        "name": "meterSettle",
+        "value": "0.62s — scaleX(0) to scaleX(var(--fill))",
+        "purpose": "The remaining-balance bar settling to its ratio."
+      },
+      {
+        "name": "caretBlink",
+        "value": "0.95s steps(1) infinite",
+        "purpose": "The only ambient loop. Marks a machine mid-work ('Thinking', 'Reading logs', 'Reading contract state')."
+      },
+      {
+        "name": "stagger-ledger",
+        "value": "140ms",
+        "purpose": "Delay between consecutive ledger outcomes."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation-duration: 0.001ms; the stamp holds opacity 1, rotate(-8deg) scale(1), filter: none",
+        "purpose": "Refusal evidence stays rendered and legible; only the press is lost."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ],
+    "container": { "maxWidth": "76rem", "padding": "20px", "paddingSm": "32px" }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one loud-but-quiet action: ultramarine fill, paper text, square corners, arrow where the action leads somewhere.",
+      "html": "<button class=\"ds-btn-primary\">Try to break it<svg class=\"ds-icon\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 8h10M9 4l4 4-4 4\"/></svg></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 20px; border: none; border-radius: 0; background: var(--blue, #1520b8); color: var(--paper, #f2f1ec); font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: background-color 150ms cubic-bezier(0.22,1,0.36,1), transform 150ms cubic-bezier(0.22,1,0.36,1); } .ds-btn-primary:hover { background: var(--blue-hi, #2e3ae8); } .ds-btn-primary:active { transform: translateY(1px); } .ds-btn-primary:focus-visible { outline: 2px solid var(--blue, #1520b8); outline-offset: 2px; border-radius: 2px; } .ds-btn-primary:disabled { cursor: not-allowed; background: transparent; color: var(--wt-45, rgba(23,24,24,0.62)); border: 1px solid var(--hair-strong, rgba(23,24,24,0.32)); } .ds-icon { width: 16px; height: 16px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "The secondary action in a pair: hairline box, ink text, hairline-tint fill on hover.",
+      "html": "<button class=\"ds-btn-ghost\">Register another</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 20px; border: 1px solid var(--hair, rgba(23,24,24,0.16)); border-radius: 0; background: transparent; color: var(--ink, #171818); font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: background-color 150ms cubic-bezier(0.22,1,0.36,1), transform 150ms cubic-bezier(0.22,1,0.36,1); } .ds-btn-ghost:hover { background: var(--hair, rgba(23,24,24,0.16)); } .ds-btn-ghost:active { transform: translateY(1px); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--blue, #1520b8); outline-offset: 2px; border-radius: 2px; }"
+    },
+    {
+      "name": "Danger Button",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Revocation and wrong-network correction. The only button allowed the refusal hue.",
+      "html": "<button class=\"ds-btn-danger\">Revoke permanently</button>",
+      "css": ".ds-btn-danger { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 20px; border: 1px solid var(--refuse, #c0201a); border-radius: 0; background: transparent; color: var(--refuse, #c0201a); font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: background-color 150ms cubic-bezier(0.22,1,0.36,1), transform 150ms cubic-bezier(0.22,1,0.36,1); } .ds-btn-danger:hover { background: var(--refuse-wash, rgba(192,32,26,0.07)); } .ds-btn-danger:active { transform: translateY(1px); } .ds-btn-danger:focus-visible { outline: 2px solid var(--blue, #1520b8); outline-offset: 2px; border-radius: 2px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Hairline box on transparent ground, mono text, square. Focus shifts the border to ultramarine — the outline is suppressed, so the border is the only focus signal.",
+      "html": "<label class=\"ds-field-label\"><span class=\"ds-label\">Session key</span><input class=\"ds-input\" placeholder=\"0x…\" spellcheck=\"false\"><span class=\"ds-field-note\">The address the agent signs with. It may spend inside this mandate and can never modify it.</span></label>",
+      "css": ".ds-field-label { display: block; } .ds-label { font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--wt-45, rgba(23,24,24,0.62)); } .ds-input { display: block; width: 100%; margin-top: 8px; padding: 12px 16px; border: 1px solid var(--hair, rgba(23,24,24,0.16)); border-radius: 0; background: transparent; color: var(--ink, #171818); font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.875rem; outline: none; transition: border-color 150ms cubic-bezier(0.22,1,0.36,1); } .ds-input::placeholder { color: var(--wt-45, rgba(23,24,24,0.62)); } .ds-input:hover { border-color: var(--hair-strong, rgba(23,24,24,0.32)); } .ds-input:focus { border-color: var(--blue, #1520b8); } .ds-field-note { display: block; margin-top: 8px; font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif; font-size: 0.75rem; line-height: 1.6; color: var(--wt-45, rgba(23,24,24,0.62)); }"
+    },
+    {
+      "name": "Field Row",
+      "kind": "custom",
+      "refersTo": "field-row",
+      "description": "The dominant read-only 'input' of the product: mono-label left, mono value right, hairline rule beneath, last row unruled.",
+      "html": "<dl class=\"ds-fields\"><div class=\"ds-field\"><dt class=\"ds-label\">Session key</dt><dd class=\"ds-field-value\">0x70997970…79c8</dd></div><div class=\"ds-field\"><dt class=\"ds-label\">Expiry</dt><dd class=\"ds-field-value\">2026-08-13 14:02:11Z</dd></div><div class=\"ds-field\"><dt class=\"ds-label\">Revocation</dt><dd class=\"ds-field-value ds-field-value--prose\">one-way, permanent</dd></div></dl>",
+      "css": ".ds-fields { margin: 0; } .ds-field { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 12px 0; border-bottom: 1px solid var(--hair, rgba(23,24,24,0.16)); } .ds-field:last-child { border-bottom: none; } .ds-label { font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--wt-45, rgba(23,24,24,0.62)); flex-shrink: 0; } .ds-field-value { margin: 0; min-width: 0; text-align: right; font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.875rem; color: var(--ink, #171818); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .ds-field-value--prose { font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif; }"
+    },
+    {
+      "name": "Refusal Stamp",
+      "kind": "custom",
+      "refersTo": "stamp-refused",
+      "description": "The signature. Always in the server-rendered document; the entrance class is added separately so evidence never depends on script or motion preference.",
+      "html": "<div class=\"ds-stamp ds-stamp-in\" role=\"status\"><span class=\"ds-stamp-word\">Refused</span><span class=\"ds-stamp-error\">TargetNotAllowed</span></div>",
+      "css": ".ds-stamp { display: inline-flex; flex-direction: column; align-items: center; gap: 2px; padding: 10px 20px; border: 3px solid var(--refuse, #c0201a); border-radius: 0; color: var(--refuse, #c0201a); font-family: var(--font-archivo), Archivo, sans-serif; font-variation-settings: 'wdth' 87; font-weight: 800; letter-spacing: 0.02em; text-transform: uppercase; transform: rotate(-8deg); mix-blend-mode: multiply; user-select: none; } .ds-stamp-word { font-size: 2.25rem; line-height: 1; } .ds-stamp-error { font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; white-space: nowrap; } .ds-stamp-in { animation: ds-stampIn 0.42s cubic-bezier(0.22,1,0.36,1) both; } @keyframes ds-stampIn { 0% { opacity: 0; transform: rotate(-8deg) scale(2.4); filter: blur(6px); } 60% { opacity: 1; filter: blur(0); } 75% { transform: rotate(-8deg) scale(0.94); } 100% { opacity: 1; transform: rotate(-8deg) scale(1); filter: blur(0); } } @media (prefers-color-scheme: dark) { .ds-stamp { mix-blend-mode: screen; } } @media (prefers-reduced-motion: reduce) { .ds-stamp-in { animation-duration: 0.001ms; } .ds-stamp { opacity: 1; transform: rotate(-8deg) scale(1); filter: none; } }"
+    },
+    {
+      "name": "Remaining Meter",
+      "kind": "custom",
+      "refersTo": "meter-track",
+      "description": "An 8px unrounded bar reading remaining, never spent, sitting directly under the remaining figure.",
+      "html": "<div class=\"ds-meter-block\"><div class=\"ds-meter-value\">Rp8.000</div><div class=\"ds-label ds-meter-caption\">Remaining of Rp60.000</div><div class=\"ds-meter\" role=\"meter\" aria-valuemin=\"0\" aria-valuemax=\"60000\" aria-valuenow=\"8000\" aria-label=\"Spending authority remaining under the mandate ceiling\"><div class=\"ds-meter-fill\" style=\"--fill: 0.1333\"></div></div></div>",
+      "css": ".ds-meter-value { font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace; font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1; color: var(--ink, #171818); } .ds-meter-caption { display: block; margin-top: 8px; } .ds-label { font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--wt-45, rgba(23,24,24,0.62)); } .ds-meter { position: relative; height: 8px; width: 100%; margin-top: 20px; overflow: hidden; border-radius: 0; background: var(--hair, rgba(23,24,24,0.16)); } .ds-meter-fill { position: absolute; inset: 0 auto 0 0; width: 100%; transform-origin: left; background: var(--blue, #1520b8); animation: ds-meterSettle 0.62s cubic-bezier(0.22,1,0.36,1) both; } .ds-meter-fill--exhausted { background: var(--refuse, #c0201a); } @keyframes ds-meterSettle { from { transform: scaleX(0); } to { transform: scaleX(var(--fill, 1)); } } @media (prefers-reduced-motion: reduce) { .ds-meter-fill { animation-duration: 0.001ms; } }"
+    },
+    {
+      "name": "Affirmative Mark",
+      "kind": "chip",
+      "refersTo": "button-compact",
+      "description": "The deliberate opposite of the stamp: a 1.5px-stroke check in ultramarine beside a small tracked mono word. Allowed to be missed. Never green.",
+      "html": "<div class=\"ds-affirm\"><svg class=\"ds-affirm-icon\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 8.5 6.5 12 13 4.5\"/></svg><span class=\"ds-affirm-word\">Authorized</span></div>",
+      "css": ".ds-affirm { display: inline-flex; align-items: center; gap: 8px; color: var(--blue, #1520b8); animation: ds-pressIn 0.34s cubic-bezier(0.22,1,0.36,1) backwards; } .ds-affirm-icon { width: 20px; height: 20px; } .ds-affirm-word { font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.875rem; letter-spacing: 0.08em; text-transform: uppercase; } @keyframes ds-pressIn { from { opacity: 0; transform: translateY(6px) scale(0.98); } to { opacity: 1; transform: none; } } @media (prefers-reduced-motion: reduce) { .ds-affirm { animation-duration: 0.001ms; } }"
+    },
+    {
+      "name": "Site Navigation",
+      "kind": "nav",
+      "refersTo": "button-compact",
+      "description": "Sticky, hairline-bottomed, backdrop-blurred. Squeezed wordmark, mono-label routes, and a permanent deployment status that is never hidden.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-mark\" href=\"#\">Leash</a><nav class=\"ds-nav-links\"><a class=\"ds-nav-link\" href=\"#\">Agent</a><a class=\"ds-nav-link\" href=\"#\">New mandate</a><a class=\"ds-nav-link\" href=\"#\">Feed</a></nav><span class=\"ds-nav-status\">Base Sepolia · not deployed</span></header>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 64px; padding: 0 32px; border-bottom: 1px solid var(--hair, rgba(23,24,24,0.16)); background: color-mix(in srgb, var(--paper, #f2f1ec) 88%, transparent); backdrop-filter: blur(12px); } .ds-nav-mark { font-family: var(--font-archivo), Archivo, sans-serif; font-variation-settings: 'wdth' 87; font-weight: 700; font-size: 1.25rem; letter-spacing: -0.04em; line-height: 0.92; color: var(--ink, #171818); text-decoration: none; } .ds-nav-links { display: flex; align-items: center; gap: 20px; } .ds-nav-link, .ds-nav-status { font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--wt-45, rgba(23,24,24,0.62)); text-decoration: none; transition: color 150ms cubic-bezier(0.22,1,0.36,1); } .ds-nav-link:hover { color: var(--ink, #171818); } .ds-nav-link:focus-visible { outline: 2px solid var(--blue, #1520b8); outline-offset: 2px; border-radius: 2px; }"
+    },
+    {
+      "name": "Instrument Panel",
+      "kind": "card",
+      "refersTo": "card-instrument",
+      "description": "The hairline rectangle that carries live mandate state on the dot ground. Paper fill, square corners, no shadow — it reads raised only because the ground behind it is textured.",
+      "html": "<div class=\"ds-ground\"><div class=\"ds-panel\"><div class=\"ds-panel-head\"><span class=\"ds-label\">Reference mandate</span><span class=\"ds-label\">Verified local run</span></div><div class=\"ds-panel-value\">Rp8.000</div><div class=\"ds-label ds-panel-caption\">Remaining of Rp60.000</div></div></div>",
+      "css": ".ds-ground { padding: 32px; background-image: radial-gradient(var(--buzz-dot, rgba(23,24,24,0.09)) 1px, transparent 1px); background-size: 4px 4px; } .ds-panel { padding: 24px; border: 1px solid var(--hair, rgba(23,24,24,0.16)); border-radius: 0; background: var(--paper, #f2f1ec); box-shadow: none; } .ds-panel-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 16px; } .ds-label { font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--wt-45, rgba(23,24,24,0.62)); } .ds-panel-value { margin-top: 24px; font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace; font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1; color: var(--ink, #171818); } .ds-panel-caption { display: block; margin-top: 8px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Stamped Ledger",
+    "overview": "Leash's web surface is a paper document that happens to be live. The ground is a warm off-white with a 4px dot texture pressed into it; everything structural is a 1px hairline; every real number is set in mono and sits in a ruled row. There are no cards floating over anything, no shadows, no rounded corners, no gradient. The page reads as an instrument you could print — an authorization ledger — right up until a payment gets refused, at which point a red stamp lands across the row at a hard -8 degree tilt and is the single loudest thing the system will ever do.\n\nThat imbalance is the design. Approval is deliberately quiet: an ultramarine hairline-weight check icon and a small tracked mono word, nothing more. Refusal is deliberately loud: the full stamp, carrying the contract's own error name (TargetNotAllowed, AmountExceedsCap, Revoked) rather than any phrasing the interface invented. The visual system spends almost all of its force on one moment, and everything else is built quiet enough for that moment to register.\n\nThe world is deliberately narrow: two hues (ultramarine and a refusal red) over a paper/ink pair, one display face at a squeezed width, one grotesque, one mono. The confirmed rejections are the dark-neon protocol landing and its three-column feature triptych — the build carries that refusal as a literal comment in its own served markup. Craft level is benchmarked against a pinned reference (agentcard.sh, recorded in PRODUCT.md), but its identity is explicitly not inherited: the reference has no red and no stamp, and the reference uses 10-16px radii alongside hard 0 where Leash is 0 everywhere.",
+    "keyCharacteristics": [
+      "Paper ground with a 4px dot texture; ink is near-black, never pure black",
+      "Zero shadows, zero radii; depth is hairlines, tint, and one backdrop blur",
+      "Two hues only — ultramarine for the quiet state, red reserved entirely for refusal",
+      "No green anywhere in the system, at all, by construction",
+      "Squeezed display type set very tight (-0.035em, 0.92 line-height) against generous body measure",
+      "Mono is the machine register: on-chain values, contract identifiers, and small uppercase labels",
+      "One authored motion moment (the stamp); everything else is a 0.15s state transition"
+    ],
+    "rules": [
+      {
+        "name": "The No-Green Rule",
+        "body": "There is no green anywhere in this system, and none may be added. Encoding allow/deny as green-versus-red would make hue the sole carrier of the most important distinction in the product. The affirmative state is ultramarine plus a mono word; the negative state is a stamp that carries word, frame, tilt, and color at once, so the meaning survives being desaturated, printed, or read by someone who cannot separate the two hues.",
+        "section": "colors"
+      },
+      {
+        "name": "The Red-Is-Refusal-Only Rule",
+        "body": "Red never appears as branding, decoration, warning-in-general, or emphasis. If red is on the screen, the chain declined something. The mock-settlement panel on the landing page is deliberately not in red for exactly this reason — it contains no refusal.",
+        "section": "colors"
+      },
+      {
+        "name": "The Same-Two-Hues Rule",
+        "body": "Dark mode inverts ground and ink and re-tints — never re-hues. Dark-mode ultramarine and dark-mode red are lightness tints of the same two hues at the same angles, lifted only enough to clear contrast on dark ground. Substituting a different accent hue for dark mode would break 'red exists only as the refusal stamp' the moment the scheme changed. Both schemes ship: the prefers-color-scheme media query is the default signal, and :root[data-theme] overrides it in both directions.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mono-Is-Machine Rule",
+        "body": "Mono is a register, not a texture. It is permitted on real on-chain values, the contract's own identifiers quoted inline in prose, the eight error names, machine input and output, and the small uppercase label voice. It is never used to make ordinary prose look technical. No sentence of body copy is ever set in mono.",
+        "section": "typography"
+      },
+      {
+        "name": "The 48ch Rule",
+        "body": "Body measure caps at 48ch or below — the observed set is 40, 42, 45, 46, 47, and 48ch — because ch overestimates real measure in a proportional face and 48ch renders closer to a comfortable 65-70 characters. Display measure caps much tighter (16-24ch) so statements break as blocks. Discrepancy, as built: the revoked/expired explanation on the mandate detail page is capped at 60ch. Treat 48ch as the rule and that instance as drift to correct.",
+        "section": "typography"
+      },
+      {
+        "name": "The Contract's Own Word Rule",
+        "body": "Refusal text is never paraphrased. ERROR_COPY is a copy system, not a data table: it maps each of the eight ABI errors to a problem sentence and a recovery sentence, and the interface always prints the raw error name in mono alongside them. recovery is allowed to say that nothing can be done — for a revoked mandate that is the correct and intended answer. Never invent a ninth error, and never soften an existing one.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hairline Grid Rule",
+        "body": "Structure is drawn with 1px hairlines, never with fills, boxes, or spacing alone. A list of facts is a stack of hairline-ruled rows with the label left in mono-label and the value right in mono; a section boundary is a hairline; a panel is a hairline rectangle. If something needs to be visually separated, rule it.",
+        "section": "layout"
+      },
+      {
+        "name": "The One Column Rule",
+        "body": "There is exactly one container width (76rem). Do not introduce a narrower prose container or a wider showcase container — measure is controlled per-element with ch caps inside the single shell.",
+        "section": "layout"
+      },
+      {
+        "name": "The Zero-Shadow Rule",
+        "body": "Surfaces never lift. If a new component needs to read as separate, give it a hairline border, a ground change, or a tint — never a shadow, never a glow, never an inset highlight.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Square-Corner Rule",
+        "body": "Radius is 0. The pinned reference mixes 10-16px radii with hard 0; Leash does not inherit that — this system is uniformly square, and a rounded surface would read as imported from somewhere else. The only curve in the system is the 2px radius on the global focus-visible outline.",
+        "section": "shapes"
+      },
+      {
+        "name": "The One Tilt Rule",
+        "body": "Every element in the system is orthogonal except the refusal stamp, which is rotated -8 degrees. That tilt is the only rotation permitted anywhere; it is what makes the stamp read as pressed onto the document rather than laid out within it.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Evidence-Never-Animates-In Rule",
+        "body": "The stamp is split into two classes on purpose. .stamp is the rendered evidence and is always in the server-rendered document. .stamp-in is the entrance, added by an IntersectionObserver once the row is in view. With JavaScript disabled, a crawler reading the source, or prefers-reduced-motion set, every refusal is still fully visible and fully legible; only the press is lost. Never make refusal evidence conditional on script, viewport, or motion preference.",
+        "section": "components"
+      },
+      {
+        "name": "The Remaining-Not-Spent Rule",
+        "body": "The meter reads remaining, never spent. It sits directly under the remaining figure, and a bar filled with the amount spent put a nearly-full bar beneath 'Rp8.000 remaining' — the opposite of the truth. It animates from scaleX(0) to its ratio over 0.62s and exposes role=meter with aria-valuenow set to the remaining amount.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do draw structure with 1px hairlines and hairline-ruled rows: label left in mono-label, value right in mono.",
+      "Do keep body measure at 48ch or below and display measure at 16-24ch.",
+      "Do reserve mono for on-chain values, contract identifiers, machine input/output, and the uppercase label voice.",
+      "Do print the contract's own error name in mono next to any refusal, and pull its explanation from ERROR_COPY.",
+      "Do render refusal evidence server-side and treat animation as enhancement only.",
+      "Do make the meter read remaining, and label the ceiling next to it.",
+      "Do show the deployment status at every viewport width, and render the undeployed state rather than a placeholder address.",
+      "Do state what is mocked as plainly as what is real; the disclosure is part of the composition, not a disclaimer.",
+      "Do keep state transitions at 150ms on cubic-bezier(0.22, 1, 0.36, 1) and transition only the properties that change.",
+      "Do name what a control cannot do at the control, before the click."
+    ],
+    "donts": [
+      "Don't introduce green, or any third hue. There are two.",
+      "Don't use red for anything other than a refusal the chain actually issued.",
+      "Don't substitute hues for dark mode; invert ground and ink and re-tint the same two.",
+      "Don't add a shadow, glow, or radius. Zero and zero.",
+      "Don't rotate anything except the stamp.",
+      "Don't paraphrase, soften, or invent a rejection reason, and don't add a ninth error.",
+      "Don't set body prose in mono to make it look technical.",
+      "Don't make approval louder. It is quiet on purpose, and making it louder destroys the contrast the product is built on.",
+      "Don't show a placeholder address, a fabricated transaction hash, or an explorer link that implies a public deployment.",
+      "Don't wrap a button in a link, or hide navigation behind a menu on phones.",
+      "Don't signal disabled with opacity; use the hairline-outline treatment."
+    ]
+  }
+}

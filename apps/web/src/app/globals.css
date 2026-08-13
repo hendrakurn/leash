@@ -1,0 +1,325 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Leash design system.
+
+   Ground, ink, ultramarine, hairline and dot values are the pinned reference's
+   own tokens (PRODUCT.md → Brand Commitments). What is NOT inherited is the
+   refusal: red appears nowhere in the reference and is Leash's signature.
+
+   There is deliberately no green anywhere in this system. Approval is quiet —
+   ultramarine and a mono line. Refusal is loud — a stamp. Encoding the two
+   states as red-versus-green would make colour the only carrier of the most
+   important distinction in the product; a stamp carries word, shape and colour
+   at once, so the meaning survives without hue.
+--------------------------------------------------------------------------- */
+
+@theme {
+  --color-paper: #f2f1ec;
+  --color-ink: #171818;
+  --color-blue: #1520b8;
+  --color-blue-hi: #2e3ae8;
+  --color-blue-pale: #ccdbff;
+  --color-refuse: #c0201a;
+  --color-refuse-deep: #96150f;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: var(--font-archivo), var(--font-geist-sans), sans-serif;
+
+  --ease-out-strong: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+:root {
+  color-scheme: light dark;
+
+  --paper: #f2f1ec;
+  --ink: #171818;
+  --hair: rgba(23, 24, 24, 0.16);
+  --hair-strong: rgba(23, 24, 24, 0.32);
+  --buzz-dot: rgba(23, 24, 24, 0.09);
+  --wt-45: rgba(23, 24, 24, 0.62);
+  --wt-65: rgba(23, 24, 24, 0.72);
+  --blue: #1520b8;
+  --blue-hi: #2e3ae8;
+  --blue-pale: #ccdbff;
+  --refuse: #c0201a;
+  --refuse-deep: #96150f;
+  --refuse-wash: rgba(192, 32, 26, 0.07);
+
+  --ease-out-strong: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #171818;
+    --ink: #f4f3ee;
+    --hair: rgba(255, 255, 255, 0.14);
+    --hair-strong: rgba(255, 255, 255, 0.3);
+    --buzz-dot: rgba(255, 255, 255, 0.11);
+    --wt-45: rgba(255, 255, 255, 0.6);
+    --wt-65: rgba(255, 255, 255, 0.7);
+    /* The pin authorises inverting ground and ink, not swapping the accent.
+       These are lightness tints of the same ultramarine and the same refusal
+       red — enough to clear contrast on dark ground, still the same two hues,
+       so "red exists only as the refusal stamp" survives the scheme change. */
+    --blue: #7d88ff;
+    --blue-hi: #a3abff;
+    --blue-pale: #262d6e;
+    --refuse: #e8493f;
+    --refuse-deep: #f2695f;
+    --refuse-wash: rgba(232, 73, 63, 0.1);
+  }
+}
+
+:root[data-theme="light"] {
+  --paper: #f2f1ec;
+  --ink: #171818;
+  --hair: rgba(23, 24, 24, 0.16);
+  --hair-strong: rgba(23, 24, 24, 0.32);
+  --buzz-dot: rgba(23, 24, 24, 0.09);
+  --wt-45: rgba(23, 24, 24, 0.62);
+  --wt-65: rgba(23, 24, 24, 0.72);
+  --blue: #1520b8;
+  --blue-hi: #2e3ae8;
+  --blue-pale: #ccdbff;
+  --refuse: #c0201a;
+  --refuse-deep: #96150f;
+  --refuse-wash: rgba(192, 32, 26, 0.07);
+}
+
+:root[data-theme="dark"] {
+  --paper: #171818;
+  --ink: #f4f3ee;
+  --hair: rgba(255, 255, 255, 0.14);
+  --hair-strong: rgba(255, 255, 255, 0.3);
+  --buzz-dot: rgba(255, 255, 255, 0.11);
+  --wt-45: rgba(255, 255, 255, 0.6);
+  --wt-65: rgba(255, 255, 255, 0.7);
+  --blue: #7d88ff;
+  --blue-hi: #a3abff;
+  --blue-pale: #262d6e;
+  --refuse: #e8493f;
+  --refuse-deep: #f2695f;
+  --refuse-wash: rgba(232, 73, 63, 0.1);
+}
+
+* {
+  border-color: var(--hair);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--blue);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* --- ground ------------------------------------------------------------ */
+
+.buzz {
+  background-image: radial-gradient(var(--buzz-dot) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+.hairline {
+  border-top: 1px solid var(--hair);
+}
+
+/* --- display type ------------------------------------------------------ */
+/* Archivo's width axis dialed to a semi-condensed setting. This substitutes
+   for OT Neue Montreal Semi Squeezed, which is commercial and unlicensed. */
+
+.display {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 87;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+  text-wrap: balance;
+}
+
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--wt-45);
+}
+
+/* --- the authored moment: the stamp ------------------------------------ */
+/* Every refusal in this product is a contract revert. The stamp lands once,
+   hard, carrying the contract's own error name. It is the only element in the
+   system permitted this much force. */
+
+@keyframes stampIn {
+  0% {
+    opacity: 0;
+    transform: rotate(-8deg) scale(2.4);
+    filter: blur(6px);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  75% {
+    transform: rotate(-8deg) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-8deg) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* `.stamp` is the rendered evidence and is always present in the document.
+   `.stamp-in` is the entrance, added by script once the row is in view — so
+   with JavaScript off the refusal is still fully visible, just unanimated. */
+.stamp {
+  color: var(--refuse);
+  border: 3px solid var(--refuse);
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 87;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transform: rotate(-8deg);
+  mix-blend-mode: multiply;
+}
+
+.stamp-in {
+  animation: stampIn 0.42s var(--ease-out-strong) both;
+}
+
+@media (prefers-color-scheme: dark) {
+  .stamp {
+    mix-blend-mode: screen;
+  }
+}
+
+/* --- staged entrance --------------------------------------------------- */
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes drawLine {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes pressIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: riseIn 0.48s var(--ease-out-strong) backwards;
+}
+
+.draw {
+  transform-origin: left;
+  animation: drawLine 0.42s var(--ease-out-strong) backwards;
+}
+
+.press {
+  animation: pressIn 0.34s var(--ease-out-strong) backwards;
+}
+
+/* --- ambient (landing only) -------------------------------------------- */
+
+@keyframes caretBlink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.caret::after {
+  content: "";
+  display: inline-block;
+  width: 0.55em;
+  height: 1em;
+  margin-left: 0.12em;
+  background: currentColor;
+  vertical-align: -0.14em;
+  animation: caretBlink 0.95s steps(1) infinite;
+}
+
+@keyframes meterSettle {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(var(--fill, 1));
+  }
+}
+
+.meter-fill {
+  transform-origin: left;
+  animation: meterSettle 0.62s var(--ease-out-strong) both;
+}
+
+/* --- reduced motion ----------------------------------------------------- */
+/* The stamp is the product's evidence, not decoration: it stays rendered and
+   simply stops animating. */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .stamp {
+    opacity: 1;
+    transform: rotate(-8deg) scale(1);
+    filter: none;
+  }
+
+  .caret::after {
+    opacity: 1;
+  }
+}
