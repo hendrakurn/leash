@@ -1,13 +1,18 @@
-# Graph Report - NTUhackathon  (2026-08-13)
+# Graph Report - leash  (2026-08-13)
 
 ## Corpus Check
-- 28 files · ~25,728 words
+- 63 files · ~86,683 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 571 nodes · 687 edges · 46 communities (41 shown, 5 thin omitted)
-- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
+- 937 nodes · 1187 edges · 63 communities (56 shown, 7 thin omitted)
+- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 1 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
+
+## Graph Freshness
+- Built from commit: `2fdb66fd`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - AgentSafe
@@ -56,34 +61,60 @@
 - compilerOptions
 - demo.ts
 - run-local-demo.sh
+- CORE DIRECTIVE: PREMIUM MOBILE APP IMAGE DIRECTION
+- High-Agency Frontend Skill
+- Appendix B - Canonical Sources (read these before reinventing)
+- package.json
+- Leash — Team Workflow
+- Design Audit
+- Analysis & Synthesis Instructions
+- Agent Skill: Principal UI/UX Architect & Motion Choreographer (Awwwards-Tier)
+- Leash Architecture
+- CORE DIRECTIVE: AWWWARDS-LEVEL IMAGE ART DIRECTION
+- layout.tsx
+- compilerOptions
+- bot.ts
+- Verification
+- Leash Demo Script
+- Deployment
+- CLAUDE.md
 
 ## God Nodes (most connected - your core abstractions)
-1. `AgentSafe` - 97 edges
+1. `AgentSafe` - 98 edges
 2. `CheatcodesPrinter` - 29 edges
 3. `Kelemahan dan Risiko Model B: On-chain Authorization untuk AI Agent Fiat Spending` - 24 edges
 4. `Leash One-Shot Execution Plan` - 24 edges
 5. `Leash Implementation Plan` - 17 edges
-6. `Leash Implementation Prompt for Codex or Hermes` - 15 edges
-7. `7. Milestone M1: Mandate Smart Contract` - 12 edges
-8. `compilerOptions` - 10 edges
-9. `compilerOptions` - 10 edges
-10. `8. Milestone M2: Smart Contract Security Tests` - 10 edges
+6. `Leash` - 17 edges
+7. `Leash Architecture` - 17 edges
+8. `compilerOptions` - 16 edges
+9. `Leash Implementation Prompt for Codex or Hermes` - 15 edges
+10. `formatRupiah()` - 13 edges
 
 ## Surprising Connections (you probably didn't know these)
-- None detected - all connections are within the same source files.
+- `LandingPage()` --calls--> `formatRupiah()`  [EXTRACTED]
+  apps/web/src/app/page.tsx → apps/web/src/lib/leash.ts
+- `StepView()` --calls--> `explorerTx()`  [EXTRACTED]
+  apps/web/src/app/agent/page.tsx → apps/web/src/lib/chain.ts
+- `StepView()` --calls--> `shortHex()`  [EXTRACTED]
+  apps/web/src/app/agent/page.tsx → apps/web/src/lib/leash.ts
+- `FeedPage()` --calls--> `explorerTx()`  [EXTRACTED]
+  apps/web/src/app/feed/page.tsx → apps/web/src/lib/chain.ts
+- `FeedPage()` --calls--> `formatRupiah()`  [EXTRACTED]
+  apps/web/src/app/feed/page.tsx → apps/web/src/lib/leash.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (46 total, 5 thin omitted)
+## Communities (63 total, 7 thin omitted)
 
 ### Community 0 - "AgentSafe"
 Cohesion: 0.02
-Nodes (95): 10. Nice-to-Have Features, 11. Features to Skip for Hackathon, 12. Technical Architecture, 13. Recommended Tech Stack, 14. Smart Contract Design, 15. Risk Engine Design, 16. Frontend Pages, 17. Expected Outputs for Hackathon Submission (+87 more)
+Nodes (96): 10. Nice-to-Have Features, 11. Features to Skip for Hackathon, 12. Technical Architecture, 13. Recommended Tech Stack, 14. Smart Contract Design, 15. Risk Engine Design, 16. Frontend Pages, 17. Expected Outputs for Hackathon Submission (+88 more)
 
 ### Community 1 - "CheatcodesPrinter"
-Cohesion: 0.10
-Nodes (15): Cheatcode, Cheatcodes, CheatcodesPrinter, Enum, EnumVariant, Error, Event, group() (+7 more)
+Cohesion: 0.06
+Nodes (23): Cheatcode, Cheatcodes, CheatcodesPrinter, cmp_cheatcode(), CmpCheatcode, Enum, EnumVariant, Error (+15 more)
 
 ### Community 2 - "Contributing to Foundry"
 Cohesion: 0.06
@@ -157,6 +188,10 @@ Nodes (7): 10. Milestone M4: Base Sepolia Deployment, Acceptance criteria, Deplo
 Cohesion: 0.29
 Nodes (7): 11. Milestone M5: Backend Listener and Mock Settlement, Acceptance criteria, Files, Listener behavior, Mock BaaS behavior, Objective, Required safeguards
 
+### Community 20 - "CmpCheatcode"
+Cohesion: 0.09
+Nodes (51): PRESETS, Step, StepView(), Turn, json(), POST(), Step, tools (+43 more)
+
 ### Community 21 - "13. Stage 4 — TypeScript Demo Runner"
 Cohesion: 0.33
 Nodes (6): 13.1 Package, 13.2 Environment, 13.3 Demo transaction flow, 13.4 Required output semantics, 13. Stage 4 — TypeScript Demo Runner, Gate 4
@@ -209,10 +244,6 @@ Nodes (4): 17.1 Package and environment, 17.2 Commands, 17. Stage 8 — Telegram
 Cohesion: 0.50
 Nodes (4): 2. Product Boundary, Explicitly mocked, Off-chain responsibilities, On-chain responsibilities
 
-### Community 34 - "`/`"
-Cohesion: 0.67
-Nodes (3): `/`, 1. Product Name, AgentSafe — Product Brainstorm & Hackathon Plan
-
 ### Community 35 - "Smart Contracts"
 Cohesion: 0.67
 Nodes (3): Option A: Foundry, Option B: Hardhat, Smart Contracts
@@ -221,13 +252,17 @@ Nodes (3): Option A: Foundry, Option B: Hardhat, Smart Contracts
 Cohesion: 0.10
 Nodes (20): dependencies, dotenv, viem, devDependencies, tsx, @types/node, typescript, dotenv (+12 more)
 
+### Community 39 - "README.md"
+Cohesion: 0.11
+Nodes (17): Architecture, Backend, Base Sepolia, Contract Tests, Default Demo, Documentation, Hackathon Alignment, Leash (+9 more)
+
 ### Community 40 - "demo-runner/package.json"
 Cohesion: 0.10
 Nodes (19): dependencies, dotenv, viem, devDependencies, tsx, @types/node, typescript, dotenv (+11 more)
 
 ### Community 41 - "Function"
-Cohesion: 0.16
-Nodes (6): Function, Item, ItemOrder, Mutability, Visibility, PyEnum
+Cohesion: 0.05
+Nodes (42): @anthropic-ai/sdk, dependencies, @anthropic-ai/sdk, geist, next, react, react-dom, @tanstack/react-query (+34 more)
 
 ### Community 42 - "compilerOptions"
 Cohesion: 0.13
@@ -238,28 +273,84 @@ Cohesion: 0.13
 Nodes (14): compilerOptions, lib, module, moduleResolution, noEmit, resolveJsonModule, skipLibCheck, strict (+6 more)
 
 ### Community 44 - "demo.ts"
-Cohesion: 0.40
-Nodes (9): addressEnv(), assert(), authorizationLogCount(), customErrorName(), loadAbi(), main(), MandateState, privateKeyEnv() (+1 more)
+Cohesion: 0.36
+Nodes (7): addressEnv(), assert(), loadAbi(), main(), MandateState, privateKeyEnv(), requiredEnv()
+
+### Community 46 - "CORE DIRECTIVE: PREMIUM MOBILE APP IMAGE DIRECTION"
+Cohesion: 0.05
+Nodes (37): 10.1 The question we will definitely be asked, 10.2 Positioning, 10. Why this wins, 1. The story, 2.1 Prompt injection is a payments problem, not just an AI problem, 2.2 Hallucination doesn't need an attacker, 2.3 Today's defenses have two gaps, 2.4 What's actually missing (+29 more)
+
+### Community 47 - "High-Agency Frontend Skill"
+Cohesion: 0.07
+Nodes (28): Buttons, Cards / Containers, Colors, Components, Design System: Leash Web, Do:, Do's and Don'ts, Don't: (+20 more)
+
+### Community 48 - "Appendix B - Canonical Sources (read these before reinventing)"
+Cohesion: 0.07
+Nodes (26): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+18 more)
+
+### Community 49 - "package.json"
+Cohesion: 0.09
+Nodes (21): dependencies, dotenv, grammy, viem, devDependencies, tsx, @types/node, typescript (+13 more)
+
+### Community 50 - "Leash — Team Workflow"
+Cohesion: 0.09
+Nodes (21): 1. Where the project actually stands, 2. Lanes, 3. Git workflow, 4. Contract change needed before deployment, 5. The AI agent harness, 6. Frontend, 7. Task list, 8. Sequencing (+13 more)
+
+### Community 51 - "Design Audit"
+Cohesion: 0.15
+Nodes (12): Accessibility & Inclusion, Brand Commitments, Capabilities and Constraints, Evidence on Hand, Operating Context, Platform, Positioning, Product (+4 more)
+
+### Community 52 - "Analysis & Synthesis Instructions"
+Cohesion: 0.20
+Nodes (9): A programmable spending firewall for AI agents, Architecture: authority on-chain, fiat off-chain, Leash, Roadmap · Built, In Flight, Next, Technical Quality: the contract is the only gate, The Demo: three acts, and the refusal is the hero, The Problem: an AI agent that can pay is an AI agent that can be fooled, The Solution: authority on-chain, money stays fiat (+1 more)
+
+### Community 54 - "Leash Architecture"
+Cohesion: 0.11
+Nodes (17): AI-Agent Responsibilities, Authorization and Settlement Boundary, Backend Responsibilities, Leash Architecture, Off-Chain Flow, On-Chain Flow, Problem, Production Roadmap (+9 more)
+
+### Community 56 - "layout.tsx"
+Cohesion: 0.24
+Nodes (6): metadata, Providers(), wagmiConfig, MOCKED, REAL, SiteFooter()
+
+### Community 58 - "compilerOptions"
+Cohesion: 0.13
+Nodes (14): compilerOptions, lib, module, moduleResolution, noEmit, resolveJsonModule, skipLibCheck, strict (+6 more)
+
+### Community 68 - "bot.ts"
+Cohesion: 0.36
+Nodes (7): ActiveMandate, chatId(), loadAbi(), main(), MandateState, privateKey(), required()
+
+### Community 79 - "Verification"
+Cohesion: 0.29
+Nodes (6): Environment, Local End-to-End, Public Deployment, Smart Contract, TypeScript, Verification
+
+### Community 82 - "Leash Demo Script"
+Cohesion: 0.33
+Nodes (5): Closing, Demo Sequence, Evidence Checklist, Leash Demo Script, Opening
+
+### Community 96 - "Deployment"
+Cohesion: 0.50
+Nodes (3): Base Sepolia, Deployment, Local Anvil
 
 ## Knowledge Gaps
-- **375 isolated node(s):** `name`, `version`, `private`, `type`, `dev` (+370 more)
+- **592 isolated node(s):** `name`, `version`, `private`, `type`, `dev` (+587 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `AgentSafe` connect `AgentSafe` to `Smart Contracts`, ``/``, `Must-Have Features`?**
-  _High betweenness centrality (0.036) - this node is a cross-community bridge._
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **Why does `Leash Implementation Plan` connect `Leash Implementation Plan` to `2. Product Boundary`, `7. Milestone M1: Mandate Smart Contract`, `8. Milestone M2: Smart Contract Security Tests`, `9. Milestone M3: Local CLI Demo`, `10. Milestone M4: Base Sepolia Deployment`, `11. Milestone M5: Backend Listener and Mock Settlement`, `12. Milestone M6: Telegram Interface`, `13. Milestone M7: Documentation and Submission Assets`, `6. Milestone M0: Repository and Tooling Setup`, `14. Milestone M8: Final Verification`?**
-  _High betweenness centrality (0.019) - this node is a cross-community bridge._
+  _High betweenness centrality (0.007) - this node is a cross-community bridge._
 - **Why does `Leash One-Shot Execution Plan` connect `Leash One-Shot Execution Plan` to `17. Stage 8 — Telegram Interface`, `10. Stage 1 — Smart Contract Core`, `14. Stage 5 — Confirmed Event Listener and Mock BaaS`, `18. Stage 9 — Documentation`, `19. Stage 10 — Final Verification`, `13. Stage 4 — TypeScript Demo Runner`, `11. Stage 2 — Foundry Security Proof`, `15. Stage 6 — Deterministic Local End-to-End Gate`, `9. Stage 0 — Safe Setup and Document Baseline`, `12. Stage 3 — Deployment Script Readiness`, `16. Stage 7 — Base Sepolia Deployment`?**
-  _High betweenness centrality (0.017) - this node is a cross-community bridge._
+  _High betweenness centrality (0.006) - this node is a cross-community bridge._
 - **What connects `name`, `version`, `private` to the rest of the system?**
-  _375 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _592 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `AgentSafe` be split into smaller, more focused modules?**
-  _Cohesion score 0.021052631578947368 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.020833333333333332 - nodes in this community are weakly interconnected._
 - **Should `CheatcodesPrinter` be split into smaller, more focused modules?**
-  _Cohesion score 0.0987012987012987 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06493506493506493 - nodes in this community are weakly interconnected._
 - **Should `Contributing to Foundry` be split into smaller, more focused modules?**
   _Cohesion score 0.05714285714285714 - nodes in this community are weakly interconnected._
