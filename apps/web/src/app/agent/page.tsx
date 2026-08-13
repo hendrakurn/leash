@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Shell, Rule, Button, Stamp, IconCheck, IconArrow } from "@/components/primitives";
+import { SiteNav } from "@/components/site-nav";
 import { Undeployed } from "@/components/undeployed";
 import { contractAddress, explorerTx } from "@/lib/chain";
 import { shortHex } from "@/lib/leash";
@@ -52,7 +53,7 @@ export default function AgentPage() {
   const [turns, setTurns] = useState<Turn[]>([]);
   const [busy, setBusy] = useState(false);
 
-  if (!contractAddress) return <Undeployed surface="The agent console" />;
+  if (!contractAddress) return (<><SiteNav /><Undeployed surface="The agent console" /></>);
 
   async function send(text: string) {
     if (!text.trim() || busy) return;
@@ -91,8 +92,10 @@ export default function AgentPage() {
   }
 
   return (
-    <Shell className="py-16 sm:py-20">
-      <h1 className="display max-w-[22ch] text-[clamp(2rem,6vw,3.5rem)]">
+    <>
+      <SiteNav />
+      <Shell className="py-16 sm:py-20">
+        <h1 className="display max-w-[22ch] text-[clamp(2rem,6vw,3.5rem)]">
         This agent will do what it is told. Try telling it the wrong thing.
       </h1>
       <p className="mt-6 max-w-[47ch] text-lg leading-relaxed" style={{ color: "var(--wt-65)" }}>
@@ -152,7 +155,8 @@ export default function AgentPage() {
           ))}
         </div>
       ) : null}
-    </Shell>
+      </Shell>
+    </>
   );
 }
 

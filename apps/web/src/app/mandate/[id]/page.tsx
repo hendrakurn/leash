@@ -4,6 +4,7 @@ import { use } from "react";
 import { useAccount, useReadContract, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import type { Hex } from "viem";
 import { Shell, Rule, Meter, Field, Button, Stamp, IconClock, IconKey } from "@/components/primitives";
+import { SiteNav } from "@/components/site-nav";
 import { Undeployed } from "@/components/undeployed";
 import { contractAddress, explorerAddress, merchants } from "@/lib/chain";
 import {
@@ -36,7 +37,7 @@ export default function MandatePage({ params }: { params: Promise<{ id: string }
     query: { enabled: !!hash },
   });
 
-  if (!contractAddress) return <Undeployed surface="Viewing a mandate" />;
+  if (!contractAddress) return (<><SiteNav /><Undeployed surface="Viewing a mandate" /></>);
 
   if (isLoading || !data) {
     return (
@@ -76,8 +77,10 @@ export default function MandatePage({ params }: { params: Promise<{ id: string }
   const copy = revert ? ERROR_COPY[revert] : undefined;
 
   return (
-    <Shell className="py-16 sm:py-20">
-      <div className="flex flex-wrap items-start justify-between gap-6">
+    <>
+      <SiteNav />
+      <Shell className="py-16 sm:py-20">
+        <div className="flex flex-wrap items-start justify-between gap-6">
         <div className="min-w-0">
           <span className="mono-label">Mandate</span>
           <div className="mt-2 font-mono text-sm break-all" style={{ color: "var(--wt-65)" }}>
@@ -227,7 +230,8 @@ export default function MandatePage({ params }: { params: Promise<{ id: string }
           </div>
         </aside>
       </div>
-    </Shell>
+      </Shell>
+    </>
   );
 }
 

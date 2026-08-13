@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useAccount, useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 import { encodePacked, isAddress, keccak256, type Address } from "viem";
 import { Shell, Rule, Button, Field, IconArrow } from "@/components/primitives";
+import { SiteNav } from "@/components/site-nav";
 import { Undeployed } from "@/components/undeployed";
 import { WalletButton } from "@/components/wallet";
 import { contractAddress, merchants } from "@/lib/chain";
@@ -33,7 +34,7 @@ export default function NewMandatePage() {
     );
   }, [address]);
 
-  if (!contractAddress) return <Undeployed surface="Registering a mandate" />;
+  if (!contractAddress) return (<><SiteNav /><Undeployed surface="Registering a mandate" /></>);
   const contract = contractAddress;
 
   const capValue = /^\d+$/.test(cap) ? BigInt(cap) : 0n;
@@ -81,8 +82,10 @@ export default function NewMandatePage() {
   }
 
   return (
-    <Shell className="py-16 sm:py-24">
-      <h1 className="display max-w-[20ch] text-[clamp(2rem,6vw,3.5rem)]">
+    <>
+      <SiteNav />
+      <Shell className="py-16 sm:py-24">
+        <h1 className="display max-w-[20ch] text-[clamp(2rem,6vw,3.5rem)]">
         Set the boundary before the agent gets a key.
       </h1>
       <p className="mt-6 max-w-[46ch] text-lg leading-relaxed" style={{ color: "var(--wt-65)" }}>
@@ -241,6 +244,7 @@ export default function NewMandatePage() {
           </p>
         </aside>
       </div>
-    </Shell>
+      </Shell>
+    </>
   );
 }
