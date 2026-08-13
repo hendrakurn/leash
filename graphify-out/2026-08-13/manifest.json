@@ -83,5 +83,60 @@
     "mtime": 1786605867.634666,
     "ast_hash": "ee5f49e8a9cf0f81cee444b99e19c2d1",
     "semantic_hash": ""
+  },
+  "apps/backend/package.json": {
+    "mtime": 1786606281.8886175,
+    "ast_hash": "c5feb34453ef48d146738a8ec7ffbdfc",
+    "semantic_hash": ""
+  },
+  "apps/backend/src/config.ts": {
+    "mtime": 1786606219.7450347,
+    "ast_hash": "67d15547b7e274f2c177c6d1e1c48982",
+    "semantic_hash": ""
+  },
+  "apps/backend/src/index.ts": {
+    "mtime": 1786606219.7450347,
+    "ast_hash": "8dfc8047d265a3d3a5c22f2a99cc47f9",
+    "semantic_hash": ""
+  },
+  "apps/backend/src/listener.ts": {
+    "mtime": 1786606219.7450347,
+    "ast_hash": "2580590f232a2f40311d7e606bca4259",
+    "semantic_hash": ""
+  },
+  "apps/backend/src/mockBaas.test.ts": {
+    "mtime": 1786606219.7450347,
+    "ast_hash": "7278f5897e46db460c4bf6555d2dee44",
+    "semantic_hash": ""
+  },
+  "apps/backend/src/mockBaas.ts": {
+    "mtime": 1786606219.7450347,
+    "ast_hash": "228b7b2213d50db4e620bb408f9469a8",
+    "semantic_hash": ""
+  },
+  "apps/backend/tsconfig.json": {
+    "mtime": 1786606219.7450347,
+    "ast_hash": "ece82691c84cf481bc53abe94b85c437",
+    "semantic_hash": ""
+  },
+  "apps/demo-runner/package.json": {
+    "mtime": 1786606295.5075593,
+    "ast_hash": "72d3e84c9e8938b4d7cf4b4d0365db33",
+    "semantic_hash": ""
+  },
+  "apps/demo-runner/src/demo.ts": {
+    "mtime": 1786606324.3544722,
+    "ast_hash": "61710878b3ab631911b1ecc54116ed2b",
+    "semantic_hash": ""
+  },
+  "apps/demo-runner/tsconfig.json": {
+    "mtime": 1786606219.7440348,
+    "ast_hash": "ece82691c84cf481bc53abe94b85c437",
+    "semantic_hash": ""
+  },
+  "scripts/run-local-demo.sh": {
+    "mtime": 1786606445.042594,
+    "ast_hash": "c372526432eba690704864548707f3f8",
+    "semantic_hash": ""
   }
 }

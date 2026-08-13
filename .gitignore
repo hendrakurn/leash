@@ -14,3 +14,9 @@ contracts/broadcast/
 coverage/
 dist/
 
+# Per-developer agent tooling. Skill set is pinned by skills-lock.json.
+.agents/
+.claude/
+.codex/
+.codegraph/
+
