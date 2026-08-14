@@ -5,14 +5,14 @@ import { Shell, Rule, Button, Stamp, IconCheck, IconArrow } from "@/components/p
 import { SiteNav } from "@/components/site-nav";
 import { Undeployed } from "@/components/undeployed";
 import { contractAddress, explorerTx } from "@/lib/chain";
-import { shortHex } from "@/lib/leash";
+import { shortHex, ERROR_COPY } from "@/lib/leash";
 
 interface Step {
   kind: "text" | "tool" | "result";
   name?: string;
   input?: unknown;
   text?: string;
-  outcome?: "authorized" | "refused" | "info" | "error";
+  outcome?: "authorized" | "refused" | "info" | "error" | "pending";
   errorName?: string;
   txHash?: string;
   logs?: number;
@@ -48,7 +48,7 @@ const PRESETS = [
 ];
 
 export default function AgentPage() {
-  const [mandateId, setMandateId] = useState("");
+  const [mandateId, setMandateId] = useState(process.env.NEXT_PUBLIC_MANDATE_ID ?? "");
   const [input, setInput] = useState(PRESETS[0].text);
   const [turns, setTurns] = useState<Turn[]>([]);
   const [busy, setBusy] = useState(false);
@@ -60,32 +60,53 @@ export default function AgentPage() {
     setBusy(true);
     setTurns((prev) => [...prev, { prompt: text, steps: [] }]);
 
+    function appendStep(step: Step) {
+      setTurns((prev) => {
+        const next = [...prev];
+        const last = next[next.length - 1];
+        next[next.length - 1] = { ...last, steps: [...last.steps, step] };
+        return next;
+      });
+    }
+
+    function setTurnError(message: string) {
+      setTurns((prev) => {
+        const next = [...prev];
+        next[next.length - 1] = { ...next[next.length - 1], error: message };
+        return next;
+      });
+    }
+
+    function handleLine(line: string) {
+      if (!line.trim()) return;
+      const event = JSON.parse(line) as { type: "step"; step: Step } | { type: "error"; error: string };
+      if (event.type === "step") appendStep(event.step);
+      else setTurnError(event.error);
+    }
+
     try {
       const response = await fetch("/api/agent", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ message: text, mandateId }),
       });
-      const payload = (await response.json()) as { steps?: Step[]; error?: string };
-      setTurns((prev) => {
-        const next = [...prev];
-        next[next.length - 1] = {
-          prompt: text,
-          steps: payload.steps ?? [],
-          error: payload.error,
-        };
-        return next;
-      });
+      if (!response.body) throw new Error("No response body");
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() ?? "";
+        for (const line of lines) handleLine(line);
+      }
+      handleLine(buffer);
     } catch (error) {
-      setTurns((prev) => {
-        const next = [...prev];
-        next[next.length - 1] = {
-          prompt: text,
-          steps: [],
-          error: error instanceof Error ? error.message : String(error),
-        };
-        return next;
-      });
+      setTurnError(error instanceof Error ? error.message : String(error));
     } finally {
       setBusy(false);
     }
@@ -204,12 +225,24 @@ function StepView({ step }: { step: Step }) {
     );
   }
 
+  if (step.outcome === "pending") {
+    return (
+      <div className="mono-label caret">{step.text ?? "Waiting for confirmation"}</div>
+    );
+  }
+
   if (step.outcome === "refused") {
+    const copy = step.errorName ? ERROR_COPY[step.errorName] : undefined;
     return (
       <div className="flex flex-wrap items-center gap-6 py-2" style={{ background: "var(--refuse-wash)" }}>
         <Stamp word="Refused" errorName={step.errorName ?? "Reverted"} live />
         <div className="min-w-0">
           <div className="font-mono text-sm">{step.text}</div>
+          {copy ? (
+            <p className="mt-2 max-w-[38ch] text-sm leading-relaxed" style={{ color: "var(--wt-65)" }}>
+              {copy.problem} {copy.recovery}
+            </p>
+          ) : null}
           <div className="mono-label mt-1">
             AuthorizationGranted logs: 0 · settlement eligibility: none
           </div>
