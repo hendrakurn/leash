@@ -66,12 +66,15 @@ export async function runListener(
     const safeBlock = latest >= confirmationOffset ? latest - confirmationOffset : undefined;
 
     if (safeBlock !== undefined && cursor <= safeBlock) {
+      const maxLogRange = BigInt(config.maxLogRangeBlocks);
+      const chunkEnd = cursor + maxLogRange - 1n;
+      const toBlock = chunkEnd < safeBlock ? chunkEnd : safeBlock;
       const logs = await client.getContractEvents({
         address: config.contractAddress,
         abi,
         eventName: "AuthorizationGranted",
         fromBlock: cursor,
-        toBlock: safeBlock,
+        toBlock,
         strict: true,
       });
 
@@ -121,10 +124,10 @@ export async function runListener(
         authorizationEvents += 1;
       }
 
-      cursor = safeBlock + 1n;
+      cursor = toBlock + 1n;
     }
 
-    if (config.listenerMode === "once") {
+    if (config.listenerMode === "once" && (safeBlock === undefined || cursor > safeBlock)) {
       const summary: ListenerSummary = {
         authorizationEvents,
         settlements: processor.settlementCount,

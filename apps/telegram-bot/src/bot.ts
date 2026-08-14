@@ -4,8 +4,6 @@ import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { Bot, type Context } from "grammy";
 import {
-  BaseError,
-  ContractFunctionRevertedError,
   createPublicClient,
   createWalletClient,
   encodePacked,
@@ -18,6 +16,16 @@ import {
   type Hex,
 } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
+
+import { parseAgentIntent } from "./agent.js";
+import { createMerchantDirectory, type Merchant } from "./merchants.js";
+import {
+  customErrorName,
+  LeashPaymentClient,
+  paymentReference,
+  type PaymentOutcome,
+} from "./payments.js";
+import { findCheapBurger, openBurgerPromo } from "./simulatedBrowsing.js";
 
 interface ActiveMandate {
   readonly mandateId: Hex;
@@ -57,16 +65,6 @@ function loadAbi(): Abi {
   return artifact.abi as Abi;
 }
 
-function customErrorName(error: unknown): string | undefined {
-  if (!(error instanceof BaseError)) return undefined;
-  const reverted = error.walk(
-    (candidate) => candidate instanceof ContractFunctionRevertedError,
-  );
-  return reverted instanceof ContractFunctionRevertedError
-    ? reverted.data?.errorName
-    : undefined;
-}
-
 function chatId(ctx: Context): number {
   if (ctx.chat === undefined) throw new Error("Telegram chat is unavailable");
   return ctx.chat.id;
@@ -76,8 +74,12 @@ async function main(): Promise<void> {
   const token = required("TELEGRAM_BOT_TOKEN");
   const rpcUrl = required("RPC_URL");
   const contractAddress = getAddress(required("CONTRACT_ADDRESS"));
-  const rockBurger = getAddress(required("ROCK_BURGER_ADDRESS"));
-  const evilStore = getAddress(required("EVIL_STORE_ADDRESS"));
+  const merchants = createMerchantDirectory(
+    required("ROCK_BURGER_ADDRESS"),
+    required("EVIL_STORE_ADDRESS"),
+  );
+  const rockBurger = merchants.rockBurger.address;
+  const evilStore = merchants.evilStore.address;
   const ownerAccount = privateKeyToAccount(privateKey("OWNER_PRIVATE_KEY"));
   const sessionAccount = privateKeyToAccount(privateKey("SESSION_KEY_PRIVATE_KEY"));
   const broadcastReverts = process.env.BROADCAST_REVERTS?.toLowerCase() === "true";
@@ -96,6 +98,14 @@ async function main(): Promise<void> {
   const sessionWallet = createWalletClient({
     account: sessionAccount,
     transport: http(rpcUrl),
+  });
+  const paymentClient = new LeashPaymentClient({
+    publicClient,
+    sessionWallet,
+    sessionAccount: sessionAccount.address,
+    contractAddress,
+    abi,
+    broadcastReverts,
   });
   const activeMandates = new Map<number, ActiveMandate>();
   const bot = new Bot(token);
@@ -122,12 +132,7 @@ async function main(): Promise<void> {
     label: string,
     expectedError: string,
   ): Promise<string> {
-    const paymentRef = keccak256(
-      encodePacked(
-        ["string", "bytes32", "uint256"],
-        [label, active.mandateId, BigInt(Date.now())],
-      ),
-    );
+    const paymentRef = paymentReference(label, active.mandateId, amount);
 
     try {
       await publicClient.simulateContract({
@@ -180,6 +185,94 @@ async function main(): Promise<void> {
     );
   }
 
+  function formatAmount(amount: bigint): string {
+    return "Rp" + new Intl.NumberFormat("id-ID").format(amount);
+  }
+
+  function paymentResultMessage(merchant: Merchant, outcome: PaymentOutcome): string {
+    if (outcome.status === "approved") {
+      return (
+        "SUCCESS AuthorizationGranted\n" +
+        "Target: " + merchant.name + " (" + merchant.address + ")\n" +
+        "Amount: " + formatAmount(outcome.amount) + "\n" +
+        "Transaction: " + outcome.transactionHash
+      );
+    }
+
+    const transaction = outcome.transactionHash
+      ? "\nTransaction: " + outcome.transactionHash + "\nStatus: reverted"
+      : "\nContract simulation reverted";
+    return (
+      "REJECTED " +
+      outcome.reason +
+      transaction +
+      "\nAuthorizationGranted logs: " +
+      outcome.authorizationLogs +
+      "\nNo settlement eligible."
+    );
+  }
+
+  async function naturalPayment(
+    ctx: Context,
+    merchant: Merchant,
+    amount: bigint,
+    label: string,
+  ): Promise<string> {
+    const active = activeFor(ctx);
+    const outcome = await paymentClient.authorizePayment(
+      active.mandateId,
+      merchant.address,
+      amount,
+      label,
+    );
+    return paymentResultMessage(merchant, outcome);
+  }
+
+  async function statusMessage(ctx: Context): Promise<string> {
+    const active = activeFor(ctx);
+    const state = await mandateState(active.mandateId);
+    const rockAllowed = await publicClient.readContract({
+      address: contractAddress,
+      abi,
+      functionName: "allowedTargets",
+      args: [active.mandateId, rockBurger],
+    });
+    const evilAllowed = await publicClient.readContract({
+      address: contractAddress,
+      abi,
+      functionName: "allowedTargets",
+      args: [active.mandateId, evilStore],
+    });
+    const remaining = state[2] - state[3];
+    return (
+      "Mandate status\n" +
+      "Owner: " + state[0] +
+      "\nSession key: " + state[1] +
+      "\nCap: " + formatAmount(state[2]) +
+      "\nSpent: " + formatAmount(state[3]) +
+      "\nRemaining: " + formatAmount(remaining) +
+      "\nExpiry: " + state[4] +
+      "\nRevoked: " + state[5] +
+      "\nRock Burger allowed: " + String(rockAllowed) +
+      "\nEvil Store allowed: " + String(evilAllowed) +
+      "\n\nTarget display is limited to targets known by this demo bot because mappings are not enumerable."
+    );
+  }
+
+  async function revokeMandate(ctx: Context): Promise<string> {
+    const active = activeFor(ctx);
+    const hash = await ownerWallet.writeContract({
+      chain: null,
+      address: contractAddress,
+      abi,
+      functionName: "revokeMandate",
+      args: [active.mandateId],
+    });
+    const receipt = await publicClient.waitForTransactionReceipt({ hash });
+    if (receipt.status !== "success") throw new Error("Revocation failed");
+    return "SUCCESS mandate revoked\nTransaction: " + hash;
+  }
+
   function registerCommand(
     name: string,
     handler: (ctx: Context) => Promise<void>,
@@ -198,6 +291,7 @@ async function main(): Promise<void> {
     await ctx.reply(
       "Leash is a programmable spending firewall for AI agents.\n\n" +
         "Commands:\n/mandate_food\n/normal\n/attack_target\n/attack_amount\n/revoke\n/status\n\n" +
+        "Natural chat: belikan burger 52 ribu | cek status | batalkan mandate\n" +
         "Mock settlement is downstream of confirmed AuthorizationGranted events only.",
     );
   });
@@ -336,6 +430,69 @@ async function main(): Promise<void> {
         String(evilAllowed) +
         "\n\nTarget display is limited to targets known by this demo bot because mappings are not enumerable.",
     );
+  });
+
+  bot.on("message:text", async (ctx) => {
+    const text = ctx.message.text;
+    if (/^\s*\//.test(text)) return;
+
+    try {
+      const intent = parseAgentIntent(text, merchants);
+      switch (intent.kind) {
+        case "status":
+          await ctx.reply(await statusMessage(ctx));
+          return;
+        case "revoke":
+          await ctx.reply(await revokeMandate(ctx));
+          return;
+        case "pay":
+          await ctx.reply(
+            await naturalPayment(ctx, intent.merchant, intent.amount, "telegram-chat-payment"),
+          );
+          return;
+        case "browseAndPay": {
+          const offer = findCheapBurger(merchants);
+          await ctx.reply(offer.description + "\nAgent mencoba membayar hanya melalui LeashMandate.");
+          await ctx.reply(
+            await naturalPayment(
+              ctx,
+              merchants[offer.merchant],
+              offer.amount,
+              "telegram-browse-cheap-burger",
+            ),
+          );
+          return;
+        }
+        case "openPromo": {
+          const offer = openBurgerPromo(merchants);
+          await ctx.reply(offer.description);
+          await ctx.reply(
+            (await naturalPayment(
+              ctx,
+              merchants[offer.merchant],
+              offer.amount,
+              "telegram-prompt-injection-promo",
+            )) +
+              "\n\nNo AuthorizationGranted berarti backend tidak memiliki settlement eligibility."
+          );
+          return;
+        }
+        case "unknown":
+          await ctx.reply(
+            "Saya belum memahami permintaan itu. Coba:\n" +
+              "belikan burger 52 ribu\n" +
+              "bayar rock burger 52000\n" +
+              "cek status\n" +
+              "batalkan mandate\n" +
+              "carikan burger murah dan bayar kalau aman\n" +
+              "buka halaman promo burger",
+          );
+          return;
+      }
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      await ctx.reply("ERROR: " + message);
+    }
   });
 
   bot.catch((error) => {

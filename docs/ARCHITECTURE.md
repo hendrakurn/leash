@@ -138,3 +138,36 @@ Fiat settlement depends on licensed banking partners, card networks, custody, KY
 6. Gas abstraction only after the core security model remains stable.
 7. Privacy and multichain evaluation.
 
+
+
+## Hosted Telegram Agent Flow
+
+The Telegram bot is a hosted deterministic agent for the MVP. Users do not need a wallet, RPC endpoint, or private key to use the demo. The operator keeps separate testnet owner and session-key accounts, while the bot exposes a chat interface.
+
+Natural-language messages are parsed into a small, deterministic intent set:
+
+- payment intent: resolve Rock Burger or Evil Store and parse the requested amount;
+- status intent: read the active mandate;
+- revoke intent: call owner-only revocation;
+- cheap-burger intent: use the simulated catalog and authorize the Rock Burger offer;
+- promo intent: simulate a prompt-injected checkout that tries Evil Store.
+
+The parser never approves a payment, computes remaining cap, or decides whether a target is allowed. It only supplies arguments to `authorizePayment`. The contract remains the final authority.
+
+For every chat payment, the bot uses the session key to simulate `authorizePayment`. A successful simulation is broadcast and the receipt must contain exactly one `AuthorizationGranted` event. A rejected simulation is reported as a policy rejection; when `BROADCAST_REVERTS=true`, the bot may additionally broadcast a reverted testnet transaction. In both cases, no event means no settlement eligibility.
+
+The backend listener is independent from Telegram and scans only confirmed `AuthorizationGranted` logs. It does not accept a Telegram request, an HTTP request, or a parser result as settlement proof.
+
+## Chat Sequence
+
+~~~text
+/mandate_food
+belikan burger 52 ribu                 -> Rock Burger, AuthorizationGranted
+cek status                            -> spent 52000, remaining 8000
+bayar evil store 50000                -> TargetNotAllowed, no settlement
+bayar rock burger 500000               -> AmountExceedsCap, no settlement
+carikan burger murah dan bayar kalau aman -> simulated Rock Burger, approved if mandate is valid
+buka halaman promo burger              -> simulated Evil Store injection, TargetNotAllowed
+batalkan mandate                       -> owner revokes mandate
+belikan burger 52 ribu                 -> Revoked, no settlement
+~~~
