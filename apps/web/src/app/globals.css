@@ -251,7 +251,9 @@ body {
   font-weight: 500;
   letter-spacing: 0;
   background: var(--green);
-  color: var(--ink);
+  /* Volt is already maximal-light in both schemes, so ink text must never
+     follow --ink (near-white on dark ground) or it vanishes on the fill. */
+  color: #171818;
   transition:
     background-color 0.15s var(--ease-out-strong),
     color 0.15s var(--ease-out-strong),
