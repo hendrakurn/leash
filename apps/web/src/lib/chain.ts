@@ -39,7 +39,7 @@ export const merchants: { name: string; address: Address | undefined; allowliste
     allowlisted: true,
   },
   {
-    name: "Evil Store",
+    name: "Maple Kitchen",
     address: optionalAddress(process.env.NEXT_PUBLIC_EVIL_STORE_ADDRESS),
     allowlisted: false,
   },
