@@ -21,21 +21,44 @@ export interface AgentSession {
 }
 
 /**
- * DeepSeek ships an Anthropic-wire-compatible endpoint (api.deepseek.com/anthropic) that
- * accepts this same client unmodified — tool_use/tool_result blocks, betaZodTool, toolRunner
- * all work against it. If DEEPSEEK_API_KEY is set, route there instead of Claude; this is a
- * cost/testing toggle only, not a permanent switch — unset the var to go back to Claude.
+ * Testing-only routing toggles — same SDK, same tool loop, unmodified. Unset both
+ * env vars to go back to Claude directly via ANTHROPIC_API_KEY.
+ *
+ * - DEEPSEEK_API_KEY: DeepSeek ships an Anthropic-wire-compatible endpoint
+ *   (api.deepseek.com/anthropic). It's DeepSeek's own model behind that wire format,
+ *   not Claude — model must be a DeepSeek model id, not a claude-* id.
+ * - AIML_API_KEY: AI/ML API proxies real Anthropic infra (api.aimlapi.com), so Claude
+ *   model ids stay valid. Unverified whether the SDK's fixed `/v1/messages` suffix lands
+ *   on the right path here — if the first real call 404s, this baseURL needs adjusting.
+ *
+ * Both toggles default to the cheapest model on that provider to conserve test credits;
+ * AGENT_MODEL overrides the default on whichever provider ends up selected.
  */
-function createAnthropicClient(): Anthropic {
+function createAnthropicClient(): { client: Anthropic; model: string } {
+  const modelOverride = process.env.AGENT_MODEL?.trim();
+
   const deepseekKey = process.env.DEEPSEEK_API_KEY?.trim();
   if (deepseekKey) {
-    return new Anthropic({ apiKey: deepseekKey, baseURL: "https://api.deepseek.com/anthropic" });
+    return {
+      client: new Anthropic({ apiKey: deepseekKey, baseURL: "https://api.deepseek.com/anthropic" }),
+      model: modelOverride ?? "deepseek-v4-flash",
+    };
   }
-  return new Anthropic({ apiKey: requiredEnv("ANTHROPIC_API_KEY") });
+  const aimlKey = process.env.AIML_API_KEY?.trim();
+  if (aimlKey) {
+    return {
+      client: new Anthropic({ apiKey: aimlKey, baseURL: "https://api.aimlapi.com" }),
+      model: modelOverride ?? "claude-haiku-4-5-20251001",
+    };
+  }
+  return {
+    client: new Anthropic({ apiKey: requiredEnv("ANTHROPIC_API_KEY") }),
+    model: modelOverride ?? "claude-opus-5",
+  };
 }
 
 export function createAgentSession(config: AgentConfig, mandateId: `0x${string}`): AgentSession {
-  const anthropic = createAnthropicClient();
+  const { client: anthropic, model } = createAnthropicClient();
   const sink: ToolSink = { steps: [] };
   const tools = createTools(config, mandateId, sink);
   let messages: Anthropic.Beta.BetaMessageParam[] = [];
@@ -44,7 +67,7 @@ export function createAgentSession(config: AgentConfig, mandateId: `0x${string}`
     sink.steps = [];
 
     const runner = anthropic.beta.messages.toolRunner({
-      model: "claude-opus-5",
+      model,
       max_tokens: 16000,
       system: SYSTEM,
       tools,

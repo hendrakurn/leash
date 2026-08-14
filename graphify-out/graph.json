@@ -69,6 +69,50 @@
       "norm_label": "app.json"
     },
     {
+      "label": "opencode.json",
+      "file_type": "code",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "opencode_opencode",
+      "community": 30,
+      "community_name": "opencode.json",
+      "norm_label": "opencode.json"
+    },
+    {
+      "label": "$schema",
+      "file_type": "code",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "opencode_opencode_schema",
+      "community": 30,
+      "community_name": "opencode.json",
+      "norm_label": "$schema"
+    },
+    {
+      "label": "plugin",
+      "file_type": "code",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "opencode_opencode_plugin",
+      "community": 30,
+      "community_name": "opencode.json",
+      "norm_label": "plugin"
+    },
+    {
+      "label": ".opencode/plugins/graphify.js",
+      "file_type": "concept",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "ref_opencode_plugins_graphify_js",
+      "community": 30,
+      "community_name": "opencode.json",
+      "norm_label": ".opencode/plugins/graphify.js"
+    },
+    {
       "label": "graphify.js",
       "file_type": "code",
       "source_file": ".opencode/plugins/graphify.js",
@@ -432,10 +476,21 @@
       "norm_label": ".send()"
     },
     {
+      "label": "createAnthropicClient()",
+      "file_type": "code",
+      "source_file": "apps/agent/src/agent.ts",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "apps_agent_src_agent_createanthropicclient",
+      "community": 0,
+      "community_name": "AgentSafe Brainstorm",
+      "norm_label": "createanthropicclient()"
+    },
+    {
       "label": "createAgentSession()",
       "file_type": "code",
       "source_file": "apps/agent/src/agent.ts",
-      "source_location": "L23",
+      "source_location": "L60",
       "_origin": "ast",
       "id": "apps_agent_src_agent_createagentsession",
       "community": 0,
@@ -1117,7 +1172,7 @@
       "label": "required()",
       "file_type": "code",
       "source_file": "apps/backend/src/config.ts",
-      "source_location": "L17",
+      "source_location": "L18",
       "_origin": "ast",
       "id": "apps_backend_src_config_required",
       "community": 11,
@@ -1128,7 +1183,7 @@
       "label": "nonnegativeBigInt()",
       "file_type": "code",
       "source_file": "apps/backend/src/config.ts",
-      "source_location": "L23",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "apps_backend_src_config_nonnegativebigint",
       "community": 11,
@@ -1139,7 +1194,7 @@
       "label": "positiveInteger()",
       "file_type": "code",
       "source_file": "apps/backend/src/config.ts",
-      "source_location": "L29",
+      "source_location": "L30",
       "_origin": "ast",
       "id": "apps_backend_src_config_positiveinteger",
       "community": 11,
@@ -1150,7 +1205,7 @@
       "label": "optionalNonnegativeInteger()",
       "file_type": "code",
       "source_file": "apps/backend/src/config.ts",
-      "source_location": "L39",
+      "source_location": "L40",
       "_origin": "ast",
       "id": "apps_backend_src_config_optionalnonnegativeinteger",
       "community": 11,
@@ -1161,7 +1216,7 @@
       "label": "loadConfig()",
       "file_type": "code",
       "source_file": "apps/backend/src/config.ts",
-      "source_location": "L48",
+      "source_location": "L49",
       "_origin": "ast",
       "id": "apps_backend_src_config_loadconfig",
       "community": 11,
@@ -1796,10 +1851,21 @@
       "norm_label": "assert()"
     },
     {
-      "label": "customErrorName()",
+      "label": "sleep()",
       "file_type": "code",
       "source_file": "apps/demo-runner/src/demo.ts",
       "source_location": "L70",
+      "_origin": "ast",
+      "id": "apps_demo_runner_src_demo_sleep",
+      "community": 27,
+      "community_name": "Community 27",
+      "norm_label": "sleep()"
+    },
+    {
+      "label": "customErrorName()",
+      "file_type": "code",
+      "source_file": "apps/demo-runner/src/demo.ts",
+      "source_location": "L74",
       "_origin": "ast",
       "id": "apps_demo_runner_src_demo_customerrorname",
       "community": 27,
@@ -1810,7 +1876,7 @@
       "label": "authorizationLogCount()",
       "file_type": "code",
       "source_file": "apps/demo-runner/src/demo.ts",
-      "source_location": "L79",
+      "source_location": "L83",
       "_origin": "ast",
       "id": "apps_demo_runner_src_demo_authorizationlogcount",
       "community": 27,
@@ -1821,7 +1887,7 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "apps/demo-runner/src/demo.ts",
-      "source_location": "L88",
+      "source_location": "L92",
       "_origin": "ast",
       "id": "apps_demo_runner_src_demo_main",
       "community": 27,
@@ -2236,6 +2302,72 @@
       "norm_label": "typescript"
     },
     {
+      "label": "agent.ts",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/agent.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_agent",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "agent.ts"
+    },
+    {
+      "label": "AgentIntent",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/agent.ts",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_agent_agentintent",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "agentintent"
+    },
+    {
+      "label": "normalize()",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/agent.ts",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_agent_normalize",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "normalize()"
+    },
+    {
+      "label": "parseNumber()",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/agent.ts",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_agent_parsenumber",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "parsenumber()"
+    },
+    {
+      "label": "parseAmount()",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/agent.ts",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_agent_parseamount",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "parseamount()"
+    },
+    {
+      "label": "parseAgentIntent()",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/agent.ts",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_agent_parseagentintent",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "parseagentintent()"
+    },
+    {
       "label": "bot.ts",
       "file_type": "code",
       "source_file": "apps/telegram-bot/src/bot.ts",
@@ -2250,7 +2382,7 @@
       "label": "ActiveMandate",
       "file_type": "code",
       "source_file": "apps/telegram-bot/src/bot.ts",
-      "source_location": "L22",
+      "source_location": "L30",
       "_origin": "ast",
       "id": "apps_telegram_bot_src_bot_activemandate",
       "community": 31,
@@ -2261,7 +2393,7 @@
       "label": "MandateState",
       "file_type": "code",
       "source_file": "apps/telegram-bot/src/bot.ts",
-      "source_location": "L27",
+      "source_location": "L35",
       "_origin": "ast",
       "id": "apps_telegram_bot_src_bot_mandatestate",
       "community": 31,
@@ -2272,7 +2404,7 @@
       "label": "required()",
       "file_type": "code",
       "source_file": "apps/telegram-bot/src/bot.ts",
-      "source_location": "L29",
+      "source_location": "L37",
       "_origin": "ast",
       "id": "apps_telegram_bot_src_bot_required",
       "community": 31,
@@ -2283,7 +2415,7 @@
       "label": "privateKey()",
       "file_type": "code",
       "source_file": "apps/telegram-bot/src/bot.ts",
-      "source_location": "L35",
+      "source_location": "L43",
       "_origin": "ast",
       "id": "apps_telegram_bot_src_bot_privatekey",
       "community": 31,
@@ -2294,7 +2426,7 @@
       "label": "loadAbi()",
       "file_type": "code",
       "source_file": "apps/telegram-bot/src/bot.ts",
-      "source_location": "L43",
+      "source_location": "L51",
       "_origin": "ast",
       "id": "apps_telegram_bot_src_bot_loadabi",
       "community": 31,
@@ -2302,21 +2434,10 @@
       "norm_label": "loadabi()"
     },
     {
-      "label": "customErrorName()",
-      "file_type": "code",
-      "source_file": "apps/telegram-bot/src/bot.ts",
-      "source_location": "L60",
-      "_origin": "ast",
-      "id": "apps_telegram_bot_src_bot_customerrorname",
-      "community": 31,
-      "community_name": "Community 31",
-      "norm_label": "customerrorname()"
-    },
-    {
       "label": "chatId()",
       "file_type": "code",
       "source_file": "apps/telegram-bot/src/bot.ts",
-      "source_location": "L70",
+      "source_location": "L68",
       "_origin": "ast",
       "id": "apps_telegram_bot_src_bot_chatid",
       "community": 31,
@@ -2327,12 +2448,232 @@
       "label": "main()",
       "file_type": "code",
       "source_file": "apps/telegram-bot/src/bot.ts",
-      "source_location": "L75",
+      "source_location": "L73",
       "_origin": "ast",
       "id": "apps_telegram_bot_src_bot_main",
       "community": 31,
       "community_name": "Community 31",
       "norm_label": "main()"
+    },
+    {
+      "label": "merchants.ts",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/merchants.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_merchants",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "merchants.ts"
+    },
+    {
+      "label": "MerchantId",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/merchants.ts",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_merchants_merchantid",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "merchantid"
+    },
+    {
+      "label": "Merchant",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/merchants.ts",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_merchants_merchant",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "merchant"
+    },
+    {
+      "label": "MerchantDirectory",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/merchants.ts",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_merchants_merchantdirectory",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "merchantdirectory"
+    },
+    {
+      "label": "createMerchantDirectory()",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/merchants.ts",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_merchants_createmerchantdirectory",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "createmerchantdirectory()"
+    },
+    {
+      "label": "resolveMerchant()",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/merchants.ts",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_merchants_resolvemerchant",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "resolvemerchant()"
+    },
+    {
+      "label": "payments.ts",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_payments",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "payments.ts"
+    },
+    {
+      "label": "PaymentClients",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_payments_paymentclients",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "paymentclients"
+    },
+    {
+      "label": "PaymentClientOptions",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_payments_paymentclientoptions",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "paymentclientoptions"
+    },
+    {
+      "label": "PaymentOutcome",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L34",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_payments_paymentoutcome",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "paymentoutcome"
+    },
+    {
+      "label": "customErrorName()",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L48",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_payments_customerrorname",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "customerrorname()"
+    },
+    {
+      "label": "userFacingErrorName()",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L58",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_payments_userfacingerrorname",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "userfacingerrorname()"
+    },
+    {
+      "label": "paymentReference()",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L65",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_payments_paymentreference",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "paymentreference()"
+    },
+    {
+      "label": "LeashPaymentClient",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L78",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_payments_leashpaymentclient",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "leashpaymentclient"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L81",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_payments_leashpaymentclient_constructor",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": ".constructor()"
+    },
+    {
+      "label": ".authorizePayment()",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L85",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_payments_leashpaymentclient_authorizepayment",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": ".authorizepayment()"
+    },
+    {
+      "label": "simulatedBrowsing.ts",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/simulatedBrowsing.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_simulatedbrowsing",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "simulatedbrowsing.ts"
+    },
+    {
+      "label": "SimulatedOffer",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/simulatedBrowsing.ts",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_simulatedbrowsing_simulatedoffer",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "simulatedoffer"
+    },
+    {
+      "label": "findCheapBurger()",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/simulatedBrowsing.ts",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_simulatedbrowsing_findcheapburger",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "findcheapburger()"
+    },
+    {
+      "label": "openBurgerPromo()",
+      "file_type": "code",
+      "source_file": "apps/telegram-bot/src/simulatedBrowsing.ts",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "apps_telegram_bot_src_simulatedbrowsing_openburgerpromo",
+      "community": 31,
+      "community_name": "Community 31",
+      "norm_label": "openburgerpromo()"
     },
     {
       "label": "tsconfig.json",
@@ -2814,8 +3155,8 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "apps_web_package_dependencies_wagmi",
-      "community": 25,
-      "community_name": "Community 25",
+      "community": 22,
+      "community_name": "Community 22",
       "norm_label": "wagmi"
     },
     {
@@ -2825,8 +3166,8 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "wagmi",
-      "community": 25,
-      "community_name": "Community 25",
+      "community": 22,
+      "community_name": "Community 22",
       "norm_label": "wagmi"
     },
     {
@@ -2957,8 +3298,8 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "apps_web_package_devdependencies_tailwindcss",
-      "community": 25,
-      "community_name": "Community 25",
+      "community": 5,
+      "community_name": "Web Dependencies",
       "norm_label": "tailwindcss"
     },
     {
@@ -2968,8 +3309,8 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "tailwindcss",
-      "community": 25,
-      "community_name": "Community 25",
+      "community": 22,
+      "community_name": "Community 22",
       "norm_label": "tailwindcss"
     },
     {
@@ -3075,7 +3416,7 @@
       "label": "TurnView()",
       "file_type": "code",
       "source_file": "apps/web/src/app/agent/page.tsx",
-      "source_location": "L163",
+      "source_location": "L184",
       "_origin": "ast",
       "id": "apps_web_src_app_agent_page_turnview",
       "community": 1,
@@ -3086,7 +3427,7 @@
       "label": "StepView()",
       "file_type": "code",
       "source_file": "apps/web/src/app/agent/page.tsx",
-      "source_location": "L191",
+      "source_location": "L212",
       "_origin": "ast",
       "id": "apps_web_src_app_agent_page_stepview",
       "community": 1,
@@ -3127,10 +3468,32 @@
       "norm_label": "step"
     },
     {
-      "label": "POST()",
+      "label": "StreamEvent",
       "file_type": "code",
       "source_file": "apps/web/src/app/api/agent/route.ts",
       "source_location": "L81",
+      "_origin": "ast",
+      "id": "apps_web_src_app_api_agent_route_streamevent",
+      "community": 1,
+      "community_name": "Web App Pages",
+      "norm_label": "streamevent"
+    },
+    {
+      "label": "createAnthropicClient()",
+      "file_type": "code",
+      "source_file": "apps/web/src/app/api/agent/route.ts",
+      "source_location": "L97",
+      "_origin": "ast",
+      "id": "apps_web_src_app_api_agent_route_createanthropicclient",
+      "community": 1,
+      "community_name": "Web App Pages",
+      "norm_label": "createanthropicclient()"
+    },
+    {
+      "label": "POST()",
+      "file_type": "code",
+      "source_file": "apps/web/src/app/api/agent/route.ts",
+      "source_location": "L121",
       "_origin": "ast",
       "id": "apps_web_src_app_api_agent_route_post",
       "community": 1,
@@ -3138,15 +3501,15 @@
       "norm_label": "post()"
     },
     {
-      "label": "json()",
+      "label": "errorResponse()",
       "file_type": "code",
       "source_file": "apps/web/src/app/api/agent/route.ts",
-      "source_location": "L256",
+      "source_location": "L314",
       "_origin": "ast",
-      "id": "apps_web_src_app_api_agent_route_json",
+      "id": "apps_web_src_app_api_agent_route_errorresponse",
       "community": 1,
       "community_name": "Web App Pages",
-      "norm_label": "json()"
+      "norm_label": "errorresponse()"
     },
     {
       "label": "page.tsx",
@@ -3284,7 +3647,7 @@
       "label": "LandingPage()",
       "file_type": "code",
       "source_file": "apps/web/src/app/page.tsx",
-      "source_location": "L12",
+      "source_location": "L10",
       "_origin": "ast",
       "id": "apps_web_src_app_page_landingpage",
       "community": 1,
@@ -3356,6 +3719,28 @@
       "community": 1,
       "community_name": "Web App Pages",
       "norm_label": "attemptledger()"
+    },
+    {
+      "label": "eye-image.tsx",
+      "file_type": "code",
+      "source_file": "apps/web/src/components/eye-image.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "apps_web_src_components_eye_image",
+      "community": 1,
+      "community_name": "Web App Pages",
+      "norm_label": "eye-image.tsx"
+    },
+    {
+      "label": "EyeImage()",
+      "file_type": "code",
+      "source_file": "apps/web/src/components/eye-image.tsx",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "apps_web_src_components_eye_image_eyeimage",
+      "community": 1,
+      "community_name": "Web App Pages",
+      "norm_label": "eyeimage()"
     },
     {
       "label": "landing-nav.tsx",
@@ -3540,8 +3925,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "apps_web_src_components_site_footer",
-      "community": 12,
-      "community_name": "Codex Implementation Prompt",
+      "community": 1,
+      "community_name": "Web App Pages",
       "norm_label": "site-footer.tsx"
     },
     {
@@ -3551,8 +3936,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "apps_web_src_components_site_footer_mocked",
-      "community": 12,
-      "community_name": "Codex Implementation Prompt",
+      "community": 1,
+      "community_name": "Web App Pages",
       "norm_label": "mocked"
     },
     {
@@ -3562,8 +3947,8 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "apps_web_src_components_site_footer_real",
-      "community": 12,
-      "community_name": "Codex Implementation Prompt",
+      "community": 1,
+      "community_name": "Web App Pages",
       "norm_label": "real"
     },
     {
@@ -6409,7 +6794,7 @@
       "label": "Base Sepolia",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L174",
+      "source_location": "L183",
       "_origin": "ast",
       "id": "readme_base_sepolia",
       "community": 13,
@@ -6420,7 +6805,7 @@
       "label": "Mocked Components",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L180",
+      "source_location": "L199",
       "_origin": "ast",
       "id": "readme_mocked_components",
       "community": 13,
@@ -6431,7 +6816,7 @@
       "label": "Limitations",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L187",
+      "source_location": "L206",
       "_origin": "ast",
       "id": "readme_limitations",
       "community": 13,
@@ -6442,7 +6827,7 @@
       "label": "Documentation",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L199",
+      "source_location": "L218",
       "_origin": "ast",
       "id": "readme_documentation",
       "community": 13,
@@ -6453,7 +6838,7 @@
       "label": "Hackathon Alignment",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L208",
+      "source_location": "L227",
       "_origin": "ast",
       "id": "readme_hackathon_alignment",
       "community": 13,
@@ -6885,8 +7270,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_prd_leash_en",
-      "community": 22,
-      "community_name": "Community 22",
+      "community": 10,
+      "community_name": "Pitch Deck",
       "norm_label": "prd_leash_en.md"
     },
     {
@@ -7303,8 +7688,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_prd_leash_id",
-      "community": 35,
-      "community_name": "Community 35",
+      "community": 32,
+      "community_name": "PRD_Leash_ID.md",
       "norm_label": "prd_leash_id.md"
     },
     {
@@ -7415,10 +7800,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 35,
+      "community": 10,
       "norm_label": "agentcard (competitor)",
-      "id": "agentcard_competitor",
-      "community_name": "Community 35"
+      "community_name": "Pitch Deck",
+      "id": "agentcard_competitor"
     },
     {
       "label": "Cumulative Spending Cap",
@@ -7431,8 +7816,8 @@
       "contributor": null,
       "community": 10,
       "norm_label": "cumulative spending cap",
-      "id": "cumulative_cap",
-      "community_name": "Pitch Deck"
+      "community_name": "Pitch Deck",
+      "id": "cumulative_cap"
     },
     {
       "label": "EIP-712 Typed Data Signing",
@@ -7443,10 +7828,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 22,
+      "community": 10,
       "norm_label": "eip-712 typed data signing",
-      "id": "eip_712",
-      "community_name": "Community 22"
+      "community_name": "Pitch Deck",
+      "id": "eip_712"
     },
     {
       "label": "ERC-4337 Account Abstraction",
@@ -7457,10 +7842,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 22,
+      "community": 10,
       "norm_label": "erc-4337 account abstraction",
-      "id": "erc_4337",
-      "community_name": "Community 22"
+      "community_name": "Pitch Deck",
+      "id": "erc_4337"
     },
     {
       "label": "NTU InnovateX Hackathon 2026",
@@ -7471,10 +7856,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 22,
+      "community": 10,
       "norm_label": "ntu innovatex hackathon 2026",
-      "id": "ntu_innovatex_hackathon",
-      "community_name": "Community 22"
+      "community_name": "Pitch Deck",
+      "id": "ntu_innovatex_hackathon"
     },
     {
       "label": "OpenClaw Incident (Feb 2026)",
@@ -7488,8 +7873,8 @@
       "rationale": "A trading agent built on OpenClaw misread a user's request for 4 SOL and transferred its entire holdings (~$250,000), dumped within 15 minutes. No hack, no exploit. The agent simply misunderstood. Proves hallucination doesn't need an attacker.",
       "community": 10,
       "norm_label": "openclaw incident (feb 2026)",
-      "id": "openclaw_incident",
-      "community_name": "Pitch Deck"
+      "community_name": "Pitch Deck",
+      "id": "openclaw_incident"
     },
     {
       "label": "Prompt Injection Attack",
@@ -7503,8 +7888,8 @@
       "rationale": "AI agents that read external content have no architectural boundary between data and commands. The only sensible defense is containment: bounding the blast radius of a hijacked agent within the human-approved mandate.",
       "community": 10,
       "norm_label": "prompt injection attack",
-      "id": "prompt_injection_attack",
-      "community_name": "Pitch Deck"
+      "community_name": "Pitch Deck",
+      "id": "prompt_injection_attack"
     },
     {
       "label": "Mandate Revocation",
@@ -7517,8 +7902,8 @@
       "contributor": null,
       "community": 10,
       "norm_label": "mandate revocation",
-      "id": "revocation_mechanism",
-      "community_name": "Pitch Deck"
+      "community_name": "Pitch Deck",
+      "id": "revocation_mechanism"
     },
     {
       "label": "Session Key",
@@ -7531,8 +7916,8 @@
       "contributor": null,
       "community": 10,
       "norm_label": "session key",
-      "id": "session_key",
-      "community_name": "Pitch Deck"
+      "community_name": "Pitch Deck",
+      "id": "session_key"
     },
     {
       "label": "Spending Mandate",
@@ -7545,8 +7930,8 @@
       "contributor": null,
       "community": 10,
       "norm_label": "spending mandate",
-      "id": "spending_mandate",
-      "community_name": "Pitch Deck"
+      "community_name": "Pitch Deck",
+      "id": "spending_mandate"
     },
     {
       "label": "Target Allowlist",
@@ -7559,8 +7944,8 @@
       "contributor": null,
       "community": 10,
       "norm_label": "target allowlist",
-      "id": "target_allowlist",
-      "community_name": "Pitch Deck"
+      "community_name": "Pitch Deck",
+      "id": "target_allowlist"
     },
     {
       "label": "Pitch Deck Document",
@@ -7571,10 +7956,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 22,
+      "community": 10,
       "norm_label": "pitch deck document",
-      "id": "docs_deck_doc",
-      "community_name": "Community 22"
+      "community_name": "Pitch Deck",
+      "id": "docs_deck_doc"
     },
     {
       "label": "Kelemahan Model B Risk Analysis",
@@ -7585,10 +7970,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 35,
+      "community": 10,
       "norm_label": "kelemahan model b risk analysis",
-      "id": "kelemahan_risk_analysis",
-      "community_name": "Community 35"
+      "community_name": "Pitch Deck",
+      "id": "kelemahan_risk_analysis"
     },
     {
       "label": "Risk and Limitations Document",
@@ -7599,10 +7984,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 35,
+      "community": 10,
       "norm_label": "risk and limitations document",
-      "id": "risk_limitations_doc",
-      "community_name": "Community 35"
+      "community_name": "Pitch Deck",
+      "id": "risk_limitations_doc"
     },
     {
       "label": "Backend Event Listener (apps/backend)",
@@ -7615,8 +8000,8 @@
       "contributor": null,
       "community": 25,
       "norm_label": "backend event listener (apps/backend)",
-      "id": "backend_listener",
-      "community_name": "Community 25"
+      "community_name": "Community 25",
+      "id": "backend_listener"
     },
     {
       "label": "Demo Runner (apps/demo-runner)",
@@ -7629,8 +8014,8 @@
       "contributor": null,
       "community": 25,
       "norm_label": "demo runner (apps/demo-runner)",
-      "id": "demo_runner",
-      "community_name": "Community 25"
+      "community_name": "Community 25",
+      "id": "demo_runner"
     },
     {
       "label": "Forge Standard Library",
@@ -7643,8 +8028,8 @@
       "contributor": null,
       "community": 25,
       "norm_label": "forge standard library",
-      "id": "forge_std",
-      "community_name": "Community 25"
+      "community_name": "Community 25",
+      "id": "forge_std"
     },
     {
       "label": "LeashMandate Contract",
@@ -7657,8 +8042,8 @@
       "contributor": null,
       "community": 25,
       "norm_label": "leashmandate contract",
-      "id": "leashmandate_contract",
-      "community_name": "Community 25"
+      "community_name": "Community 25",
+      "id": "leashmandate_contract"
     },
     {
       "label": "Local Demo Script (scripts/run-local-demo.sh)",
@@ -7671,8 +8056,8 @@
       "contributor": null,
       "community": 25,
       "norm_label": "local demo script (scripts/run-local-demo.sh)",
-      "id": "local_demo_script",
-      "community_name": "Community 25"
+      "community_name": "Community 25",
+      "id": "local_demo_script"
     },
     {
       "label": "Mock BaaS Settlement",
@@ -7685,8 +8070,8 @@
       "contributor": null,
       "community": 25,
       "norm_label": "mock baas settlement",
-      "id": "mock_baas_settlement",
-      "community_name": "Community 25"
+      "community_name": "Community 25",
+      "id": "mock_baas_settlement"
     },
     {
       "label": "Telegram Bot (apps/telegram-bot)",
@@ -7699,8 +8084,8 @@
       "contributor": null,
       "community": 25,
       "norm_label": "telegram bot (apps/telegram-bot)",
-      "id": "telegram_bot",
-      "community_name": "Community 25"
+      "community_name": "Community 25",
+      "id": "telegram_bot"
     },
     {
       "label": "AuthorizationGranted Event",
@@ -7713,8 +8098,8 @@
       "contributor": null,
       "community": 25,
       "norm_label": "authorizationgranted event",
-      "id": "authorization_granted_event",
-      "community_name": "Community 25"
+      "community_name": "Community 25",
+      "id": "authorization_granted_event"
     },
     {
       "label": "Foundry (Contract Tooling)",
@@ -7727,8 +8112,8 @@
       "contributor": null,
       "community": 25,
       "norm_label": "foundry (contract tooling)",
-      "id": "foundry",
-      "community_name": "Community 25"
+      "community_name": "Community 25",
+      "id": "foundry"
     },
     {
       "label": "Lane A: Contracts & Backend",
@@ -7739,10 +8124,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 32,
       "norm_label": "lane a: contracts & backend",
-      "id": "lane_a_contracts_backend",
-      "community_name": "Community 25"
+      "community_name": "PRD_Leash_ID.md",
+      "id": "lane_a_contracts_backend"
     },
     {
       "label": "Verification Document",
@@ -7755,8 +8140,8 @@
       "contributor": null,
       "community": 25,
       "norm_label": "verification document",
-      "id": "docs_verification_doc",
-      "community_name": "Community 25"
+      "community_name": "Community 25",
+      "id": "docs_verification_doc"
     },
     {
       "label": "Refusal Stamp Component",
@@ -7768,10 +8153,10 @@
       "author": null,
       "contributor": null,
       "rationale": "The authored moment of the entire system. An inline-flex block with a 3px refusal-red border, rotated -8 degrees, carrying the contract's own error name. The stamp is split into .stamp (rendered evidence, always server-side) and .stamp-in (entrance animation, added by JS). Evidence never animates in.",
-      "community": 25,
+      "community": 28,
       "norm_label": "refusal stamp component",
-      "id": "refusal_stamp_component",
-      "community_name": "Community 25"
+      "community_name": "Leash Web Design System",
+      "id": "refusal_stamp_component"
     },
     {
       "label": "Web Frontend (apps/web)",
@@ -7782,10 +8167,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 22,
       "norm_label": "web frontend (apps/web)",
-      "id": "web_frontend",
-      "community_name": "Community 25"
+      "community_name": "Community 22",
+      "id": "web_frontend"
     },
     {
       "label": "Next.js",
@@ -7796,10 +8181,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 22,
       "norm_label": "next.js",
-      "id": "nextjs",
-      "community_name": "Community 25"
+      "community_name": "Community 22",
+      "id": "nextjs"
     },
     {
       "label": "Paper Ground (#F2F1EC)",
@@ -7810,10 +8195,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 28,
       "norm_label": "paper ground (#f2f1ec)",
-      "id": "paper_ground",
-      "community_name": "Community 25"
+      "community_name": "Leash Web Design System",
+      "id": "paper_ground"
     },
     {
       "label": "Refusal Red (#C0201A)",
@@ -7824,10 +8209,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 28,
       "norm_label": "refusal red (#c0201a)",
-      "id": "refusal_red",
-      "community_name": "Community 25"
+      "community_name": "Leash Web Design System",
+      "id": "refusal_red"
     },
     {
       "label": "Volt Green (#CCFF00)",
@@ -7838,10 +8223,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 28,
       "norm_label": "volt green (#ccff00)",
-      "id": "volt_green",
-      "community_name": "Community 25"
+      "community_name": "Leash Web Design System",
+      "id": "volt_green"
     },
     {
       "label": "Leash Web Design System",
@@ -7852,10 +8237,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 28,
       "norm_label": "leash web design system",
-      "id": "apps_web_design_system",
-      "community_name": "Community 25"
+      "community_name": "Leash Web Design System",
+      "id": "apps_web_design_system"
     },
     {
       "label": "The Refusal is the Hero",
@@ -7867,10 +8252,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Every payments dashboard celebrates successes. Leash's entire value is what it refuses. A green checkmark proves nothing; a revert proves the firewall works. The attack results get the largest, most designed surface on the page.",
-      "community": 25,
+      "community": 28,
       "norm_label": "the refusal is the hero",
-      "id": "refusal_is_hero",
-      "community_name": "Community 25"
+      "community_name": "Leash Web Design System",
+      "id": "refusal_is_hero"
     },
     {
       "label": "Stamped Ledger Design Concept",
@@ -7882,10 +8267,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Leash's web surface is a paper document that happens to be live. The refusal stamp is the single loudest element; approval is deliberately quiet. The imbalance is the design: a green result proves nothing, a revert proves the firewall works.",
-      "community": 25,
+      "community": 28,
       "norm_label": "stamped ledger design concept",
-      "id": "stamped_ledger_design",
-      "community_name": "Community 25"
+      "community_name": "Leash Web Design System",
+      "id": "stamped_ledger_design"
     },
     {
       "label": "AI Agent Harness (apps/agent)",
@@ -7896,10 +8281,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 22,
       "norm_label": "ai agent harness (apps/agent)",
-      "id": "agent_harness",
-      "community_name": "Community 25"
+      "community_name": "Community 22",
+      "id": "agent_harness"
     },
     {
       "label": "Anthropic SDK (@anthropic-ai/sdk)",
@@ -7910,10 +8295,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 22,
       "norm_label": "anthropic sdk (@anthropic-ai/sdk)",
-      "id": "anthropic_sdk",
-      "community_name": "Community 25"
+      "community_name": "Community 22",
+      "id": "anthropic_sdk"
     },
     {
       "label": "Claude Opus 5",
@@ -7924,10 +8309,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 22,
       "norm_label": "claude opus 5",
-      "id": "claude_opus_5",
-      "community_name": "Community 25"
+      "community_name": "Community 22",
+      "id": "claude_opus_5"
     },
     {
       "label": "Lane B: Frontend & Agent",
@@ -7938,10 +8323,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 22,
       "norm_label": "lane b: frontend & agent",
-      "id": "lane_b_frontend_agent",
-      "community_name": "Community 25"
+      "community_name": "Community 22",
+      "id": "lane_b_frontend_agent"
     },
     {
       "label": "Codex/Hermes Implementation Prompt",
@@ -7952,10 +8337,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 35,
+      "community": 32,
       "norm_label": "codex/hermes implementation prompt",
-      "id": "codex_hermes_prompt",
-      "community_name": "Community 35"
+      "community_name": "PRD_Leash_ID.md",
+      "id": "codex_hermes_prompt"
     },
     {
       "label": "Leash Execution Plan",
@@ -7966,10 +8351,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 35,
+      "community": 32,
       "norm_label": "leash execution plan",
-      "id": "execution_plan",
-      "community_name": "Community 35"
+      "community_name": "PRD_Leash_ID.md",
+      "id": "execution_plan"
     },
     {
       "label": "Team Workflow",
@@ -7980,10 +8365,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 32,
       "norm_label": "team workflow",
-      "id": "team_workflow",
-      "community_name": "Community 25"
+      "community_name": "PRD_Leash_ID.md",
+      "id": "team_workflow"
     },
     {
       "label": "Evil Store (Attack Target)",
@@ -7996,8 +8381,8 @@
       "contributor": null,
       "community": 25,
       "norm_label": "evil store (attack target)",
-      "id": "evil_store",
-      "community_name": "Community 25"
+      "community_name": "Community 25",
+      "id": "evil_store"
     },
     {
       "label": "Rock Burger (Demo Merchant)",
@@ -8010,8 +8395,8 @@
       "contributor": null,
       "community": 25,
       "norm_label": "rock burger (demo merchant)",
-      "id": "rock_burger",
-      "community_name": "Community 25"
+      "community_name": "Community 25",
+      "id": "rock_burger"
     },
     {
       "label": "Demo Script Document",
@@ -8024,8 +8409,8 @@
       "contributor": null,
       "community": 25,
       "norm_label": "demo script document",
-      "id": "docs_demo_script_doc",
-      "community_name": "Community 25"
+      "community_name": "Community 25",
+      "id": "docs_demo_script_doc"
     },
     {
       "label": "Base Sepolia Testnet",
@@ -8038,8 +8423,8 @@
       "contributor": null,
       "community": 25,
       "norm_label": "base sepolia testnet",
-      "id": "base_sepolia",
-      "community_name": "Community 25"
+      "community_name": "Community 25",
+      "id": "base_sepolia"
     },
     {
       "label": "Deployment Document",
@@ -8052,8 +8437,8 @@
       "contributor": null,
       "community": 25,
       "norm_label": "deployment document",
-      "id": "docs_deployment_doc",
-      "community_name": "Community 25"
+      "community_name": "Community 25",
+      "id": "docs_deployment_doc"
     },
     {
       "label": "Hero Image - Stylized Eye",
@@ -8066,8 +8451,8 @@
       "contributor": null,
       "community": 69,
       "norm_label": "hero image - stylized eye",
-      "id": "apps_web_public_hero",
-      "community_name": "Community 69"
+      "community_name": "Community 69",
+      "id": "apps_web_public_hero"
     },
     {
       "label": "Model B: Authority on Chain",
@@ -8079,10 +8464,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Blockchain used as enforcement layer for spending authority while money stays in fiat rails. Backend remains trusted to follow protocol, but deviations are auditable. Not full trustlessness but more than status quo.",
-      "community": 7,
+      "community": 10,
       "norm_label": "model b: authority on chain",
-      "id": "model_b_authority_on_chain",
-      "community_name": "Architecture & Contract"
+      "community_name": "Pitch Deck",
+      "id": "model_b_authority_on_chain"
     },
     {
       "label": "Architecture Document",
@@ -8093,10 +8478,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 10,
       "norm_label": "architecture document",
-      "id": "docs_architecture_doc",
-      "community_name": "Architecture & Contract"
+      "community_name": "Pitch Deck",
+      "id": "docs_architecture_doc"
     },
     {
       "label": "Product Definition",
@@ -8109,8 +8494,8 @@
       "contributor": null,
       "community": 7,
       "norm_label": "product definition",
-      "id": "product_definition",
-      "community_name": "Architecture & Contract"
+      "community_name": "Architecture & Contract",
+      "id": "product_definition"
     },
     {
       "label": "Agent is Untrusted by Design",
@@ -8124,8 +8509,8 @@
       "rationale": "The agent is expected to be wrong, manipulated, or compromised. Hardening the agent rather than the boundary would defend at the wrong layer. A successful prompt injection that the contract rejects is the demonstration, not a bug.",
       "community": 7,
       "norm_label": "agent is untrusted by design",
-      "id": "agent_is_untrusted",
-      "community_name": "Architecture & Contract"
+      "community_name": "Architecture & Contract",
+      "id": "agent_is_untrusted"
     },
     {
       "label": "Authorization vs Settlement Boundary",
@@ -8137,10 +8522,10 @@
       "author": null,
       "contributor": null,
       "rationale": "AuthorizationGranted means the request satisfied the on-chain mandate at a particular block. It does not mean money moved. The two are never conflated in code, copy, or interface.",
-      "community": 7,
+      "community": 10,
       "norm_label": "authorization vs settlement boundary",
-      "id": "authorization_settlement_boundary",
-      "community_name": "Architecture & Contract"
+      "community_name": "Pitch Deck",
+      "id": "authorization_settlement_boundary"
     },
     {
       "label": "Claim Only What Is Verified",
@@ -8154,8 +8539,8 @@
       "rationale": "Mocked components are named as mocked, unbuilt things stay unclaimed, and the gap between proven and production-ready is stated rather than blurred.",
       "community": 7,
       "norm_label": "claim only what is verified",
-      "id": "claim_only_verified",
-      "community_name": "Architecture & Contract"
+      "community_name": "Architecture & Contract",
+      "id": "claim_only_verified"
     },
     {
       "label": "Contract is the Only Gate",
@@ -8169,8 +8554,8 @@
       "rationale": "Enforcement never moves off-chain for convenience. Any client-side check that duplicates the contract's logic conceals whether the real gate works. The frontend and agent are clients of the contract, never reimplementers of enforcement.",
       "community": 7,
       "norm_label": "contract is the only gate",
-      "id": "contract_is_only_gate",
-      "community_name": "Architecture & Contract"
+      "community_name": "Architecture & Contract",
+      "id": "contract_is_only_gate"
     },
     {
       "label": "Fiat Stays Off-Chain",
@@ -8184,8 +8569,8 @@
       "rationale": "Fiat settlement depends on licensed banking partners, card networks, custody, KYC, AML, disputes, refunds, and jurisdiction-specific compliance. Putting those operations into this MVP would obscure the core authorization proof.",
       "community": 7,
       "norm_label": "fiat stays off-chain",
-      "id": "fiat_stays_offchain",
-      "community_name": "Architecture & Contract"
+      "community_name": "Architecture & Contract",
+      "id": "fiat_stays_offchain"
     },
     {
       "label": "No Client-Side Policy Enforcement",
@@ -8199,8 +8584,8 @@
       "rationale": "Policy enforcement happens on-chain only. No client-side allowlist, cap, or expiry check anywhere in the frontend or the agent's tools. Duplicating the gate off-chain would relocate trust to the exact layer the product argues against.",
       "community": 7,
       "norm_label": "no client-side policy enforcement",
-      "id": "no_client_side_enforcement",
-      "community_name": "Architecture & Contract"
+      "community_name": "Architecture & Contract",
+      "id": "no_client_side_enforcement"
     },
     {
       "label": "viem (Blockchain Client)",
@@ -8213,11 +8598,45 @@
       "contributor": null,
       "community": 70,
       "norm_label": "viem (blockchain client)",
-      "id": "viem",
-      "community_name": "Community 70"
+      "community_name": "Community 70",
+      "id": "viem"
     }
   ],
   "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "opencode_opencode",
+      "target": "opencode_opencode_plugin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "opencode_opencode",
+      "target": "opencode_opencode_schema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "extends",
+      "confidence": "EXTRACTED",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "context": "import",
+      "_origin": "ast",
+      "source": "opencode_opencode_plugin",
+      "target": "ref_opencode_plugins_graphify_js",
+      "confidence_score": 1.0
+    },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
@@ -8585,11 +9004,22 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/agent/src/agent.ts",
-      "source_location": "L23",
+      "source_location": "L60",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_agent_src_agent",
       "target": "apps_agent_src_agent_createagentsession",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/agent/src/agent.ts",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_agent_src_agent",
+      "target": "apps_agent_src_agent_createanthropicclient",
       "confidence_score": 1.0
     },
     {
@@ -8752,7 +9182,7 @@
       "context": "collection",
       "confidence": "INFERRED",
       "source_file": "apps/agent/src/agent.ts",
-      "source_location": "L57",
+      "source_location": "L94",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_agent_src_agent_createagentsession",
@@ -8763,13 +9193,25 @@
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
       "source_file": "apps/agent/src/agent.ts",
-      "source_location": "L24",
+      "source_location": "L61",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_agent_src_agent_createagentsession",
-      "target": "apps_agent_src_env_requiredenv"
+      "target": "apps_agent_src_agent_createanthropicclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/agent/src/agent.ts",
+      "source_location": "L55",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_agent_src_agent_createanthropicclient",
+      "target": "apps_agent_src_env_requiredenv",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -8777,7 +9219,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/agent/src/agent.ts",
-      "source_location": "L26",
+      "source_location": "L63",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_agent_src_agent_createagentsession",
@@ -9849,7 +10291,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/backend/src/config.ts",
-      "source_location": "L48",
+      "source_location": "L49",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_backend_src_config",
@@ -9860,7 +10302,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/backend/src/config.ts",
-      "source_location": "L23",
+      "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_backend_src_config",
@@ -9871,7 +10313,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/backend/src/config.ts",
-      "source_location": "L39",
+      "source_location": "L40",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_backend_src_config",
@@ -9882,7 +10324,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/backend/src/config.ts",
-      "source_location": "L29",
+      "source_location": "L30",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_backend_src_config",
@@ -9893,7 +10335,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/backend/src/config.ts",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_backend_src_config",
@@ -9941,7 +10383,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "apps/backend/src/config.ts",
-      "source_location": "L55",
+      "source_location": "L56",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_backend_src_config_loadconfig",
@@ -9953,7 +10395,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "apps/backend/src/config.ts",
-      "source_location": "L57",
+      "source_location": "L58",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_backend_src_config_loadconfig",
@@ -9965,7 +10407,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "apps/backend/src/config.ts",
-      "source_location": "L58",
+      "source_location": "L59",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_backend_src_config_loadconfig",
@@ -9977,7 +10419,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "apps/backend/src/config.ts",
-      "source_location": "L61",
+      "source_location": "L63",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_backend_src_config_loadconfig",
@@ -10117,7 +10559,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "apps/backend/src/listener.ts",
-      "source_location": "L151",
+      "source_location": "L154",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_backend_src_listener_runlistener",
@@ -10634,7 +11076,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/demo-runner/src/demo.ts",
-      "source_location": "L79",
+      "source_location": "L83",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_demo_runner_src_demo",
@@ -10645,7 +11087,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/demo-runner/src/demo.ts",
-      "source_location": "L70",
+      "source_location": "L74",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_demo_runner_src_demo",
@@ -10667,7 +11109,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/demo-runner/src/demo.ts",
-      "source_location": "L88",
+      "source_location": "L92",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_demo_runner_src_demo",
@@ -10708,6 +11150,17 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/demo-runner/src/demo.ts",
+      "source_location": "L70",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_demo_runner_src_demo",
+      "target": "apps_demo_runner_src_demo_sleep",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -10724,7 +11177,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "apps/demo-runner/src/demo.ts",
-      "source_location": "L89",
+      "source_location": "L93",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_demo_runner_src_demo_main",
@@ -10748,7 +11201,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "apps/demo-runner/src/demo.ts",
-      "source_location": "L93",
+      "source_location": "L97",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_demo_runner_src_demo_main",
@@ -10760,7 +11213,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "apps/demo-runner/src/demo.ts",
-      "source_location": "L90",
+      "source_location": "L94",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_demo_runner_src_demo_main",
@@ -10772,7 +11225,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "apps/demo-runner/src/demo.ts",
-      "source_location": "L96",
+      "source_location": "L100",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_demo_runner_src_demo_main",
@@ -10784,7 +11237,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "apps/demo-runner/src/demo.ts",
-      "source_location": "L98",
+      "source_location": "L102",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_demo_runner_src_demo_main",
@@ -11188,8 +11641,195 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/agent.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_agent",
+      "target": "apps_telegram_bot_src_agent_agentintent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/agent.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_agent",
+      "target": "apps_telegram_bot_src_agent_normalize",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/agent.ts",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_agent",
+      "target": "apps_telegram_bot_src_agent_parseagentintent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/agent.ts",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_agent",
+      "target": "apps_telegram_bot_src_agent_parseamount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/agent.ts",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_agent",
+      "target": "apps_telegram_bot_src_agent_parsenumber",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/agent.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_agent",
+      "target": "apps_telegram_bot_src_merchants",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/agent.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_agent",
+      "target": "apps_telegram_bot_src_merchants_merchant",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/agent.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_agent",
+      "target": "apps_telegram_bot_src_merchants_merchantdirectory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/agent.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_agent",
+      "target": "apps_telegram_bot_src_merchants_resolvemerchant",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "apps/telegram-bot/src/bot.ts",
-      "source_location": "L22",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_bot",
+      "target": "apps_telegram_bot_src_agent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/agent.ts",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_agent_parseagentintent",
+      "target": "apps_telegram_bot_src_agent_normalize",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/agent.ts",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_agent_parseamount",
+      "target": "apps_telegram_bot_src_agent_parsenumber",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/agent.ts",
+      "source_location": "L76",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_agent_parseagentintent",
+      "target": "apps_telegram_bot_src_agent_parseamount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/telegram-bot/src/agent.ts",
+      "source_location": "L75",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_agent_parseagentintent",
+      "target": "apps_telegram_bot_src_merchants_resolvemerchant"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/bot.ts",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_bot",
+      "target": "apps_telegram_bot_src_agent_parseagentintent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/bot.ts",
+      "source_location": "L440",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_bot_main",
+      "target": "apps_telegram_bot_src_agent_parseagentintent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/bot.ts",
+      "source_location": "L30",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_telegram_bot_src_bot",
@@ -11200,7 +11840,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/telegram-bot/src/bot.ts",
-      "source_location": "L70",
+      "source_location": "L68",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_telegram_bot_src_bot",
@@ -11211,18 +11851,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/telegram-bot/src/bot.ts",
-      "source_location": "L60",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "apps_telegram_bot_src_bot",
-      "target": "apps_telegram_bot_src_bot_customerrorname",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "apps/telegram-bot/src/bot.ts",
-      "source_location": "L43",
+      "source_location": "L51",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_telegram_bot_src_bot",
@@ -11233,7 +11862,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/telegram-bot/src/bot.ts",
-      "source_location": "L75",
+      "source_location": "L73",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_telegram_bot_src_bot",
@@ -11244,7 +11873,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/telegram-bot/src/bot.ts",
-      "source_location": "L27",
+      "source_location": "L35",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_telegram_bot_src_bot",
@@ -11255,7 +11884,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/telegram-bot/src/bot.ts",
-      "source_location": "L35",
+      "source_location": "L43",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_telegram_bot_src_bot",
@@ -11266,7 +11895,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/telegram-bot/src/bot.ts",
-      "source_location": "L29",
+      "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_telegram_bot_src_bot",
@@ -11274,11 +11903,143 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/bot.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_bot",
+      "target": "apps_telegram_bot_src_merchants",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/bot.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_bot",
+      "target": "apps_telegram_bot_src_merchants_createmerchantdirectory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/bot.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_bot",
+      "target": "apps_telegram_bot_src_merchants_merchant",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/bot.ts",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_bot",
+      "target": "apps_telegram_bot_src_payments",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/bot.ts",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_bot",
+      "target": "apps_telegram_bot_src_payments_customerrorname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/bot.ts",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_bot",
+      "target": "apps_telegram_bot_src_payments_leashpaymentclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/bot.ts",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_bot",
+      "target": "apps_telegram_bot_src_payments_paymentoutcome",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/bot.ts",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_bot",
+      "target": "apps_telegram_bot_src_payments_paymentreference",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/bot.ts",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_bot",
+      "target": "apps_telegram_bot_src_simulatedbrowsing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/bot.ts",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_bot",
+      "target": "apps_telegram_bot_src_simulatedbrowsing_findcheapburger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/bot.ts",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_bot",
+      "target": "apps_telegram_bot_src_simulatedbrowsing_openburgerpromo",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "apps/telegram-bot/src/bot.ts",
-      "source_location": "L76",
+      "source_location": "L74",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_telegram_bot_src_bot_main",
@@ -11290,7 +12051,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "apps/telegram-bot/src/bot.ts",
-      "source_location": "L36",
+      "source_location": "L44",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_telegram_bot_src_bot_privatekey",
@@ -11302,7 +12063,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "apps/telegram-bot/src/bot.ts",
-      "source_location": "L81",
+      "source_location": "L83",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_telegram_bot_src_bot_main",
@@ -11314,7 +12075,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "apps/telegram-bot/src/bot.ts",
-      "source_location": "L84",
+      "source_location": "L86",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_telegram_bot_src_bot_main",
@@ -11326,11 +12087,330 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "apps/telegram-bot/src/bot.ts",
-      "source_location": "L213",
+      "source_location": "L307",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_telegram_bot_src_bot_main",
       "target": "apps_telegram_bot_src_bot_chatid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/bot.ts",
+      "source_location": "L77",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_bot_main",
+      "target": "apps_telegram_bot_src_merchants_createmerchantdirectory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/bot.ts",
+      "source_location": "L147",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_bot_main",
+      "target": "apps_telegram_bot_src_payments_customerrorname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/bot.ts",
+      "source_location": "L135",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_bot_main",
+      "target": "apps_telegram_bot_src_payments_paymentreference",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/bot.ts",
+      "source_location": "L454",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_bot_main",
+      "target": "apps_telegram_bot_src_simulatedbrowsing_findcheapburger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/bot.ts",
+      "source_location": "L467",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_bot_main",
+      "target": "apps_telegram_bot_src_simulatedbrowsing_openburgerpromo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/merchants.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_merchants",
+      "target": "apps_telegram_bot_src_merchants_createmerchantdirectory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/merchants.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_merchants",
+      "target": "apps_telegram_bot_src_merchants_merchant",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/merchants.ts",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_merchants",
+      "target": "apps_telegram_bot_src_merchants_merchantdirectory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/merchants.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_merchants",
+      "target": "apps_telegram_bot_src_merchants_merchantid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/merchants.ts",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_merchants",
+      "target": "apps_telegram_bot_src_merchants_resolvemerchant",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/simulatedBrowsing.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_simulatedbrowsing",
+      "target": "apps_telegram_bot_src_merchants",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/simulatedBrowsing.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_simulatedbrowsing",
+      "target": "apps_telegram_bot_src_merchants_merchantdirectory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/simulatedBrowsing.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_simulatedbrowsing_simulatedoffer",
+      "target": "apps_telegram_bot_src_merchants_merchantdirectory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_payments",
+      "target": "apps_telegram_bot_src_payments_customerrorname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L78",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_payments",
+      "target": "apps_telegram_bot_src_payments_leashpaymentclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_payments",
+      "target": "apps_telegram_bot_src_payments_paymentclientoptions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_payments",
+      "target": "apps_telegram_bot_src_payments_paymentclients",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_payments",
+      "target": "apps_telegram_bot_src_payments_paymentoutcome",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L65",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_payments",
+      "target": "apps_telegram_bot_src_payments_paymentreference",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_payments",
+      "target": "apps_telegram_bot_src_payments_userfacingerrorname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L59",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_payments_userfacingerrorname",
+      "target": "apps_telegram_bot_src_payments_customerrorname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L103",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_payments_leashpaymentclient_authorizepayment",
+      "target": "apps_telegram_bot_src_payments_userfacingerrorname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L91",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_payments_leashpaymentclient_authorizepayment",
+      "target": "apps_telegram_bot_src_payments_paymentreference",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L85",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_payments_leashpaymentclient",
+      "target": "apps_telegram_bot_src_payments_leashpaymentclient_authorizepayment",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/payments.ts",
+      "source_location": "L81",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_payments_leashpaymentclient",
+      "target": "apps_telegram_bot_src_payments_leashpaymentclient_constructor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/simulatedBrowsing.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_simulatedbrowsing",
+      "target": "apps_telegram_bot_src_simulatedbrowsing_findcheapburger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/simulatedBrowsing.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_simulatedbrowsing",
+      "target": "apps_telegram_bot_src_simulatedbrowsing_openburgerpromo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/telegram-bot/src/simulatedBrowsing.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_telegram_bot_src_simulatedbrowsing",
+      "target": "apps_telegram_bot_src_simulatedbrowsing_simulatedoffer",
       "confidence_score": 1.0
     },
     {
@@ -12046,7 +13126,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/web/src/app/agent/page.tsx",
-      "source_location": "L191",
+      "source_location": "L212",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_web_src_app_agent_page",
@@ -12068,7 +13148,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/web/src/app/agent/page.tsx",
-      "source_location": "L163",
+      "source_location": "L184",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_web_src_app_agent_page",
@@ -12264,6 +13344,18 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_web_src_app_agent_page",
+      "target": "apps_web_src_lib_leash_error_copy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web/src/app/agent/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_web_src_app_agent_page",
       "target": "apps_web_src_lib_leash_shorthex",
       "confidence_score": 1.0
     },
@@ -12273,7 +13365,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/src/app/agent/page.tsx",
-      "source_location": "L218",
+      "source_location": "L251",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_web_src_app_agent_page_stepview",
@@ -12285,7 +13377,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/src/app/agent/page.tsx",
-      "source_location": "L223",
+      "source_location": "L256",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_web_src_app_agent_page_stepview",
@@ -12295,18 +13387,29 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/web/src/app/api/agent/route.ts",
-      "source_location": "L256",
+      "source_location": "L97",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_web_src_app_api_agent_route",
-      "target": "apps_web_src_app_api_agent_route_json",
+      "target": "apps_web_src_app_api_agent_route_createanthropicclient",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/web/src/app/api/agent/route.ts",
-      "source_location": "L81",
+      "source_location": "L314",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_web_src_app_api_agent_route",
+      "target": "apps_web_src_app_api_agent_route_errorresponse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web/src/app/api/agent/route.ts",
+      "source_location": "L121",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_web_src_app_api_agent_route",
@@ -12322,6 +13425,17 @@
       "_origin": "ast",
       "source": "apps_web_src_app_api_agent_route",
       "target": "apps_web_src_app_api_agent_route_step",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web/src/app/api/agent/route.ts",
+      "source_location": "L81",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_web_src_app_api_agent_route",
+      "target": "apps_web_src_app_api_agent_route_streamevent",
       "confidence_score": 1.0
     },
     {
@@ -12424,11 +13538,23 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "apps/web/src/app/api/agent/route.ts",
-      "source_location": "L85",
+      "source_location": "L122",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_web_src_app_api_agent_route_post",
-      "target": "apps_web_src_app_api_agent_route_json",
+      "target": "apps_web_src_app_api_agent_route_createanthropicclient",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web/src/app/api/agent/route.ts",
+      "source_location": "L126",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_web_src_app_api_agent_route_post",
+      "target": "apps_web_src_app_api_agent_route_errorresponse",
       "confidence_score": 1.0
     },
     {
@@ -13436,7 +14562,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/web/src/app/page.tsx",
-      "source_location": "L12",
+      "source_location": "L10",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_web_src_app_page",
@@ -13465,6 +14591,30 @@
       "_origin": "ast",
       "source": "apps_web_src_app_page",
       "target": "apps_web_src_components_attempt_ledger_attemptledger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web/src/app/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_web_src_app_page",
+      "target": "apps_web_src_components_eye_image",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web/src/app/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_web_src_app_page",
+      "target": "apps_web_src_components_eye_image_eyeimage",
       "confidence_score": 1.0
     },
     {
@@ -13524,31 +14674,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_web_src_app_page",
-      "target": "apps_web_src_components_primitives_field",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "apps/web/src/app/page.tsx",
-      "source_location": "L2",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "apps_web_src_app_page",
       "target": "apps_web_src_components_primitives_iconarrow",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "apps/web/src/app/page.tsx",
-      "source_location": "L2",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "apps_web_src_app_page",
-      "target": "apps_web_src_components_primitives_meter",
       "confidence_score": 1.0
     },
     {
@@ -13604,7 +14730,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "apps/web/src/app/page.tsx",
-      "source_location": "L7",
+      "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_web_src_app_page",
@@ -13616,7 +14742,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "apps/web/src/app/page.tsx",
-      "source_location": "L7",
+      "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_web_src_app_page",
@@ -13628,7 +14754,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "apps/web/src/app/page.tsx",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_web_src_app_page",
@@ -13640,7 +14766,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "apps/web/src/app/page.tsx",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_web_src_app_page",
@@ -13652,36 +14778,12 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "apps/web/src/app/page.tsx",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_web_src_app_page",
       "target": "apps_web_src_lib_leash_error_copy",
       "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "apps/web/src/app/page.tsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "apps_web_src_app_page",
-      "target": "apps_web_src_lib_leash_formatrupiah",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "apps/web/src/app/page.tsx",
-      "source_location": "L92",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "apps_web_src_app_page_landingpage",
-      "target": "apps_web_src_lib_leash_formatrupiah"
     },
     {
       "relation": "contains",
@@ -13822,6 +14924,17 @@
       "_origin": "ast",
       "source": "apps_web_src_components_attempt_ledger_attemptledger",
       "target": "apps_web_src_lib_leash_formatrupiah"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/web/src/components/eye-image.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "apps_web_src_components_eye_image",
+      "target": "apps_web_src_components_eye_image_eyeimage",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -18487,7 +19600,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L174",
+      "source_location": "L183",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme_leash",
@@ -18520,7 +19633,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L199",
+      "source_location": "L218",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme_leash",
@@ -18531,7 +19644,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L208",
+      "source_location": "L227",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme_leash",
@@ -18542,7 +19655,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L187",
+      "source_location": "L206",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme_leash",
@@ -18564,7 +19677,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L180",
+      "source_location": "L199",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme_leash",
@@ -20323,5 +21436,5 @@
       "source_file": "LEASH_EXECUTION_PLAN.md"
     }
   ],
-  "built_at_commit": "2b514807d7fac6029941ec4d1fa11ebeda67e9b2"
+  "built_at_commit": "be65740912f5b91c2ce0532db34d58288e6b80c1"
 }
