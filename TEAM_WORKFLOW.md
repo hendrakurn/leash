@@ -2,7 +2,7 @@
 
 How the two of us build this together: who owns what, how we avoid stepping on each other, and what is actually left to do.
 
-This document is the coordination layer. It does not replace `LEASH_EXECUTION_PLAN.md` or `LEASH_IMPLEMENTATION_PLAN.md` — those define the product. This defines the *process*.
+This document is the coordination layer, not the product spec — see `docs/PRD_Leash_EN.md` and `docs/ARCHITECTURE.md` for that. This defines the *process*.
 
 ---
 
@@ -23,7 +23,7 @@ The enforcement layer is done and verified. `docs/VERIFICATION.md` records a pas
 | **AI agent harness** | Built — `apps/agent`, real Claude tool-calling agent; injection scenario written, transcript not yet captured live |
 | TS test coverage | Only `mockBaas.test.ts` |
 
-The two plan documents deliberately gated the UI and the AI parsing behind "prove the enforcement layer first" (`LEASH_EXECUTION_PLAN.md:56`, `:1264`; `:951`). **That gate is now passed.** Both are unblocked.
+The original build plan deliberately gated the UI and the AI parsing behind "prove the enforcement layer first." **That gate is now passed.** Both are unblocked.
 
 ---
 
@@ -137,7 +137,7 @@ Today the "AI agent" is fiction. `apps/demo-runner/src/demo.ts:261` prints `[3] 
 await broadcastExpectedRevert(evilStore, 50_000n, invalidTargetRef, "TargetNotAllowed");
 ```
 
-There is no prompt and no injection. `LEASH_EXECUTION_PLAN.md:1034` and `docs/DEMO_SCRIPT.md:19` both say **"Simulate prompt injection"** — the docs are honest about it, but a judge who opens the file sees a hardcoded address, not an attack.
+There is no prompt and no injection. `docs/DEMO_SCRIPT.md:19` says **"Simulate prompt injection"** — the docs are honest about it, but a judge who opens the file sees a hardcoded address, not an attack.
 
 Building a real agent turns the central claim from *asserted* into *demonstrated*: an actual LLM, actually manipulated by injected text, actually attempting to pay the wrong merchant, actually stopped by the contract.
 

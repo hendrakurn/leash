@@ -4,9 +4,15 @@ Leash is a programmable spending firewall for AI agents.
 
 > We do not put money on-chain. We put spending authority on-chain.
 
+**NTU InnovateX Hackathon 2026 — Track 2: Web3 Applications, AI Agents and Real-World Use Cases**
+
 ## Problem
 
-Payment-capable AI agents can be manipulated into paying the wrong merchant, overspending, using an unbounded session key, or continuing after the user revokes permission.
+An AI agent that can pay is an agent that reads the outside world — merchant pages, search results, messages. Any of those surfaces can carry a foreign instruction, and an LLM has no hard boundary between "data I am reading" and "commands I am following." No attack is even required: agents also just misread amounts, pick the wrong merchant, or repeat an order.
+
+Today the only defense is a spending limit enforced by an `if` statement on the agent operator's own server, with the approval record sitting in that same operator's database. When something goes wrong, the only evidence the user ever agreed lives with one of the parties to the dispute. That is not evidence — it is a claim.
+
+Every existing effort in this space — x402, ACP, Agentcard, Coinbase Agentic Wallets — answers *how does an agent pay* or *who is this agent*. Almost nothing answers the question that actually loses people money: **is this agent allowed to do this, who authorized it, and how do you prove it after the fact?**
 
 ## Solution
 
@@ -26,23 +32,23 @@ The mandate and authorization trail live on an independently verifiable executio
 
 This MVP does not make the fiat backend trustless. It proves a protocol in which a conforming backend settles only after confirmed on-chain authorization.
 
+## What This Does and Does Not Solve
+
+Leash does not solve prompt injection — that lives in the model's reasoning layer, not the ledger. No contract can make an LLM stop believing a false instruction. What it provides is containment: the blast radius of a hijacked or hallucinating agent is bounded exactly by the mandate a human actually approved, and every attempt beyond it is permanently recorded on-chain.
+
+The contract also enforces hard constraints, not semantic correctness. It checks which session key, which target, how much, until when — not whether the purchase matches what the user meant. A mandate scoped to "Rock Burger, max Rp60,000" cannot be redirected to an unlisted merchant or exceed its cap, but it also cannot tell a wanted order from an unwanted one at the same merchant under the same cap. Tight caps and short expiries are a mitigation, not a solved problem.
+
 ## Architecture
 
-~~~text
-User
-  |
-  v
-Spending Mandate
-  |
-  v
-AI Agent / Session Key
-  |
-  v
-Leash Smart Contract
-  |
-  +--> valid --> AuthorizationGranted --> Mock BaaS Settlement
-  |
-  +--> invalid --> revert --> no settlement
+~~~mermaid
+flowchart TD
+    User[User] --> Mandate[Spending Mandate<br/>allowlist · cap · expiry · revocation]
+    Mandate --> Agent[AI Agent / Session Key]
+    Agent --> Contract{Leash Smart Contract}
+    Contract -->|valid| Granted[AuthorizationGranted]
+    Granted --> Settlement[Mock BaaS Settlement]
+    Contract -->|invalid| Revert[revert]
+    Revert --> NoSettlement[no settlement]
 ~~~
 
 ## Default Demo
@@ -217,13 +223,20 @@ See docs/DEPLOYMENT.md for deployment and verification details.
 
 ## Documentation
 
-- docs/PRD_Leash_ID.md
-- docs/ARCHITECTURE.md
+- docs/PRD_Leash_EN.md — full product narrative, problem framing, and pitch
+- docs/ARCHITECTURE.md — system flow, trust model, production roadmap
 - docs/DEMO_SCRIPT.md
 - docs/RISK_AND_LIMITATIONS.md
 - docs/DEPLOYMENT.md
 - docs/VERIFICATION.md
+- docs/deck.md — Marp slide deck
 
 ## Hackathon Alignment
 
-Leash targets Track 1: Payments and Financial Infrastructure. It demonstrates programmable payment authorization, policy enforcement, auditable delegation, and a strict authorization-to-fiat-settlement boundary.
+Leash targets **Track 2: Web3 Applications, AI Agents and Real-World Use Cases**.
+
+- **Technical quality** — the enforcement core is real, not mocked: a Solidity contract, 26 passing Foundry tests, and real reverted EVM receipts for every rejection.
+- **Innovation** — most agentic-payments work answers *how an agent pays* or *who the agent is*. Leash answers *what the agent is allowed to do, and who can prove it*, and separates that authority from settlement.
+- **Real-world impact** — the core claim (prompt injection and hallucination are payments problems, not just AI problems) generalizes past food delivery to any agent-initiated spend: procurement, treasury, subscriptions.
+- **Demo** — a manipulated agent genuinely attempts a redirected payment (`apps/agent/src/scenario.ts`); the contract rejects it live, with a public, checkable revert.
+- **Track relevance** — an agentic workflow with an intelligent on-chain enforcement layer, addressing a real-world need (agent spending abuse) that existing payment infrastructure does not cover.

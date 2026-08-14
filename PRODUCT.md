@@ -18,7 +18,7 @@ A second new app, `apps/agent`, is a Node service rather than a UI: TypeScript E
 
 The web surface is built as the real product for this person. Hackathon judges evaluate by stepping into that role and using it, not through a separate demo mode or evaluator view.
 
-Secondary audiences named in `docs/PRD_Leash_ID.md`, not the design target: payments and BaaS teams needing verifiable authorization evidence, and Track 1 hackathon reviewers.
+Secondary audiences named in `docs/PRD_Leash_EN.md`, not the design target: payments and BaaS teams needing verifiable authorization evidence, and Track 2 hackathon reviewers.
 
 ## Product Purpose
 
@@ -105,7 +105,7 @@ Two constraints attach to this reference:
 
 - **Verified local run** — `docs/VERIFICATION.md`: 25/25 contract tests, 5/5 backend tests, full end-to-end `PASS`, with seven local transaction hashes covering deploy, register, valid payment, three reverted attacks, and revoke. Explicitly labeled reproducible Anvil evidence, not Base Sepolia evidence.
 - **Demo script** — `docs/DEMO_SCRIPT.md`, a 15-step sequence with an evidence checklist.
-- **Architecture and risk docs** — `docs/ARCHITECTURE.md`, `docs/RISK_AND_LIMITATIONS.md`, `docs/PRD_Leash_ID.md` (Indonesian).
+- **Architecture, risk, and product docs** — `docs/ARCHITECTURE.md`, `docs/RISK_AND_LIMITATIONS.md`, `docs/PRD_Leash_EN.md`.
 - **Team** — two people. Contracts and backend are owned by one; `apps/web` and `apps/agent` by the other. Lanes and workflow in `TEAM_WORKFLOW.md`.
 
 **Absences future work must not fabricate:** no public testnet deployment, no real users, no testimonials, no benchmarks, no pricing, no partner or BaaS relationship, no security audit, no press. The repository's existing standard is to record an absence rather than approximate it; that standard holds.
@@ -120,4 +120,4 @@ Two constraints attach to this reference:
 
 ## Accessibility & Inclusion
 
-Interface language is English; `docs/PRD_Leash_ID.md` and `docs/RISK_AND_LIMITATIONS.md` are written in Indonesian, and the demo denominates in Indonesian rupiah. No specific accessibility standard has been established as a requirement.
+Interface and documentation language is English. The Telegram bot additionally accepts Indonesian natural-language chat (`belikan burger 52 ribu`, `cek status`), and the demo denominates amounts in Indonesian rupiah. No specific accessibility standard has been established as a requirement.
