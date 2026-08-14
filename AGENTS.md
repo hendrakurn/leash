@@ -20,6 +20,7 @@ Leash is a programmable spending firewall for AI agents: a Solidity mandate cont
 - `contracts/` — Foundry project. `src/LeashMandate.sol` is the entire enforcement surface (register/authorize/revoke). `test/LeashMandate.t.sol` is the security test suite. `script/DeployLeashMandate.s.sol` deploys it.
 - `apps/web/` — Next.js 15 (App Router, React 19) frontend. Mandate creation/inspection UI, an on-chain attempt feed, and a chat-driven agent demo.
 - `apps/backend/` — Node/tsx service that polls confirmed `AuthorizationGranted` logs and drives a mock BaaS settlement (no real money moves, no HTTP settlement endpoint — it only reacts to decoded chain events).
+- `apps/agent/` — Standalone Node/tsx CLI agent harness (`@anthropic-ai/sdk` tool-calling). `npm run agent` sends a single message against an existing mandate; `npm run scenario` registers its own mandate and runs a two-turn transcript including a real prompt-injection attempt. Separate from `apps/web`'s chat agent — same no-app-layer-validation pattern.
 - `apps/demo-runner/` — Standalone script that deploys, runs real successful/reverted transactions against a local/testnet chain, and asserts backend settlement counts.
 - `apps/telegram-bot/` — grammy-based Telegram bot exposing mandate/attack/status commands against the same contract.
 - `scripts/run-local-demo.sh` — one-shot end-to-end demo: spins up its own Anvil, deploys, runs the attack/success scenarios, replays through the backend, asserts exactly one settlement, tears down.
@@ -83,4 +84,4 @@ Running a single Foundry test: `forge test --match-test <testName> -vvv` (from `
 
 **Currency display is Indonesian rupiah only** (`formatRupiah` in `apps/web/src/lib/leash.ts`); the contract itself is currency-agnostic — amounts are just `uint256`.
 
-Everything in `docs/` and the root-level `*_PLAN.md` / `*_PROMPT.md` files are planning/spec documents, not source of truth for current code — prefer reading the actual `apps/*/src` and `contracts/src` over them when they might have drifted.
+Everything in `docs/` is a planning/spec document, not source of truth for current code — prefer reading the actual `apps/*/src` and `contracts/src` over it when it might have drifted. `docs/PRD_Leash_EN.md` in particular describes an aspirational ERC-4337/embedded-wallet architecture that was never built; the shipped contract is the plain `registerMandate`/`authorizePayment`/`revokeMandate` design above.

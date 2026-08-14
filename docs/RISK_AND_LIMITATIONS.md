@@ -1,33 +1,32 @@
 # Risk and Limitations
 
-Dokumen sumber lengkap tetap tersedia di ../KELEMAHAN_MODEL_B_AI_AGENT_FIAT_AUTHORIZATION.md. Ringkasan berikut adalah batas MVP yang wajib disampaikan.
+MVP boundaries that must be disclosed alongside any demo or pitch.
 
 ## Trust Boundary
 
-Leash memberi authorization policy dan audit trail yang dapat diverifikasi. Backend fiat tetap dipercaya untuk mengikuti protokol. MVP tidak mencegah backend jahat memanggil provider pembayaran secara langsung di luar sistem.
+Leash provides an authorization policy and an independently verifiable audit trail. The fiat backend is still trusted to follow the protocol. This MVP does not stop a malicious backend from calling the payment provider directly, outside the system.
 
 ## Mocked Components
 
 - fiat settlement;
-- BaaS dan virtual-card issuance;
+- BaaS and virtual-card issuance;
 - merchant identity verification.
 
-`apps/agent` sekarang berisi agen Claude nyata (tool-calling, bukan skrip), jadi natural-language AI interpretation tidak lagi mocked — lihat docs/ARCHITECTURE.md.
+`apps/agent` runs a real Claude tool-calling agent, not a script, so natural-language interpretation is no longer mocked — see `docs/ARCHITECTURE.md`.
 
 ## Limitations
 
-- Ini bukan sistem pembayaran production.
-- Prompt injection dibatasi dampaknya, bukan diselesaikan sepenuhnya. `apps/agent/src/scenario.ts` mendemonstrasikan agen asli yang benar-benar berhasil dimanipulasi (bukan skrip hardcoded) dan tetap ditolak oleh kontrak.
-- Agent masih dapat membuat keputusan buruk di dalam scope mandat.
-- `pay_merchant` sengaja tidak melakukan validasi apa pun sebelum memanggil kontrak — ini bukan bug, ini poin produknya. Agen boleh sepenuhnya termanipulasi; kontrak adalah satu-satunya gerbang.
-- `ANTHROPIC_API_KEY` adalah kredensial baru yang perlu diamankan, terpisah dari private key dan session key on-chain.
-- Transkrip demo agen bergantung pada respons LLM yang non-deterministik — kata-kata persis dapat bervariasi antar-run meski hasil on-chain (revert/authorized) tetap konsisten.
-- Private key dan session key tetap harus diamankan.
-- Payment reference dan event idempotency masih process-local.
-- Allowlist merchant disederhanakan menjadi address.
-- Amount on-chain tidak menyimpan currency metadata.
-- KYC, AML, compliance, dispute, refund, dan chargeback belum ada.
-- Gas abstraction, ERC-4337, privacy, dan multichain belum ada.
-- Base Sepolia adalah testnet.
-- AuthorizationGranted adalah bukti otorisasi, bukan finalitas settlement fiat.
-
+- Not a production payment system.
+- Prompt injection is contained, not solved. `apps/agent/src/scenario.ts` demonstrates a real agent that is genuinely manipulated (not a hardcoded stand-in) and is still stopped by the contract.
+- The agent can still make bad decisions inside an allowed scope.
+- `pay_merchant` deliberately performs no validation before calling the contract — this is the product's point, not a bug. The agent may be fully manipulated; the contract is the only gate.
+- `ANTHROPIC_API_KEY` is a new credential that needs securing, separate from the private key and the on-chain session key.
+- Agent demo transcripts depend on non-deterministic LLM responses — exact wording can vary between runs even though the on-chain outcome (revert/authorized) stays consistent.
+- Private keys and session keys still require custody.
+- Payment reference and event idempotency are process-local.
+- Merchant allowlisting is simplified to an address.
+- On-chain amounts store no currency metadata.
+- No KYC, AML, compliance, disputes, refunds, or chargebacks.
+- No gas abstraction, ERC-4337, privacy, or multichain.
+- Base Sepolia is a testnet.
+- `AuthorizationGranted` is authorization evidence, not fiat settlement finality.
