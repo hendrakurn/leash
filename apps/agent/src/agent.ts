@@ -20,8 +20,22 @@ export interface AgentSession {
   send(message: string): Promise<Step[]>;
 }
 
+/**
+ * DeepSeek ships an Anthropic-wire-compatible endpoint (api.deepseek.com/anthropic) that
+ * accepts this same client unmodified — tool_use/tool_result blocks, betaZodTool, toolRunner
+ * all work against it. If DEEPSEEK_API_KEY is set, route there instead of Claude; this is a
+ * cost/testing toggle only, not a permanent switch — unset the var to go back to Claude.
+ */
+function createAnthropicClient(): Anthropic {
+  const deepseekKey = process.env.DEEPSEEK_API_KEY?.trim();
+  if (deepseekKey) {
+    return new Anthropic({ apiKey: deepseekKey, baseURL: "https://api.deepseek.com/anthropic" });
+  }
+  return new Anthropic({ apiKey: requiredEnv("ANTHROPIC_API_KEY") });
+}
+
 export function createAgentSession(config: AgentConfig, mandateId: `0x${string}`): AgentSession {
-  const anthropic = new Anthropic({ apiKey: requiredEnv("ANTHROPIC_API_KEY") });
+  const anthropic = createAnthropicClient();
   const sink: ToolSink = { steps: [] };
   const tools = createTools(config, mandateId, sink);
   let messages: Anthropic.Beta.BetaMessageParam[] = [];
