@@ -17,15 +17,10 @@ import {
 } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 
-import { parseAgentIntent } from "./agent.js";
-import { createMerchantDirectory, type Merchant } from "./merchants.js";
-import {
-  customErrorName,
-  LeashPaymentClient,
-  paymentReference,
-  type PaymentOutcome,
-} from "./payments.js";
-import { findCheapBurger, openBurgerPromo } from "./simulatedBrowsing.js";
+import { createMerchantDirectory } from "./merchants.js";
+import { customErrorName, paymentReference } from "./payments.js";
+import { createLlmSession, type LlmSession } from "./llm-agent.js";
+import { formatStepsForTelegram } from "./telegram-format.js";
 
 interface ActiveMandate {
   readonly mandateId: Hex;
@@ -99,15 +94,8 @@ async function main(): Promise<void> {
     account: sessionAccount,
     transport: http(rpcUrl),
   });
-  const paymentClient = new LeashPaymentClient({
-    publicClient,
-    sessionWallet,
-    sessionAccount: sessionAccount.address,
-    contractAddress,
-    abi,
-    broadcastReverts,
-  });
   const activeMandates = new Map<number, ActiveMandate>();
+  const llmSessions = new Map<number, { session: LlmSession; mandateId: Hex }>();
   const bot = new Bot(token);
 
   function activeFor(ctx: Context): ActiveMandate {
@@ -154,7 +142,7 @@ async function main(): Promise<void> {
     }
 
     if (!broadcastReverts) {
-      return "REJECTED " + expectedError + "\nContract simulation reverted. No settlement eligible.";
+      return `❌ <b>Refused: ${expectedError}</b>\nContract simulation reverted. No settlement eligible.`;
     }
 
     const hash = await sessionWallet.writeContract({
@@ -177,100 +165,14 @@ async function main(): Promise<void> {
       throw new Error("Reverted attack produced AuthorizationGranted");
     }
     return (
-      "REJECTED " +
-      expectedError +
-      "\nTransaction: " +
-      hash +
-      "\nStatus: reverted\nAuthorizationGranted logs: 0"
+      `❌ <b>Refused: ${expectedError}</b>\n` +
+      `Tx: <code>${hash}</code> (reverted)\n` +
+      "AuthorizationGranted logs: 0"
     );
   }
 
   function formatAmount(amount: bigint): string {
     return "Rp" + new Intl.NumberFormat("id-ID").format(amount);
-  }
-
-  function paymentResultMessage(merchant: Merchant, outcome: PaymentOutcome): string {
-    if (outcome.status === "approved") {
-      return (
-        "SUCCESS AuthorizationGranted\n" +
-        "Target: " + merchant.name + " (" + merchant.address + ")\n" +
-        "Amount: " + formatAmount(outcome.amount) + "\n" +
-        "Transaction: " + outcome.transactionHash
-      );
-    }
-
-    const transaction = outcome.transactionHash
-      ? "\nTransaction: " + outcome.transactionHash + "\nStatus: reverted"
-      : "\nContract simulation reverted";
-    return (
-      "REJECTED " +
-      outcome.reason +
-      transaction +
-      "\nAuthorizationGranted logs: " +
-      outcome.authorizationLogs +
-      "\nNo settlement eligible."
-    );
-  }
-
-  async function naturalPayment(
-    ctx: Context,
-    merchant: Merchant,
-    amount: bigint,
-    label: string,
-  ): Promise<string> {
-    const active = activeFor(ctx);
-    const outcome = await paymentClient.authorizePayment(
-      active.mandateId,
-      merchant.address,
-      amount,
-      label,
-    );
-    return paymentResultMessage(merchant, outcome);
-  }
-
-  async function statusMessage(ctx: Context): Promise<string> {
-    const active = activeFor(ctx);
-    const state = await mandateState(active.mandateId);
-    const rockAllowed = await publicClient.readContract({
-      address: contractAddress,
-      abi,
-      functionName: "allowedTargets",
-      args: [active.mandateId, rockBurger],
-    });
-    const evilAllowed = await publicClient.readContract({
-      address: contractAddress,
-      abi,
-      functionName: "allowedTargets",
-      args: [active.mandateId, evilStore],
-    });
-    const remaining = state[2] - state[3];
-    return (
-      "Mandate status\n" +
-      "Owner: " + state[0] +
-      "\nSession key: " + state[1] +
-      "\nCap: " + formatAmount(state[2]) +
-      "\nSpent: " + formatAmount(state[3]) +
-      "\nRemaining: " + formatAmount(remaining) +
-      "\nExpiry: " + state[4] +
-      "\nRevoked: " + state[5] +
-      "\nRock Burger allowed: " + String(rockAllowed) +
-      "\nEvil Store allowed: " + String(evilAllowed) +
-      "\n\nTarget display is limited to targets known by this demo bot because mappings are not enumerable."
-    );
-  }
-
-  async function revokeMandate(ctx: Context): Promise<string> {
-    const active = activeFor(ctx);
-    const hash = await ownerWallet.writeContract({
-      chain: null,
-      address: contractAddress,
-      abi,
-      functionName: "revokeMandate",
-      args: [active.mandateId],
-    });
-    const receipt = await publicClient.waitForTransactionReceipt({ hash });
-    if (receipt.status !== "success") throw new Error("Revocation failed");
-    return "SUCCESS mandate revoked\nTransaction: " + hash;
   }
 
   function registerCommand(
@@ -289,10 +191,12 @@ async function main(): Promise<void> {
 
   registerCommand("start", async (ctx) => {
     await ctx.reply(
-      "Leash is a programmable spending firewall for AI agents.\n\n" +
-        "Commands:\n/mandate_food\n/normal\n/attack_target\n/attack_amount\n/revoke\n/status\n\n" +
-        "Natural chat: belikan burger 52 ribu | cek status | batalkan mandate\n" +
-        "Mock settlement is downstream of confirmed AuthorizationGranted events only.",
+      "<b>Leash</b> — a programmable spending firewall for AI agents.\n\n" +
+        "<b>Commands:</b>\n<code>/mandate_food</code> <code>/normal</code> <code>/attack_target</code> " +
+        "<code>/attack_amount</code> <code>/revoke</code> <code>/status</code>\n\n" +
+        "Or just chat naturally — free text goes to a real Claude agent that holds the session key.\n" +
+        "Mock settlement is downstream of confirmed <code>AuthorizationGranted</code> events only.",
+      { parse_mode: "HTML" },
     );
   });
 
@@ -319,10 +223,11 @@ async function main(): Promise<void> {
     if (receipt.status !== "success") throw new Error("Mandate registration failed");
     activeMandates.set(chatId(ctx), { mandateId, validUntil });
     await ctx.reply(
-      "Mandate created\nID: " +
-        mandateId +
-        "\nMerchant: Rock Burger\nCap: Rp60.000\nTransaction: " +
-        hash,
+      "✅ <b>Mandate created</b>\n" +
+        `ID: <code>${mandateId}</code>\n` +
+        "Merchant: Rock Burger · Cap: Rp60.000\n" +
+        `Tx: <code>${hash}</code>`,
+      { parse_mode: "HTML" },
     );
   });
 
@@ -351,8 +256,10 @@ async function main(): Promise<void> {
     });
     if (events.length !== 1) throw new Error("Authorization event missing");
     await ctx.reply(
-      "SUCCESS AuthorizationGranted\nTarget: Rock Burger\nAmount: Rp52.000\nTransaction: " +
-        hash,
+      "✅ <b>Authorized</b>\n" +
+        "Rock Burger · Rp52.000\n" +
+        `Tx: <code>${hash}</code>`,
+      { parse_mode: "HTML" },
     );
   });
 
@@ -364,7 +271,7 @@ async function main(): Promise<void> {
       "telegram-evil-store",
       "TargetNotAllowed",
     );
-    await ctx.reply(result);
+    await ctx.reply(result, { parse_mode: "HTML" });
   });
 
   registerCommand("attack_amount", async (ctx) => {
@@ -375,7 +282,7 @@ async function main(): Promise<void> {
       "telegram-over-cap",
       "AmountExceedsCap",
     );
-    await ctx.reply(result);
+    await ctx.reply(result, { parse_mode: "HTML" });
   });
 
   registerCommand("revoke", async (ctx) => {
@@ -389,7 +296,10 @@ async function main(): Promise<void> {
     });
     const receipt = await publicClient.waitForTransactionReceipt({ hash });
     if (receipt.status !== "success") throw new Error("Revocation failed");
-    await ctx.reply("SUCCESS mandate revoked\nTransaction: " + hash);
+    await ctx.reply(
+      `✅ <b>Mandate revoked</b>\nTx: <code>${hash}</code>`,
+      { parse_mode: "HTML" },
+    );
   });
 
   registerCommand("status", async (ctx) => {
@@ -409,26 +319,14 @@ async function main(): Promise<void> {
     });
     const remaining = state[2] - state[3];
     await ctx.reply(
-      "Mandate status\n" +
-        "Owner: " +
-        state[0] +
-        "\nSession key: " +
-        state[1] +
-        "\nCap: " +
-        state[2] +
-        "\nSpent: " +
-        state[3] +
-        "\nRemaining: " +
-        remaining +
-        "\nExpiry: " +
-        state[4] +
-        "\nRevoked: " +
-        state[5] +
-        "\nRock Burger allowed: " +
-        String(rockAllowed) +
-        "\nEvil Store allowed: " +
-        String(evilAllowed) +
-        "\n\nTarget display is limited to targets known by this demo bot because mappings are not enumerable.",
+      "<b>Mandate status</b>\n" +
+        `Owner: <code>${state[0]}</code>\n` +
+        `Session key: <code>${state[1]}</code>\n` +
+        `Cap: ${formatAmount(state[2])} · Spent: ${formatAmount(state[3])} · Remaining: ${formatAmount(remaining)}\n` +
+        `Expiry: <code>${state[4]}</code> · Revoked: <code>${state[5]}</code>\n` +
+        `Rock Burger allowed: <code>${rockAllowed}</code> · Evil Store allowed: <code>${evilAllowed}</code>\n\n` +
+        "<i>Target display is limited to targets known by this demo bot because mappings are not enumerable.</i>",
+      { parse_mode: "HTML" },
     );
   });
 
@@ -437,57 +335,23 @@ async function main(): Promise<void> {
     if (/^\s*\//.test(text)) return;
 
     try {
-      const intent = parseAgentIntent(text, merchants);
-      switch (intent.kind) {
-        case "status":
-          await ctx.reply(await statusMessage(ctx));
-          return;
-        case "revoke":
-          await ctx.reply(await revokeMandate(ctx));
-          return;
-        case "pay":
-          await ctx.reply(
-            await naturalPayment(ctx, intent.merchant, intent.amount, "telegram-chat-payment"),
-          );
-          return;
-        case "browseAndPay": {
-          const offer = findCheapBurger(merchants);
-          await ctx.reply(offer.description + "\nAgent mencoba membayar hanya melalui LeashMandate.");
-          await ctx.reply(
-            await naturalPayment(
-              ctx,
-              merchants[offer.merchant],
-              offer.amount,
-              "telegram-browse-cheap-burger",
-            ),
-          );
-          return;
-        }
-        case "openPromo": {
-          const offer = openBurgerPromo(merchants);
-          await ctx.reply(offer.description);
-          await ctx.reply(
-            (await naturalPayment(
-              ctx,
-              merchants[offer.merchant],
-              offer.amount,
-              "telegram-prompt-injection-promo",
-            )) +
-              "\n\nNo AuthorizationGranted berarti backend tidak memiliki settlement eligibility."
-          );
-          return;
-        }
-        case "unknown":
-          await ctx.reply(
-            "Saya belum memahami permintaan itu. Coba:\n" +
-              "belikan burger 52 ribu\n" +
-              "bayar rock burger 52000\n" +
-              "cek status\n" +
-              "batalkan mandate\n" +
-              "carikan burger murah dan bayar kalau aman\n" +
-              "buka halaman promo burger",
-          );
-          return;
+      const active = activeFor(ctx);
+      const id = chatId(ctx);
+      let entry = llmSessions.get(id);
+      if (!entry || entry.mandateId !== active.mandateId) {
+        entry = {
+          session: createLlmSession(
+            { publicClient, sessionWallet, sessionAccount, contractAddress, abi, merchants },
+            active.mandateId,
+          ),
+          mandateId: active.mandateId,
+        };
+        llmSessions.set(id, entry);
+      }
+
+      const steps = await entry.session.send(text);
+      for (const message of formatStepsForTelegram(steps)) {
+        await ctx.reply(message, { parse_mode: "HTML" });
       }
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
