@@ -3,6 +3,7 @@ import { Shell, Rule, IconArrow, ButtonLink } from "@/components/primitives";
 import { SiteNav } from "@/components/site-nav";
 import { LandingNav } from "@/components/landing-nav";
 import { AttemptLedger } from "@/components/attempt-ledger";
+import { EyeImage } from "@/components/eye-image";
 import { ERROR_COPY, ALL_ERROR_NAMES } from "@/lib/leash";
 import { activeChain, contractAddress } from "@/lib/chain";
 
@@ -62,14 +63,7 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div className="rise" style={{ animationDelay: "260ms" }}>
-              <img
-                src="/hero.png"
-                alt="Leash hero illustration"
-                className="h-auto w-full select-none"
-                draggable={false}
-              />
-            </div>
+            <EyeImage />
           </div>
 
         </Shell>
