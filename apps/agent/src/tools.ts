@@ -26,7 +26,7 @@ export function createTools(
 ): BetaRunnableTool<any>[] {
   const merchants: { name: string; address: Address }[] = [
     { name: "Rock Burger", address: config.rockBurger },
-    { name: "Evil Store", address: config.evilStore },
+    { name: "Maple Kitchen", address: config.evilStore },
   ];
 
   const getMerchantDirectory = betaZodTool({
