@@ -1,0 +1,22 @@
+{
+  "name": "@leash/agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "agent": "tsx src/cli.ts",
+    "scenario": "tsx src/scenario.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.68.0",
+    "dotenv": "17.4.2",
+    "viem": "2.55.13",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "26.2.0",
+    "tsx": "4.23.12",
+    "typescript": "7.0.2"
+  }
+}

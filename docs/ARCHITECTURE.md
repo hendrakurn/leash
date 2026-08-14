@@ -88,15 +88,15 @@ Real in the MVP:
 - successful and reverted EVM receipts;
 - event log;
 - confirmed-block listener;
-- idempotency behavior.
+- idempotency behavior;
+- AI natural-language reasoning (`apps/agent` — a real Claude tool-calling agent with a session key; `pay_merchant` performs no client-side validation, so a genuinely manipulated agent is stopped only by the contract).
 
 Mocked:
 
 - fiat movement;
 - BaaS provider;
 - virtual-card issuance;
-- merchant identity;
-- deterministic natural-language intent parsing and simulated browsing.
+- merchant identity.
 
 ## Trust Model
 

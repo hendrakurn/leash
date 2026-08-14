@@ -133,6 +133,19 @@ npm run dev
 
 The backend has no HTTP settlement endpoint. Its settlement processor accepts decoded AuthorizationGranted events from the configured contract only.
 
+## AI Agent
+
+Copy apps/agent/.env.example to .env. `pay_merchant` performs no allowlist, cap, or expiry check of its own — it calls the contract and reports back whatever the chain says. The agent is meant to be manipulable; the contract is the only real gate.
+
+~~~bash
+cd apps/agent
+npm install
+npm run typecheck
+npm run agent -- "order me a burger from Rock Burger"
+~~~
+
+`npm run agent` requires an already-registered mandate (`MANDATE_ID` in .env). `npm run scenario` registers its own mandate and runs a two-turn transcript: a normal order, then a message with an injected instruction trying to redirect payment to an unlisted merchant. The agent actually attempts the redirected payment; the contract actually reverts it. Nothing about the injection is scripted or faked.
+
 ## Telegram
 
 Copy apps/telegram-bot/.env.example to .env:
@@ -188,15 +201,14 @@ See docs/DEPLOYMENT.md for deployment and verification details.
 - fiat movement;
 - BaaS integration;
 - virtual-card issuance;
-- merchant identity verification;
-- deterministic natural-language intent parsing and simulated browsing.
+- merchant identity verification.
 
 ## Limitations
 
 - not a production payment system;
 - backend fiat remains trusted to follow the protocol;
-- prompt injection is contained, not fully solved;
-- private and session keys still need production custody;
+- prompt injection is contained, not fully solved — apps/agent/src/scenario.ts demonstrates a real agent actually being fooled, not a scripted stand-in;
+- private and session keys still need production custody, and so does ANTHROPIC_API_KEY;
 - idempotency is process-local;
 - no KYC, AML, compliance, disputes, refunds, or chargebacks;
 - no gas abstraction, ERC-4337, privacy, or multichain;

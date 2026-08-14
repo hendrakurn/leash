@@ -19,8 +19,8 @@ The enforcement layer is done and verified. `docs/VERIFICATION.md` records a pas
 | `scripts/run-local-demo.sh` | Complete, asserts the whole chain |
 | `docs/` (6 files) | Written |
 | **Base Sepolia deployment** | **Not done** — `SKIPPED_CREDENTIALS` |
-| **Web frontend** | **Does not exist** |
-| **AI agent harness** | **Does not exist** — the "AI agent" is currently a hardcoded script |
+| **Web frontend** | Built, paused — `apps/web` (Next.js) exists; work paused to prioritize the agent |
+| **AI agent harness** | Built — `apps/agent`, real Claude tool-calling agent; injection scenario written, transcript not yet captured live |
 | TS test coverage | Only `mockBaas.test.ts` |
 
 The two plan documents deliberately gated the UI and the AI parsing behind "prove the enforcement layer first" (`LEASH_EXECUTION_PLAN.md:56`, `:1264`; `:951`). **That gate is now passed.** Both are unblocked.
@@ -242,10 +242,10 @@ Owner: **Lane B**.
 
 ### Lane B — Frontend & Agent
 
-- [ ] Scaffold `apps/agent/` — SDK, viem client, ABI loader, `.env.example`
-- [ ] Implement `get_merchant_directory`, `pay_merchant`, `check_mandate_status` — no client-side validation in `pay_merchant`
-- [ ] Wire the Tool Runner loop; decode custom errors into tool results
-- [ ] Injection scenario script + transcript captured for the demo
+- [x] Scaffold `apps/agent/` — SDK, viem client, ABI loader, `.env.example`
+- [x] Implement `get_merchant_directory`, `pay_merchant`, `check_mandate_status` — no client-side validation in `pay_merchant`
+- [x] Wire the Tool Runner loop; decode custom errors into tool results
+- [ ] Injection scenario script written (`apps/agent/src/scenario.ts`) — transcript not yet captured; needs a live run against Anvil (`npm run scenario`) with `ANTHROPIC_API_KEY` set
 - [ ] Scaffold `apps/web/` — Next.js, Tailwind, wagmi, wallet connect
 - [ ] `/` landing
 - [ ] `/mandate/new` + `/mandate/[id]` (allowlist panel blocked on §4)

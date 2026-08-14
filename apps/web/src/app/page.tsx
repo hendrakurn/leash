@@ -1,17 +1,12 @@
 import Link from "next/link";
-import { Shell, Rule, Meter, Field, IconArrow, ButtonLink } from "@/components/primitives";
+import { Shell, Rule, IconArrow, ButtonLink } from "@/components/primitives";
 import { SiteNav } from "@/components/site-nav";
 import { LandingNav } from "@/components/landing-nav";
 import { AttemptLedger } from "@/components/attempt-ledger";
-import { ERROR_COPY, formatRupiah, ALL_ERROR_NAMES } from "@/lib/leash";
+import { ERROR_COPY, ALL_ERROR_NAMES } from "@/lib/leash";
 import { activeChain, contractAddress } from "@/lib/chain";
 
-const DEMO_CAP = 60_000n;
-const DEMO_SPENT = 52_000n;
-
 export default function LandingPage() {
-  const remaining = DEMO_CAP - DEMO_SPENT;
-
   return (
     <>
       <LandingNav />
@@ -20,8 +15,10 @@ export default function LandingPage() {
       {/* There is no floating header. The nav rules straight onto the volt
           hero: wordmark, routes, wallet and deployment status all live here. */}
       <section className="on-green buzz border-b">
-        <SiteNav border={false} hero />
-        <Shell className="pt-12 pb-14 sm:pt-16 sm:pb-20">
+        <div className="pt-3 sm:pt-5">
+          <SiteNav border={false} hero />
+        </div>
+        <Shell className="pt-16 pb-24 sm:pt-24 sm:pb-36">
           <div className="grid items-center gap-10 md:grid-cols-[1.05fr_0.95fr] md:gap-16">
             <div>
               <h1
@@ -75,45 +72,6 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* the live instrument, directly under the statement — no paper card:
-              it rules straight onto the volt ground with dark hairlines */}
-          <div
-            className="rise mt-14 border p-6 sm:p-8"
-            style={{ animationDelay: "300ms" }}
-          >
-            <div className="flex flex-wrap items-baseline justify-between gap-4">
-              <span className="mono-label">Reference mandate</span>
-              <span className="mono-label">Verified local run</span>
-            </div>
-
-            <div className="mt-6 flex flex-wrap items-end justify-between gap-6">
-              <div>
-                <div className="font-mono text-[clamp(2rem,6vw,3.5rem)] leading-none">
-                  {formatRupiah(remaining)}
-                </div>
-                <div className="mono-label mt-2">Remaining of {formatRupiah(DEMO_CAP)}</div>
-              </div>
-              <div className="text-right">
-                <div className="font-mono text-lg">{formatRupiah(DEMO_SPENT)}</div>
-                <div className="mono-label mt-1">Authorized, once</div>
-              </div>
-            </div>
-
-            <div className="mt-5">
-              <Meter spent={DEMO_SPENT} cap={DEMO_CAP} />
-            </div>
-
-            <dl className="mt-7">
-              <Field label="Merchant allowlist" mono={false}>
-                Rock Burger
-              </Field>
-              <Field label="Session key">separate from owner</Field>
-              <Field label="Expiry">1 hour from registration</Field>
-              <Field label="Revocation" mono={false}>
-                one-way, permanent
-              </Field>
-            </dl>
-          </div>
         </Shell>
       </section>
 
