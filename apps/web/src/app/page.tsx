@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { Shell, Rule, IconArrow, ButtonLink } from "@/components/primitives";
+import { Shell, IconArrow, ButtonLink } from "@/components/primitives";
 import { SiteNav } from "@/components/site-nav";
 import { LandingNav } from "@/components/landing-nav";
 import { AttemptLedger } from "@/components/attempt-ledger";
 import { EyeImage } from "@/components/eye-image";
+import { MockBaasTerminal } from "@/components/mock-baas-terminal";
 import { ERROR_COPY, ALL_ERROR_NAMES } from "@/lib/leash";
 import { activeChain, contractAddress } from "@/lib/chain";
 
@@ -149,30 +150,7 @@ export default function LandingPage() {
               </p>
             </div>
 
-            <div className="border p-6 font-mono text-sm sm:p-8" style={{ background: "var(--paper)" }}>
-              {/* Labelled in place. The mocked list is 3,000px away in the
-                  footer, and "Settlement status: SUCCESS" printed under a
-                  heading that says settlement is separate must not read as a
-                  real card being issued. */}
-              {/* Not in the refusal hue: this section contains no refusal, and
-                  red is reserved for the stamp. */}
-              <div className="mono-label mb-4">Mock BaaS · no card, no money</div>
-              <div className="mono-label">Backend output, valid payment</div>
-              <Rule className="my-4" />
-              <pre className="overflow-x-auto leading-relaxed" style={{ color: "var(--wt-65)" }}>
-{`AuthorizationGranted detected
-Issuing mock VCC
-Amount: Rp52.000
-Mock card: **** **** **** 4242
-Settlement status: SUCCESS`}
-              </pre>
-              <Rule className="my-4" />
-              <div className="mono-label">Backend output, all three refusals</div>
-              <Rule className="my-4" />
-              <pre className="leading-relaxed" style={{ color: "var(--wt-45)" }}>
-{`(no output)`}
-              </pre>
-            </div>
+            <MockBaasTerminal />
           </div>
         </Shell>
       </section>
