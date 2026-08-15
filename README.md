@@ -41,15 +41,42 @@ The contract also enforces hard constraints, not semantic correctness. It checks
 ## Architecture
 
 ~~~mermaid
-flowchart TD
-    User[User] --> Mandate[Spending Mandate<br/>allowlist · cap · expiry · revocation]
-    Mandate --> Agent[AI Agent / Session Key]
-    Agent --> Contract{Leash Smart Contract}
-    Contract -->|valid| Granted[AuthorizationGranted]
-    Granted --> Settlement[Mock BaaS Settlement]
-    Contract -->|invalid| Revert[revert]
-    Revert --> NoSettlement[no settlement]
+flowchart TB
+    Owner(["Owner wallet"])
+
+    subgraph Callers["Session-key callers — zero validation of their own"]
+        Agent["apps/agent — CLI"]
+        WebChat["apps/web — chat API route"]
+        Bot["apps/telegram-bot"]
+    end
+
+    subgraph OnChain["LeashMandate.sol — Base Sepolia"]
+        Register["registerMandate<br/>sessionKey · maxAmount · validUntil · targets[]"]
+        Authorize{{"authorizePayment<br/>mandateId · target · amount · paymentRef"}}
+        Revoke["revokeMandate — one-way"]
+    end
+
+    subgraph BackendGroup["apps/backend — independent poller"]
+        Listener["confirmed-block listener<br/>watches AuthorizationGranted only"]
+        Mock["mock BaaS settlement<br/>idempotent on event id + paymentRef"]
+    end
+
+    Owner -->|"1"| Register
+    Owner -.->|"one-way"| Revoke
+    Agent --> Authorize
+    WebChat --> Authorize
+    Bot --> Authorize
+
+    Authorize -->|"exists → sessionKey → !revoked →<br/>!expired → allowlisted → amount≠0 → within cap"| Valid{"Every check passes?"}
+    Valid -->|yes| Granted["spentAmount += amount<br/>emit AuthorizationGranted"]
+    Valid -->|no| Reverted["revert — one of:<br/>InvalidMandate · NotOwner · Revoked · Expired ·<br/>TargetNotAllowed · ZeroAmount · AmountExceedsCap<br/>atomic — no state change, no log"]
+
+    Granted -.-> Listener
+    Listener --> Mock
+    Mock -->|"mock VCC"| Merchant["Merchant — mocked"]
 ~~~
+
+Full check-by-check breakdown: `docs/ARCHITECTURE.md`.
 
 ## Default Demo
 

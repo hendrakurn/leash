@@ -65,9 +65,12 @@ Amounts are currency-agnostic in the contract; the demo displays one unit as one
 - Idempotency is process-local; a backend restart replays.
 - Expiry is exclusive: `block.timestamp >= validUntil` reverts.
 
+**Resolved since this section was written**
+- Base Sepolia deployment exists — chain ID 84532, contract `0x4D74d9469de72B9aACBe0a696e769EEA817D4988` (`docs/DEPLOYMENT.md`, `docs/VERIFICATION.md`). `SKIPPED_CREDENTIALS` in `VERIFICATION.md` refers only to the Telegram bot's live-runtime check (no bot token available at verification time), not the deployment.
+- `MandateRegistered` now carries `address[] targets` (`contracts/src/LeashMandate.sol`'s event declaration). A mandate's allowlist is reconstructable from logs; `allowedTargets` itself is still a non-enumerable mapping, so any code reading the mapping directly (rather than replaying the event) still can't enumerate it.
+
 **Open / undecided**
-- No Base Sepolia deployment exists. `docs/DEPLOYMENT.md` records `SKIPPED_CREDENTIALS`; no public address, transaction, or explorer link may be claimed until one does.
-- `MandateRegistered` omits the targets array and `allowedTargets` is a non-enumerable mapping, so a mandate's allowlist cannot currently be reconstructed from chain state or logs. `apps/telegram-bot/src/bot.ts:337` discloses this limitation to the user. A pending contract change adds `address[] targets` to the event; any allowlist display depends on it.
+- Source verification on Base Sepolia's explorer is not recorded in this repo.
 
 **Terminology (load-bearing — do not use interchangeably)**
 - *Mandate* — the on-chain policy object.
